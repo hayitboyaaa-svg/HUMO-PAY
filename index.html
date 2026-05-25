@@ -2,24 +2,156 @@
 <html lang="uz">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HUMO PAY PREMIUM</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>HUMO PAY v2.0</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+
+:root{
+--gold:#FFD700;
+--gold2:#B8860B;
+--bg:#050505;
+--card:#111;
+--text:#fff;
+--muted:#999;
+--danger:#ff5577;
+--success:#00d084;
+}
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Inter',sans-serif;
+-webkit-tap-highlight-color:transparent;
 }
 
 body{
-background:#050505;
-color:white;
+background:var(--bg);
+color:var(--text);
 overflow-x:hidden;
+}
+
+.hidden{
+display:none!important;
+}
+
+button{
+border:none;
+cursor:pointer;
+}
+
+input{
+outline:none;
+border:none;
+}
+
+.splash{
+position:fixed;
+inset:0;
+background:#000;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:99999;
+}
+
+.logo-big{
+font-size:50px;
+font-weight:800;
+background:linear-gradient(90deg,var(--gold),var(--gold2));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.loading{
+width:240px;
+height:7px;
+background:#222;
+border-radius:999px;
+margin-top:25px;
+overflow:hidden;
+}
+
+.loading span{
+display:block;
+height:100%;
+width:0%;
+background:linear-gradient(90deg,var(--gold),var(--gold2));
+animation:load 2.5s linear forwards;
+}
+
+@keyframes load{
+to{
+width:100%;
+}
+}
+
+.auth-page{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+.auth-box{
+width:100%;
+max-width:420px;
+background:#111;
+border-radius:30px;
+padding:25px;
+border:1px solid rgba(255,215,0,.15);
+box-shadow:0 0 30px rgba(255,215,0,.08);
+}
+
+.logo{
+font-size:34px;
+font-weight:800;
+text-align:center;
+margin-bottom:25px;
+background:linear-gradient(90deg,var(--gold),var(--gold2));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.auth-title{
+font-size:24px;
+font-weight:700;
+margin-bottom:20px;
+}
+
+.input{
+width:100%;
+padding:16px;
+background:#1b1b1b;
+color:white;
+border-radius:16px;
+margin-top:12px;
+}
+
+.gold-btn{
+width:100%;
+padding:16px;
+margin-top:15px;
+border-radius:16px;
+font-weight:700;
+background:linear-gradient(90deg,var(--gold),var(--gold2));
+color:black;
+}
+
+.switch{
+margin-top:15px;
+text-align:center;
+color:#aaa;
+cursor:pointer;
+}
+
+.app{
+display:none;
 }
 
 .container{
@@ -29,26 +161,17 @@ padding:20px;
 padding-bottom:120px;
 }
 
-.logo{
-font-size:32px;
-font-weight:800;
-background:linear-gradient(to right,#FFD700,#caa300);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
 .topbar{
 display:flex;
 justify-content:space-between;
 align-items:center;
-margin-bottom:25px;
 }
 
 .profile{
 width:50px;
 height:50px;
 border-radius:50%;
-background:linear-gradient(135deg,#FFD700,#8b6508);
+background:linear-gradient(135deg,var(--gold),var(--gold2));
 display:flex;
 justify-content:center;
 align-items:center;
@@ -56,35 +179,47 @@ font-weight:800;
 color:black;
 }
 
-.card{
+.card-slider{
+display:flex;
+overflow-x:auto;
+gap:15px;
+margin-top:25px;
+scrollbar-width:none;
+}
+
+.card-slider::-webkit-scrollbar{
+display:none;
+}
+
+.bank-card{
+min-width:340px;
 background:linear-gradient(135deg,#111,#1d1d1d);
 padding:25px;
 border-radius:30px;
-border:1px solid rgba(255,215,0,.15);
-box-shadow:0 0 40px rgba(255,215,0,.08);
 position:relative;
 overflow:hidden;
+border:1px solid rgba(255,215,0,.15);
 }
 
-.card::before{
+.bank-card::before{
 content:'';
 position:absolute;
-width:200px;
-height:200px;
+width:220px;
+height:220px;
 background:radial-gradient(circle,rgba(255,215,0,.15),transparent);
-top:-70px;
-right:-70px;
+top:-80px;
+right:-80px;
 }
 
 .balance-title{
-color:#888;
-font-size:14px;
+font-size:13px;
+color:#aaa;
 }
 
 .balance{
-font-size:40px;
+font-size:38px;
 font-weight:800;
-margin-top:10px;
+margin-top:8px;
 }
 
 .card-number{
@@ -94,55 +229,53 @@ font-size:18px;
 color:#ddd;
 }
 
-.bottom-card{
-margin-top:25px;
+.card-bottom{
 display:flex;
 justify-content:space-between;
 align-items:center;
+margin-top:20px;
 }
 
 .humo{
 font-size:24px;
 font-weight:800;
-color:#FFD700;
+color:var(--gold);
 }
 
 .actions{
 display:grid;
 grid-template-columns:repeat(4,1fr);
-gap:15px;
-margin-top:30px;
+gap:12px;
+margin-top:25px;
 }
 
 .action{
 background:#111;
-padding:18px 10px;
-border-radius:22px;
+padding:16px 10px;
+border-radius:20px;
 text-align:center;
 cursor:pointer;
-transition:.3s;
+transition:.25s;
 border:1px solid rgba(255,215,0,.08);
 }
 
 .action:hover{
-transform:translateY(-5px);
-border-color:#FFD700;
+transform:translateY(-4px);
+border-color:var(--gold);
 }
 
-.action img{
-width:35px;
-height:35px;
-margin-bottom:10px;
+.action-icon{
+font-size:28px;
 }
 
 .action p{
 font-size:12px;
-color:#ccc;
+margin-top:8px;
 }
 
 .section-title{
-margin-top:35px;
-margin-bottom:18px;
+margin-top:30px;
+margin-bottom:15px;
 font-size:22px;
 font-weight:700;
 }
@@ -150,241 +283,222 @@ font-weight:700;
 .services{
 display:grid;
 grid-template-columns:repeat(2,1fr);
-gap:15px;
+gap:12px;
 }
 
 .service{
 background:#111;
-padding:20px;
-border-radius:24px;
-cursor:pointer;
-transition:.3s;
+padding:18px;
+border-radius:22px;
 border:1px solid rgba(255,215,0,.08);
+transition:.25s;
 }
 
 .service:hover{
-transform:scale(1.03);
-border-color:#FFD700;
+transform:scale(1.02);
 }
 
-.service img{
-width:40px;
-height:40px;
+.service-icon{
+font-size:36px;
 }
 
 .service h3{
-margin-top:15px;
+margin-top:12px;
 }
 
 .service p{
+margin-top:6px;
 font-size:13px;
 color:#999;
-margin-top:8px;
-}
-
-.transactions{
-margin-top:20px;
-display:flex;
-flex-direction:column;
-gap:15px;
-}
-
-.transaction{
-background:#111;
-padding:18px;
-border-radius:20px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-border:1px solid rgba(255,215,0,.08);
-}
-
-.left{
-display:flex;
-align-items:center;
-gap:15px;
-}
-
-.circle{
-width:50px;
-height:50px;
-border-radius:50%;
-background:linear-gradient(135deg,#FFD700,#8b6508);
-display:flex;
-justify-content:center;
-align-items:center;
-font-weight:800;
-color:black;
-}
-
-.green{
-color:#00ff99;
-font-weight:700;
-}
-
-.red{
-color:#ff5577;
-font-weight:700;
 }
 
 .bottom-nav{
 position:fixed;
-bottom:0;
 left:0;
+bottom:0;
 width:100%;
-background:#0a0a0a;
+background:#090909;
 display:flex;
 justify-content:space-around;
-padding:15px 0;
+padding:14px 0;
 border-top:1px solid rgba(255,215,0,.1);
 z-index:999;
 }
 
-.nav-item{
-font-size:13px;
+.nav{
 text-align:center;
+font-size:13px;
 color:#888;
 cursor:pointer;
 }
 
-.active{
-color:#FFD700;
+.nav.active{
+color:var(--gold);
 }
 
 .modal{
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
+inset:0;
 background:rgba(0,0,0,.85);
 display:none;
 justify-content:center;
 align-items:center;
 padding:20px;
 z-index:9999;
-overflow:auto;
 }
 
 .modal-content{
-background:#111;
 width:100%;
 max-width:380px;
+background:#111;
 padding:25px;
 border-radius:30px;
 border:1px solid rgba(255,215,0,.15);
 }
 
-input{
+.modal-input{
 width:100%;
 padding:15px;
 background:#1d1d1d;
-border:none;
 border-radius:14px;
-margin-top:15px;
+margin-top:12px;
 color:white;
-font-size:15px;
 }
 
-button{
-width:100%;
-padding:15px;
-border:none;
-margin-top:18px;
-border-radius:15px;
-font-weight:700;
-cursor:pointer;
-background:#FFD700;
-}
-
-.close{
+.close-btn{
 background:#222;
 color:white;
-}
-
-.receipt{
-background:linear-gradient(135deg,#fff8dc,#fff,#f6e7a1);
-color:black;
-padding:20px;
-border-radius:20px;
-margin-top:20px;
-position:relative;
-overflow:hidden;
-}
-
-.receipt::before{
-content:'';
-position:absolute;
-width:200px;
-height:200px;
-background:radial-gradient(circle,rgba(255,215,0,.25),transparent);
-top:-70px;
-right:-70px;
-}
-
-.receipt-row{
-display:flex;
-justify-content:space-between;
 margin-top:10px;
-font-size:14px;
-}
-
-canvas{
-width:100%;
-background:#111;
-border-radius:20px;
-margin-top:20px;
-}
-
-.cards-scroll{
-display:flex;
-overflow-x:auto;
-gap:15px;
-padding-bottom:10px;
-scrollbar-width:none;
-}
-
-.cards-scroll::-webkit-scrollbar{
-display:none;
-}
-
-.single-card{
-min-width:320px;
-flex-shrink:0;
 }
 
 </style>
 </head>
-
 <body>
+
+<div class="splash" id="splash">
+<div class="logo-big">HUMO PAY</div>
+<div class="loading">
+<span></span>
+</div>
+</div>
+
+<div class="auth-page" id="authPage">
+
+<div class="auth-box">
+
+<div class="logo">HUMO PAY</div>
+
+<div id="loginBox">
+
+<div class="auth-title">
+Kirish
+</div>
+
+<input
+class="input"
+id="loginUser"
+placeholder="Login">
+
+<input
+type="password"
+class="input"
+id="loginPass"
+placeholder="Parol">
+
+<button
+class="gold-btn"
+onclick="login()">
+Kirish
+</button>
+
+<div
+class="switch"
+onclick="showRegister()">
+Akkaunt yo'qmi? Ro'yxatdan o'tish
+</div>
+
+</div>
+
+<div
+id="registerBox"
+class="hidden">
+
+<div class="auth-title">
+Ro'yxatdan o'tish
+</div>
+
+<input
+class="input"
+id="regName"
+placeholder="Ism">
+
+<input
+class="input"
+id="regUser"
+placeholder="Login">
+
+<input
+type="password"
+class="input"
+id="regPass"
+placeholder="Parol">
+
+<button
+class="gold-btn"
+onclick="registerUser()">
+Akkaunt yaratish
+</button>
+
+<div
+class="switch"
+onclick="showLogin()">
+Akkaunt mavjudmi? Kirish
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="app" id="app">
 
 <div class="container">
 
 <div class="topbar">
-<div class="logo">HUMO PAY</div>
-<div class="profile">A</div>
+
+<div class="logo">
+HUMO PAY
 </div>
 
-<div id="app"></div>
+<div class="profile" id="avatar">
+A
+</div>
+
+</div>
+
+<div id="pageContent"></div>
 
 </div>
 
 <div class="bottom-nav">
 
-<div class="nav-item active" id="homeBtn" onclick="showPage('home')">
+<div class="nav active" id="homeBtn">
 🏠<br>Home
 </div>
 
-<div class="nav-item" id="statsBtn" onclick="showPage('stats')">
-📊<br>Statistika
-</div>
-
-<div class="nav-item" id="walletBtn" onclick="showPage('wallet')">
+<div class="nav" id="walletBtn">
 💳<br>Wallet
 </div>
 
-<div class="nav-item" id="profileBtn" onclick="showPage('profile')">
+<div class="nav" id="statsBtn">
+📊<br>Stats
+</div>
+
+<div class="nav" id="profileBtn">
 👤<br>Profil
+</div>
+
 </div>
 
 </div>
@@ -393,11 +507,15 @@ flex-shrink:0;
 
 <div class="modal-content">
 
-<h2 id="modalTitle">Title</h2>
+<h2 id="modalTitle">
+Modal
+</h2>
 
 <div id="modalBody"></div>
 
-<button class="close" onclick="closeModal()">
+<button
+class="gold-btn close-btn"
+onclick="closeModal()">
 Yopish
 </button>
 
@@ -407,82 +525,197 @@ Yopish
 
 <script>
 
-const app=document.getElementById('app');
+let currentUser=null;
 
-let userBalance=12580000;
+let appData={
+balance:15000000,
+cashback:0,
+cards:[],
+history:[]
+};
 
-let cards=[
+function showRegister(){
+document
+.getElementById('loginBox')
+.classList.add('hidden');
+
+document
+.getElementById('registerBox')
+.classList.remove('hidden');
+}
+
+function showLogin(){
+document
+.getElementById('registerBox')
+.classList.add('hidden');
+
+document
+.getElementById('loginBox')
+.classList.remove('hidden');
+}
+
+function save(){
+localStorage.setItem(
+'humo_v2_user',
+JSON.stringify(currentUser)
+);
+
+localStorage.setItem(
+'humo_v2_data',
+JSON.stringify(appData)
+);
+}
+
+setTimeout(()=>{
+document.getElementById('splash').style.display='none';
+},2500);
+function registerUser(){
+
+let name=document.getElementById('regName').value.trim();
+let user=document.getElementById('regUser').value.trim();
+let pass=document.getElementById('regPass').value.trim();
+
+if(!name || !user || !pass){
+alert("Barcha maydonlarni to'ldiring");
+return;
+}
+
+currentUser={
+name:name,
+username:user,
+password:pass
+};
+
+appData={
+balance:15000000,
+cashback:0,
+cards:[
 {
-number:'9860123456782026',
-holder:'ABDULLOH',
-expire:'12/30',
-cvv:'777'
+number:"9860123456782026",
+holder:name.toUpperCase(),
+expire:"12/30",
+cvv:"777"
 }
-];
+],
+history:[]
+};
 
-function maskCard(card){
-return card.substring(0,4)+' **** **** '+card.substring(12,16);
-}
+save();
 
-function updateBalance(){
-const el=document.querySelector('.balance');
-if(el){
-el.innerHTML=userBalance.toLocaleString('ru-RU')+" so'm";
-}
+alert("Akkaunt yaratildi");
+openApp();
 }
 
-function isValidCard(card){
-return /^\d{16}$/.test(card);
+function login(){
+
+let user=document.getElementById('loginUser').value.trim();
+let pass=document.getElementById('loginPass').value.trim();
+
+let savedUser=
+JSON.parse(
+localStorage.getItem('humo_v2_user')
+);
+
+let savedData=
+JSON.parse(
+localStorage.getItem('humo_v2_data')
+);
+
+if(!savedUser){
+alert("Akkaunt topilmadi");
+return;
 }
 
-function isValidAbonent(a){
-return /^\d{5,15}$/.test(a);
+if(
+savedUser.username!==user ||
+savedUser.password!==pass
+){
+alert("Login yoki parol noto'g'ri");
+return;
 }
 
-function active(btn){
+currentUser=savedUser;
+appData=savedData;
 
-document.querySelectorAll('.nav-item').forEach(el=>{
-el.classList.remove('active');
+openApp();
+}
+
+function openApp(){
+
+document.getElementById('authPage').style.display='none';
+
+document.getElementById('app').style.display='block';
+
+document.getElementById('avatar').innerHTML=
+currentUser.name.charAt(0).toUpperCase();
+
+showHome();
+}
+
+function setActive(id){
+
+document.querySelectorAll('.nav')
+.forEach(nav=>{
+nav.classList.remove('active');
 });
 
-document.getElementById(btn).classList.add('active');
+document.getElementById(id)
+.classList.add('active');
+}
+
+function maskCard(card){
+
+return card.substring(0,4)
++" **** **** "
++card.substring(12,16);
 
 }
 
-function showPage(page){
+function addHistory(type,amount){
 
-if(page==="home"){
+appData.history.unshift({
 
-active('homeBtn');
+type:type,
+amount:amount,
+date:new Date().toLocaleString()
 
-app.innerHTML=`
+});
 
-<div class="cards-scroll">
+save();
+}
 
-${cards.map(card => `
+function showHome(){
 
-<div class="card single-card">
+setActive('homeBtn');
+
+document.getElementById('pageContent').innerHTML=`
+
+<div class="card-slider">
+
+${appData.cards.map(card=>`
+
+<div class="bank-card">
 
 <div class="balance-title">
 Asosiy balans
 </div>
 
 <div class="balance">
-${userBalance.toLocaleString('ru-RU')} so'm
+${appData.balance.toLocaleString()} so'm
 </div>
 
 <div class="card-number">
 ${maskCard(card.number)}
 </div>
 
-<div class="bottom-card">
+<div class="card-bottom">
 
 <div>
-<p style="color:#888;font-size:13px;">
+<p style="color:#888;font-size:12px;">
 CARD HOLDER
 </p>
 
-<h3 style="margin-top:5px;">
+<h3>
 ${card.holder}
 </h3>
 </div>
@@ -501,176 +734,194 @@ HUMO
 
 <div class="actions">
 
-<div class="action" onclick="transferModal()">
-<img src="https://cdn-icons-png.flaticon.com/512/5610/5610944.png">
+<div class="action"
+onclick="transferModal()">
+<div class="action-icon">💸</div>
 <p>Transfer</p>
 </div>
 
-<div class="action" onclick="cardModal()">
-<img src="https://cdn-icons-png.flaticon.com/512/2489/2489756.png">
+<div class="action"
+onclick="cardModal()">
+<div class="action-icon">💳</div>
 <p>Karta</p>
 </div>
 
-<div class="action" onclick="simpleModal('QR To‘lov','QR orqali muvaffaqiyatli to‘lov amalga oshirildi')">
-<img src="https://cdn-icons-png.flaticon.com/512/2721/2721297.png">
+<div class="action"
+onclick="simpleInfo('QR','QR to‘lov demo')">
+<div class="action-icon">📱</div>
 <p>QR</p>
 </div>
 
-<div class="action" onclick="simpleModal('NFC','NFC to‘lov bajarildi')">
-<img src="https://cdn-icons-png.flaticon.com/512/483/483947.png">
+<div class="action"
+onclick="simpleInfo('NFC','NFC demo')">
+<div class="action-icon">📡</div>
 <p>NFC</p>
 </div>
 
 </div>
 
 <h2 class="section-title">
-Kommunal To'lovlar
+Xizmatlar
 </h2>
 
 <div class="services">
 
-<div class="service" onclick="utilityModal('Elektr')">
-<img src="https://cdn-icons-png.flaticon.com/512/3103/3103446.png">
+<div class="service"
+onclick="utilityModal('Elektr')">
+
+<div class="service-icon">⚡</div>
+
 <h3>Elektr</h3>
-<p>Elektr energiyasi</p>
+
+<p>
+Elektr energiyasi
+</p>
+
 </div>
 
-<div class="service" onclick="utilityModal('Gaz')">
-<img src="https://cdn-icons-png.flaticon.com/512/2933/2933828.png">
+<div class="service"
+onclick="utilityModal('Gaz')">
+
+<div class="service-icon">🔥</div>
+
 <h3>Gaz</h3>
-<p>Gaz xizmatlari</p>
+
+<p>
+Gaz ta'minoti
+</p>
+
 </div>
 
-<div class="service" onclick="utilityModal('Suv')">
-<img src="https://cdn-icons-png.flaticon.com/512/728/728093.png">
+<div class="service"
+onclick="utilityModal('Suv')">
+
+<div class="service-icon">💧</div>
+
 <h3>Suv</h3>
-<p>Suv ta'minoti</p>
+
+<p>
+Suv xizmati
+</p>
+
 </div>
 
-<div class="service" onclick="utilityModal('Internet')">
-<img src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png">
+<div class="service"
+onclick="utilityModal('Internet')">
+
+<div class="service-icon">🌐</div>
+
 <h3>Internet</h3>
-<p>Internet providerlari</p>
-</div>
+
+<p>
+Internet provayder
+</p>
 
 </div>
 
-`;
-
-}
-
-if(page==="stats"){
-
-active('statsBtn');
-
-app.innerHTML=`
+</div>
 
 <h2 class="section-title">
-Statistika
+So'nggi tranzaksiyalar
 </h2>
 
-<canvas id="chart" width="350" height="220"></canvas>
+<div id="historyArea">
 
-`;
-
-drawChart();
-
-}
-
-if(page==="wallet"){
-
-active('walletBtn');
-
-let walletHTML='';
-
-cards.forEach((card,index)=>{
-
-walletHTML+=`
+${
+appData.history.length
+?
+appData.history
+.slice(0,5)
+.map(item=>`
 
 <div class="service">
 
-<img src="https://cdn-icons-png.flaticon.com/512/196/196578.png">
-
 <h3>
-${index+1}-KARTA
+${item.type}
 </h3>
 
-<p style="margin-top:10px;">
-${maskCard(card.number)}
+<p>
+${item.amount.toLocaleString()} so'm
 </p>
 
-<p style="margin-top:8px;color:#888;font-size:12px;">
-Muddat: ${card.expire}
+<p>
+${item.date}
 </p>
 
-<button onclick="deleteCard('${card.number}')"
-style="background:#ff4444;color:white;">
-Kartani o‘chirish
-</button>
+</div>
+
+`).join('')
+:
+'<p style="color:#999">Tranzaksiyalar mavjud emas</p>'
+}
 
 </div>
 
 `;
+}
 
-});
+function showWallet(){
 
-app.innerHTML=`
+setActive('walletBtn');
+
+document.getElementById('pageContent').innerHTML=`
 
 <h2 class="section-title">
 Wallet
 </h2>
 
 <div class="services">
-${walletHTML}
+
+${appData.cards.map(card=>`
+
+<div class="service">
+
+<div class="service-icon">
+💳
 </div>
 
-<button onclick="cardModal()">
+<h3>
+${maskCard(card.number)}
+</h3>
+
+<p>
+${card.expire}
+</p>
+
+<button
+class="gold-btn"
+onclick="deleteCard('${card.number}')">
+
+Kartani o'chirish
+
+</button>
+
+</div>
+
+`).join('')}
+
+</div>
+
+<button
+class="gold-btn"
+onclick="cardModal()">
+
 + Karta qo'shish
+
 </button>
 
 `;
 
 }
 
-if(page==="profile"){
+/* NAVIGATION */
 
-active('profileBtn');
+document
+.getElementById('homeBtn')
+.onclick=showHome;
 
-app.innerHTML=`
-
-<h2 class="section-title">
-Profil
-</h2>
-
-<div class="card">
-
-<h2>ABDULLOH</h2>
-
-<p style="margin-top:10px;color:#aaa;">
-Premium foydalanuvchi
-</p>
-
-<p style="margin-top:20px;">
-Cashback:
-<span style="color:#FFD700;">
-1 250 000 so'm
-</span>
-</p>
-
-<button onclick="simpleModal('Profil','Profil yangilandi')">
-Profilni tahrirlash
-</button>
-
-</div>
-
-`;
-
-}
-
-updateBalance();
-
-}
-
+document
+.getElementById('walletBtn')
+.onclick=showWallet;
 function openModal(title,body){
 
 document.getElementById('modal').style.display='flex';
@@ -682,18 +933,25 @@ document.getElementById('modalBody').innerHTML=body;
 }
 
 function closeModal(){
+
 document.getElementById('modal').style.display='none';
+
 }
 
-function simpleModal(title,text){
+function simpleInfo(title,text){
 
 openModal(title,`
 
-<div class="receipt">
+<div style="
+background:#1a1a1a;
+padding:20px;
+border-radius:20px;
+margin-top:15px;
+">
 
 <h3>${title}</h3>
 
-<p style="margin-top:15px;">
+<p style="margin-top:10px;color:#ccc;">
 ${text}
 </p>
 
@@ -705,19 +963,33 @@ ${text}
 
 function transferModal(){
 
-openModal('Pul O‘tkazish',`
+if(appData.cards.length===0){
 
-<input type="text" id="fromCard"
-placeholder="Jo'natuvchi karta">
+alert("Avval karta qo'shing");
 
-<input type="text" id="toCard"
+return;
+
+}
+
+openModal("Pul o'tkazish",`
+
+<input
+class="modal-input"
+id="toCard"
 placeholder="Qabul qiluvchi karta">
 
-<input type="number" id="amount"
+<input
+class="modal-input"
+id="amount"
+type="number"
 placeholder="Summa">
 
-<button onclick="makeTransfer()">
+<button
+class="gold-btn"
+onclick="makeTransfer()">
+
 O'tkazish
+
 </button>
 
 `);
@@ -726,101 +998,117 @@ O'tkazish
 
 function makeTransfer(){
 
-let from=document.getElementById('fromCard').value;
-let to=document.getElementById('toCard').value;
-let amount=parseInt(document.getElementById('amount').value);
+let card=
+document.getElementById('toCard')
+.value.trim();
 
-if(!isValidCard(from)){
-simpleModal('Xato','Jo‘natuvchi karta noto‘g‘ri');
+let amount=
+parseInt(
+document.getElementById('amount')
+.value
+);
+
+if(!/^\d{16}$/.test(card)){
+
+alert("Karta raqami noto'g'ri");
+
 return;
+
 }
 
-if(!isValidCard(to)){
-simpleModal('Xato','Qabul qiluvchi karta noto‘g‘ri');
-return;
-}
+if(!amount || amount<=0){
 
-if(amount<=0){
-simpleModal('Xato','Summa noto‘g‘ri');
+alert("Summani kiriting");
+
 return;
+
 }
 
 let fee=Math.floor(amount*0.01);
 
 let total=amount+fee;
 
-if(total>userBalance){
-simpleModal('Xato','Kartada mablag‘ yetarli emas');
+if(total>appData.balance){
+
+alert("Mablag' yetarli emas");
+
 return;
+
 }
 
-userBalance-=total;
+appData.balance-=total;
 
-let date=new Date().toLocaleString();
+appData.cashback+=Math.floor(amount*0.005);
 
-openModal('Transfer Chek',`
+addHistory(
+"Transfer",
+amount
+);
 
-<div class="receipt">
+save();
+
+openModal("Transfer chek",`
+
+<div style="
+background:#1a1a1a;
+padding:20px;
+border-radius:20px;
+">
 
 <h3>HUMO PAY CHEK</h3>
 
-<div class="receipt-row">
-<span>Sana:</span>
-<span>${date}</span>
-</div>
+<p style="margin-top:10px;">
+Qabul qiluvchi:
+<br>
+${maskCard(card)}
+</p>
 
-<div class="receipt-row">
-<span>Jo'natuvchi:</span>
-<span>${maskCard(from)}</span>
-</div>
+<p style="margin-top:10px;">
+Summa:
+${amount.toLocaleString()} so'm
+</p>
 
-<div class="receipt-row">
-<span>Qabul qiluvchi:</span>
-<span>${maskCard(to)}</span>
-</div>
-
-<div class="receipt-row">
-<span>Summa:</span>
-<span>${amount.toLocaleString()} so'm</span>
-</div>
-
-<div class="receipt-row">
-<span>Komissiya:</span>
-<span>${fee.toLocaleString()} so'm</span>
-</div>
+<p style="margin-top:10px;">
+Komissiya:
+${fee.toLocaleString()} so'm
+</p>
 
 <hr style="margin:15px 0;">
 
-<div class="receipt-row">
-<b>Umumiy:</b>
-<b>${total.toLocaleString()} so'm</b>
-</div>
-
-<div class="receipt-row">
-<b>Qoldiq:</b>
-<b>${userBalance.toLocaleString()} so'm</b>
-</div>
+<b>
+Qoldiq:
+${appData.balance.toLocaleString()} so'm
+</b>
 
 </div>
 
 `);
 
-showPage('home');
+showHome();
 
 }
 
 function utilityModal(type){
 
-openModal(type+' To‘lovi',`
+openModal(type+" to'lovi",`
 
-<input type="text" id="abonent"
+<input
+class="modal-input"
+id="abonent"
 placeholder="Abonent raqami">
 
-<input type="number" id="payAmount"
+<input
+class="modal-input"
+id="utilityAmount"
+type="number"
 placeholder="To'lov summasi">
 
-<button onclick="payUtility('${type}')">
+<button
+class="gold-btn"
+onclick="payUtility('${type}')">
+
 To'lash
+
 </button>
 
 `);
@@ -829,87 +1117,109 @@ To'lash
 
 function payUtility(type){
 
-let abonent=document.getElementById('abonent').value;
+let abonent=
+document.getElementById('abonent')
+.value.trim();
 
-let amount=parseInt(
-document.getElementById('payAmount').value
+let amount=
+parseInt(
+document.getElementById('utilityAmount')
+.value
 );
 
-if(!isValidAbonent(abonent)){
-simpleModal('Xato','Abonent raqami noto‘g‘ri');
+if(!abonent){
+
+alert("Abonent raqamini kiriting");
+
 return;
+
 }
 
-if(amount<=0){
-simpleModal('Xato','Summa noto‘g‘ri');
+if(!amount || amount<=0){
+
+alert("Noto'g'ri summa");
+
 return;
+
 }
 
-if(amount>userBalance){
-simpleModal('Xato','Kartada mablag‘ yetarli emas');
+if(amount>appData.balance){
+
+alert("Mablag' yetarli emas");
+
 return;
+
 }
 
-userBalance-=amount;
+appData.balance-=amount;
 
-let date=new Date().toLocaleString();
+appData.cashback+=Math.floor(amount*0.003);
 
-openModal(type+' Chek',`
+addHistory(type,amount);
 
-<div class="receipt">
+save();
 
-<h3>${type.toUpperCase()} CHEK</h3>
+openModal(type+" cheki",`
 
-<div class="receipt-row">
-<span>Sana:</span>
-<span>${date}</span>
-</div>
+<div style="
+background:#1a1a1a;
+padding:20px;
+border-radius:20px;
+">
 
-<div class="receipt-row">
-<span>Abonent:</span>
-<span>${abonent}</span>
-</div>
+<h3>${type}</h3>
 
-<div class="receipt-row">
-<span>Xizmat:</span>
-<span>${type}</span>
-</div>
+<p style="margin-top:10px;">
+Abonent:
+${abonent}
+</p>
 
-<div class="receipt-row">
-<span>To'lov:</span>
-<span>${amount.toLocaleString()} so'm</span>
-</div>
+<p style="margin-top:10px;">
+To'lov:
+${amount.toLocaleString()} so'm
+</p>
 
 <hr style="margin:15px 0;">
 
-<div class="receipt-row">
-<b>Qoldiq:</b>
-<b>${userBalance.toLocaleString()} so'm</b>
-</div>
+<b>
+Qoldiq:
+${appData.balance.toLocaleString()} so'm
+</b>
 
 </div>
 
 `);
 
-showPage('home');
+showHome();
 
 }
 
 function cardModal(){
 
-openModal('Karta Qo‘shish',`
+openModal("Karta qo'shish",`
 
-<input type="text" id="newCard"
+<input
+class="modal-input"
+id="newCard"
 placeholder="16 xonali karta">
 
-<input type="text" id="newExpire"
+<input
+class="modal-input"
+id="newExpire"
 placeholder="MM/YY">
 
-<input type="password" id="newCVV"
+<input
+class="modal-input"
+id="newCvv"
+type="password"
 placeholder="CVV">
 
-<button onclick="saveCard()">
-Qo'shish
+<button
+class="gold-btn"
+onclick="saveCard()">
+
+Kartani saqlash
+
 </button>
 
 `);
@@ -918,101 +1228,498 @@ Qo'shish
 
 function saveCard(){
 
-let card=document.getElementById('newCard').value.trim();
+let card=
+document.getElementById('newCard')
+.value.trim();
 
-let expire=document.getElementById('newExpire').value.trim();
+let expire=
+document.getElementById('newExpire')
+.value.trim();
 
-let cvv=document.getElementById('newCVV').value.trim();
+let cvv=
+document.getElementById('newCvv')
+.value.trim();
 
 if(!/^\d{16}$/.test(card)){
-simpleModal('Xato','Karta 16 xonali bo‘lishi kerak');
+
+alert("Karta 16 xonali bo'lishi kerak");
+
 return;
+
 }
 
 if(!/^\d{2}\/\d{2}$/.test(expire)){
-simpleModal('Xato','MM/YY format kiriting');
+
+alert("MM/YY format");
+
 return;
+
 }
 
 if(!/^\d{3}$/.test(cvv)){
-simpleModal('Xato','CVV 3 xonali bo‘lishi kerak');
+
+alert("CVV 3 xonali");
+
 return;
+
 }
 
-let alreadyExists = cards.some(c => c.number === card);
+let exists=
+appData.cards.some(
+c=>c.number===card
+);
 
-if(alreadyExists){
-simpleModal('Xato','Bu karta oldin qo‘shilgan');
+if(exists){
+
+alert("Bu karta mavjud");
+
 return;
+
 }
 
-cards.push({
+appData.cards.push({
+
 number:card,
 expire:expire,
 cvv:cvv,
-holder:'ABDULLOH'
+holder:currentUser.name.toUpperCase()
+
 });
+
+save();
 
 closeModal();
 
-showPage('wallet');
-
-setTimeout(()=>{
-
-simpleModal(
-'Karta Qo‘shildi',
-maskCard(card)
-);
-
-},300);
+showWallet();
 
 }
 
 function deleteCard(number){
 
-cards = cards.filter(
+let ok=
+confirm(
+"Kartani o'chirasizmi?"
+);
+
+if(!ok) return;
+
+appData.cards=
+appData.cards.filter(
 card=>card.number!==number
 );
 
-showPage('wallet');
+save();
 
-simpleModal(
-'Karta O‘chirildi',
-'Karta muvaffaqiyatli o‘chirildi'
+showWallet();
+
+}
+
+window.onload=()=>{
+
+let savedUser=
+localStorage.getItem(
+'humo_v2_user'
 );
+
+let savedData=
+localStorage.getItem(
+'humo_v2_data'
+);
+
+if(savedUser && savedData){
+
+currentUser=
+JSON.parse(savedUser);
+
+appData=
+JSON.parse(savedData);
+
+openApp();
+
+}
+
+};
+
+function showStats(){
+
+setActive('statsBtn');
+
+document.getElementById('pageContent').innerHTML=`
+
+<h2 class="section-title">
+Statistika
+</h2>
+
+<div class="service">
+
+<h3>Joriy balans</h3>
+
+<p style="
+font-size:28px;
+font-weight:700;
+margin-top:10px;
+color:#FFD700;
+">
+
+${appData.balance.toLocaleString()} so'm
+
+</p>
+
+</div>
+
+<div class="service" style="margin-top:15px;">
+
+<h3>Cashback</h3>
+
+<p style="
+font-size:24px;
+font-weight:700;
+margin-top:10px;
+color:#00d084;
+">
+
+${appData.cashback.toLocaleString()} so'm
+
+</p>
+
+</div>
+
+<canvas
+id="chart"
+width="350"
+height="220"
+style="
+margin-top:20px;
+width:100%;
+background:#111;
+border-radius:20px;
+">
+</canvas>
+
+`;
+
+drawChart();
 
 }
 
 function drawChart(){
 
-const canvas=document.getElementById('chart');
+const canvas=
+document.getElementById('chart');
 
 if(!canvas) return;
 
-const ctx=canvas.getContext('2d');
+const ctx=
+canvas.getContext('2d');
 
-const values=[120,180,100,160,90,200];
+ctx.clearRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
 
-const colors=['#FFD700','#caa300','#ffcc00','#f5b800'];
+let values=[];
+
+for(let i=0;i<7;i++){
+
+values.push(
+Math.floor(
+Math.random()*180
+)+40
+);
+
+}
 
 for(let i=0;i<values.length;i++){
 
-ctx.fillStyle=colors[i%colors.length];
+let h=values[i];
+
+let x=i*48+18;
+
+ctx.fillStyle="#FFD700";
 
 ctx.fillRect(
-i*55+20,
-220-values[i],
-35,
-values[i]
+x,
+200-h,
+28,
+h
+);
+
+ctx.fillStyle="#fff";
+
+ctx.font="12px Inter";
+
+ctx.fillText(
+(i+1)+"k",
+x-2,
+215
 );
 
 }
 
 }
 
-showPage('home');
+function showProfile(){
 
+setActive('profileBtn');
+
+document.getElementById('pageContent').innerHTML=`
+
+<div class="bank-card">
+
+<h2>
+${currentUser.name}
+</h2>
+
+<p style="
+margin-top:8px;
+color:#999;
+">
+
+@${currentUser.username}
+
+</p>
+
+<hr style="
+margin:20px 0;
+border-color:#222;
+">
+
+<p>
+💰 Balans:
+<b style="color:#FFD700;">
+${appData.balance.toLocaleString()} so'm
+</b>
+</p>
+
+<p style="
+margin-top:10px;
+">
+🎁 Cashback:
+<b style="color:#00d084;">
+${appData.cashback.toLocaleString()} so'm
+</b>
+</p>
+
+<p style="
+margin-top:10px;
+">
+💳 Kartalar:
+<b>
+${appData.cards.length}
+</b>
+</p>
+
+<button
+class="gold-btn"
+onclick="editProfile()">
+
+Profilni tahrirlash
+
+</button>
+
+<button
+class="gold-btn"
+style="
+background:#222;
+color:white;
+"
+onclick="toggleTheme()">
+
+Dark / Light
+
+</button>
+
+<button
+class="gold-btn"
+style="
+background:#00d084;
+margin-top:10px;
+"
+onclick="showQR()">
+
+QR yaratish
+
+</button>
+
+<button
+class="gold-btn"
+style="
+background:#ff5577;
+margin-top:10px;
+"
+onclick="logout()">
+
+Chiqish
+
+</button>
+
+</div>
+
+`;
+
+}
+
+function editProfile(){
+
+openModal("Profil",`
+
+<input
+class="modal-input"
+id="newName"
+value="${currentUser.name}">
+
+<button
+class="gold-btn"
+onclick="saveProfile()">
+
+Saqlash
+
+</button>
+
+`);
+
+}
+
+function saveProfile(){
+
+let newName=
+document.getElementById('newName')
+.value.trim();
+
+if(!newName){
+
+alert("Ism kiriting");
+
+return;
+
+}
+
+currentUser.name=newName;
+
+save();
+
+closeModal();
+
+showProfile();
+
+document.getElementById(
+'avatar'
+).innerHTML=
+newName
+.charAt(0)
+.toUpperCase();
+
+}
+
+function toggleTheme(){
+
+document.body.classList.toggle(
+'light-theme'
+);
+
+}
+
+function showQR(){
+
+let code=
+Math.random()
+.toString()
+.substring(2,14);
+
+openModal("QR To'lov",`
+
+<div style="
+background:white;
+color:black;
+padding:25px;
+border-radius:20px;
+text-align:center;
+">
+
+<div style="
+font-size:70px;
+letter-spacing:6px;
+">
+
+▓▓▓
+<br>
+▓░▓
+<br>
+▓▓▓
+
+</div>
+
+<h3 style="margin-top:15px;">
+${code}
+</h3>
+
+<p style="margin-top:10px;">
+Demo QR kod
+</p>
+
+</div>
+
+`);
+
+}
+
+function logout(){
+
+currentUser=null;
+
+document.getElementById('app').style.display='none';
+
+document.getElementById('authPage').style.display='flex';
+
+document.getElementById('loginUser').value='';
+
+document.getElementById('loginPass').value='';
+
+showLogin();
+
+}
+
+document
+.getElementById('statsBtn')
+.onclick=showStats;
+
+document
+.getElementById('profileBtn')
+.onclick=showProfile;
+
+const style=
+document.createElement('style');
+
+style.innerHTML=`
+
+.light-theme{
+
+background:#f5f5f5;
+color:#111;
+
+}
+
+.light-theme .bank-card,
+.light-theme .service,
+.light-theme .auth-box,
+.light-theme .modal-content{
+
+background:white!important;
+color:black!important;
+
+}
+
+.light-theme .bottom-nav{
+
+background:white!important;
+
+}
+
+`;
+
+document.head.appendChild(style);
 </script>
-
 </body>
 </html>
