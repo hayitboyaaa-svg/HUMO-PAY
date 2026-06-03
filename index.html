@@ -3,554 +3,227 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI PREMIUM MATCHER</title>
+<title>Fintech Pro Max</title>
 
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial;
-}
-
 body{
-background:linear-gradient(135deg,#090909,#171717,#2a0d18);
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-overflow:hidden;
+margin:0;
+font-family:Arial;
+background:#0a0f1f;
 color:white;
 }
 
-.container{
-width:100%;
-max-width:340px;
-background:#141414;
-padding:20px;
-border-radius:30px;
-border:1px solid rgba(255,46,99,0.25);
-box-shadow:0 0 40px rgba(255,46,99,0.12);
-}
-
-.screen{
-display:none;
-animation:fade .4s;
-}
-
-.active{
-display:block;
-}
-
-@keyframes fade{
-from{
-opacity:0;
-transform:translateY(15px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-.logo{
-text-align:center;
-font-size:30px;
-font-weight:bold;
-margin-bottom:22px;
-background:linear-gradient(135deg,#ff2e63,#ff7da2);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-.gender{
+/* LOGIN */
+#login{
+height:100vh;
 display:flex;
-gap:10px;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 }
 
-.gender button{
-flex:1;
+input,button{
+padding:10px;
+margin:5px;
+border-radius:8px;
+border:none;
 }
 
 button{
-width:100%;
-padding:13px;
-border:none;
-border-radius:16px;
-background:linear-gradient(135deg,#ff2e63,#ff004c);
+background:#2563eb;
 color:white;
-font-size:14px;
-font-weight:bold;
 cursor:pointer;
-transition:.3s;
-margin-top:10px;
 }
 
-button:hover{
-transform:scale(1.02);
+/* APP */
+#app{display:none}
+
+.header{
+padding:15px;
+background:#111827;
 }
 
-input,
-select,
-textarea{
+.balance{
+font-size:26px;
+font-weight:bold;
+}
+
+.page{display:none;padding:10px}
+
+.card{
+background:#1f2937;
+padding:15px;
+border-radius:12px;
+margin:10px 0;
+}
+
+.nav{
+position:fixed;
+bottom:0;
 width:100%;
-padding:13px;
-margin-bottom:12px;
-border:none;
-border-radius:16px;
-background:#232323;
-color:white;
-font-size:14px;
-outline:none;
-}
-
-textarea{
-height:90px;
-resize:none;
-}
-
-.loading{
-width:75px;
-height:75px;
-border:5px solid #333;
-border-top:5px solid #ff2e63;
-border-radius:50%;
-animation:spin 1s linear infinite;
-margin:25px auto;
-}
-
-@keyframes spin{
-100%{
-transform:rotate(360deg);
-}
-}
-
-.result-box{
-background:#1d1d1d;
-padding:18px;
-border-radius:24px;
-border:1px solid rgba(255,46,99,0.18);
-}
-
-.graph-wrap{
 display:flex;
-justify-content:center;
-margin-top:10px;
-margin-bottom:20px;
+background:#111827;
 }
 
-.circle{
-width:140px;
-height:140px;
-border-radius:50%;
-background:
-conic-gradient(
-#ff2e63 0deg,
-#ff2e63 calc(var(--percent) * 3.6deg),
-#2f2f2f calc(var(--percent) * 3.6deg),
-#2f2f2f 360deg
-);
-display:flex;
-justify-content:center;
-align-items:center;
-position:relative;
-box-shadow:0 0 25px rgba(255,46,99,0.2);
+.nav button{
+flex:1;
+border-radius:0;
 }
 
-.circle::before{
-content:"";
-position:absolute;
-width:102px;
-height:102px;
-background:#141414;
-border-radius:50%;
-}
-
-.percent{
-position:relative;
-z-index:2;
-font-size:28px;
-font-weight:bold;
-color:#ff2e63;
-}
-
-.match-text{
-position:relative;
-z-index:2;
-font-size:12px;
-margin-top:2px;
-color:#bbb;
-}
-
-.comment{
-background:#252525;
-padding:14px;
-border-radius:18px;
-font-size:14px;
-line-height:1.5;
-color:#ddd;
-margin-top:15px;
-}
-
-.nick-box{
-margin-top:18px;
-padding:14px;
-background:#202020;
-border-radius:16px;
-text-align:center;
-border:1px solid rgba(255,46,99,0.15);
-}
-
-.nick-title{
-font-size:12px;
-color:#999;
-margin-bottom:8px;
-}
-
-.username{
-font-size:22px;
-font-weight:bold;
-color:#ff4d7d;
-}
-
-.loading-text{
-text-align:center;
-color:#ff4d7d;
-margin-top:10px;
-}
-
+/* COLORS */
+.green{color:#22c55e}
+.red{color:#ef4444}
+.small{font-size:12px;color:#9ca3af}
 </style>
 </head>
 
 <body>
 
-<div class="container">
-
-<div class="screen active" id="s1">
-
-<div class="logo">
-LOVE AI
+<!-- LOGIN -->
+<div id="login">
+<h2>Fintech MAX</h2>
+<input id="u" placeholder="username">
+<input id="p" type="password" placeholder="password">
+<button onclick="login()">Kirish</button>
 </div>
 
-<div class="gender">
-<button onclick="chooseGender('Erkak')">Men O‘g‘ilman</button>
-<button onclick="chooseGender('Qiz')">Men Qizman</button>
+<!-- APP -->
+<div id="app">
+
+<div class="header">
+<div>User: <span id="user"></span></div>
+<div class="balance">Balans: <span id="bal"></span> so'm</div>
 </div>
 
+<div id="home" class="page"></div>
+
+<div id="send" class="page">
+<div class="card">
+<h3>Transfer</h3>
+<input id="to" placeholder="Kimga (user)">
+<input id="amt" placeholder="Summa">
+<button onclick="transfer()">Yuborish</button>
+</div>
 </div>
 
-<div class="screen" id="s2">
-
-<div class="logo">Ma'lumot</div>
-
-<select id="region">
-<option>Toshkent</option>
-<option>Toshkent Viloyati</option>
-<option>Samarqand</option>
-<option>Buxoro</option>
-<option>Andijon</option>
-<option>Namangan</option>
-<option>Farg‘ona</option>
-<option>Xorazm</option>
-<option>Navoiy</option>
-<option>Qashqadaryo</option>
-<option>Surxondaryo</option>
-<option>Jizzax</option>
-<option>Sirdaryo</option>
-<option>Qoraqalpog‘iston</option>
-</select>
-
-<input type="number" id="age" placeholder="Yosh">
-<input type="number" id="height" placeholder="Bo‘y (sm)">
-<input type="number" id="kg" placeholder="Vazn (kg)">
-<input type="number" id="income" placeholder="Daromad ($)">
-<input type="text" id="job" placeholder="Soha">
-
-<button onclick="nextPage()">Keyingi</button>
-
+<div id="qr" class="page">
+<div class="card">
+<h3>QR Pay (demo)</h3>
+<div style="width:120px;height:120px;background:white"></div>
+</div>
 </div>
 
-<div class="screen" id="s3">
+<div id="history" class="page"></div>
 
-<div class="logo">O‘zingiz Haqida</div>
+<div id="profile" class="page"></div>
 
-<textarea id="about" placeholder="O‘zingiz haqingizda yozing..."></textarea>
-
-<button onclick="startAI()">AI Analiz</button>
-
-</div>
-
-<div class="screen" id="s4">
-
-<div class="loading"></div>
-<div class="loading-text">AI Hisoblamoqda...</div>
-
-</div>
-
-<div class="screen" id="s5">
-
-<div class="result-box">
-<div id="result"></div>
-</div>
-
+<div class="nav">
+<button onclick="show('home')">Home</button>
+<button onclick="show('send')">Send</button>
+<button onclick="show('qr')">QR</button>
+<button onclick="show('history')">Logs</button>
+<button onclick="show('profile')">Profile</button>
 </div>
 
 </div>
 
 <script>
 
-let gender = "";
-
-const girls = [
-
-{ username: "ergasheva01011" },
-{ username: "_.jasmina.01" },
-{ username: "rux1w" },
-{ username: "assxzw_l7" },
-{ username: "mpry.f" },
-{ username: "za.ryaa01" },
-{ username: "shaxoutt" },
-{ username: "17.27_d" },
-{ username: "_a1dunazarova_o11" },
-{ username: "bax__on" },
-{ username: "reymbergenovaa_j" },
-{ username: "rajabbo_yeva" },
-{ username: "sabrvva_" },
-{ username: "_melantha_0.15" },
-{ username: "_yorkulov1am_" },
-{ username: "lsu.1a" },
-{ username: "its.lilac.v" },
-{ username: "ozoda.jurabekovna" },
-{ username: "yvlme.k" },
-{ username: "dark_s1111de" },
-{ username: "00777.sh" },
-{ username: "its.lilac.v" },
-{ username: "me.star75" },
-{ username: "ynvxne" },
-
-{ username: "mariya__a" },
-{ username: "lizaewu" },
-{ username: "sevara_nazarhkhan" },
-{ username: "obsessionyena_17" },
-{ username: "1rosh_7r" },
-{ username: "k0mola" },
-{ username: "akhmedova_samina_" },
-{ username: "yu_shuxi" },
-{ username: "__leeyona" },
-{ username: "_farxadovvnaa_7" },
-
-{ username: "mkhsdv.na" },
-{ username: "alsa_fiii" },
-{ username: "assxzw_l7" },
-{ username: "caffeiinee_wr" },
-{ username: "csiiiixdh" },
-{ username: "_mrzvyna_" },
-{ username: "y.sejinn" },
-{ username: "bfarangiiiz" },
-{ username: "shermetova_89" },
-{ username: "_a1dunazarova_o11" },
-
-{ username: "kxsanvna_7" },
-{ username: "obsessionyena_17" },
-{ username: "kadyrova7._" },
-{ username: "1rosh_7r" },
-{ username: "14.ezozaquvondiqovna" },
-{ username: "oydiw_me0525" },
-{ username: "toshmedovaa" },
-{ username: "bhdrvna_o8" },
-{ username: "_mrzvyna_" },
-{ username: "kadyrova7._" }
-
-];
-
-
-
-const boys = [
-
-{ username: "mamirov_abdulloh_" },
-{ username: "caezely" },
-{ username: "_raxat_fx_" },
-{ username: "assxzw_l7" },
-{ username: "cryptyy.x" },
-{ username: "xoliqulov_.08" },
-{ username: "army_o1.o2" },
-{ username: "__leeyona" },
-{ username: "otabekovic_LL7" },
-{ username: "baxtiyorvc_." },
-
-{ username: "abdul.layev1c10" },
-{ username: "rmznvv7" },
-{ username: "jo5one" },
-{ username: "nurillayev_as" },
-{ username: "komiljonov.editz" },
-{ username: "xayitov__0" },
-{ username: "shee1kh.o" },
-{ username: "xt_sirojiddin" },
-{ username: "suyunov_uz_" },
-{ username: "funicbek" },
-
-{ username: "mal1kovc_" },
-{ username: "beg1anovv" },
-{ username: "msyv_ii" },
-{ username: "zoh1d_o1_" },
-{ username: "xcwsoe" },
-{ username: "ripnpc" },
-{ username: "nizomivich_17" },
-{ username: "islomovl11" },
-{ username: "egamberganv.u" },
-{ username: "baxtiyorvc_." },
-
-
-];
-
-
-
-function chooseGender(g){
-gender = g;
-document.getElementById('s1').classList.remove('active');
-document.getElementById('s2').classList.add('active');
+/* FAKE DATABASE */
+let db = JSON.parse(localStorage.getItem("db")) || {
+users:{
+"ali":1500000,
+"vali":900000,
+"demo":2000000
+},
+current:"",
+tx:[]
 }
 
-function nextPage(){
-document.getElementById('s2').classList.remove('active');
-document.getElementById('s3').classList.add('active');
+/* LOGIN */
+function login(){
+let u=document.getElementById("u").value
+let p=document.getElementById("p").value
+
+if(db.users[u] && p){
+db.current=u
+save()
+
+document.getElementById("login").style.display="none"
+document.getElementById("app").style.display="block"
+
+show("home")
+render()
+}
 }
 
-function startAI(){
-document.getElementById('s3').classList.remove('active');
-document.getElementById('s4').classList.add('active');
-setTimeout(showResult,2500);
+/* SAVE */
+function save(){
+localStorage.setItem("db",JSON.stringify(db))
 }
 
-function showResult(){
-
-let age = parseInt(document.getElementById('age').value) || 0;
-let height = parseInt(document.getElementById('height').value) || 0;
-let kg = parseInt(document.getElementById('kg').value) || 0;
-let income = parseInt(document.getElementById('income').value) || 0;
-let about = document.getElementById('about').value;
-let job = document.getElementById('job').value.toLowerCase();
-
-let score = 0;
-
-/* REALISTIC AI */
-
-if(income <= 100){
-score += 1;
-}
-else if(income <= 300){
-score += 3;
-}
-else if(income <= 500){
-score += 5;
-}
-else if(income <= 1000){
-score += 8;
-}
-else if(income <= 2000){
-score += 14;
-}
-else if(income <= 5000){
-score += 22;
-}
-else{
-score += 30;
+/* NAV */
+function show(p){
+document.querySelectorAll(".page").forEach(x=>x.style.display="none")
+document.getElementById(p).style.display="block"
+render()
 }
 
-if(height >= 185){
-score += 8;
-}
-else if(height >= 175){
-score += 5;
-}
-else if(height >= 165){
-score += 2;
+/* RENDER */
+function render(){
+
+document.getElementById("user").innerText=db.current
+document.getElementById("bal").innerText=db.users[db.current]
+
+/* HOME */
+document.getElementById("home").innerHTML=`
+<div class="card">
+<h3>Welcome</h3>
+<p class="small">Offline Fintech Simulator</p>
+</div>
+`
+
+/* HISTORY */
+document.getElementById("history").innerHTML=
+db.tx.map(t=>`
+<div class="card ${t.type=='+'?'green':'red'}">
+${t.from} → ${t.to} : ${t.type}${t.amount}
+</div>
+`).join("")
+
+/* PROFILE */
+document.getElementById("profile").innerHTML=`
+<div class="card">
+<h3>Profile</h3>
+<p>User: ${db.current}</p>
+<p>Wallet: ACTIVE</p>
+</div>
+`
 }
 
-if(kg >= 60 && kg <= 85){
-score += 5;
-}
+/* TRANSFER */
+function transfer(){
+let to=document.getElementById("to").value
+let amt=Number(document.getElementById("amt").value)
 
-if(age >= 18 && age <= 27){
-score += 5;
-}
+if(db.users[to] && amt>0 && db.users[db.current]>=amt){
 
-if(job.includes('it') || job.includes('biznes')){
-score += 8;
-}
+db.users[db.current]-=amt
+db.users[to]+=amt
 
-if(about.length > 150){
-score += 18;
-}
-else if(about.length > 80){
-score += 10;
-}
-else if(about.length > 30){
-score += 4;
-}
-else{
-score += 1;
-}
+db.tx.push({
+from:db.current,
+to,
+amount:amt,
+type:"-"
+})
 
-if(score > 58){
-score = 58;
-}
-
-let advice = "";
-
-if(income < 500 && height < 170){
-advice = "Moliyaviy rivojlanish va jismoniy rivojga e'tibor bersangiz natija yaxshilanadi ❤️";
-}
-else if(income < 1000){
-advice = "Daromadni oshirish ustida ishlasangiz moslik yuqorilaydi 💕";
-}
-else if(about.length < 25){
-advice = "O‘zingiz haqingizda ko‘proq yozsangiz AI aniqroq analiz qiladi ✨";
-}
-else{
-advice = "Profilingiz yaxshi taassurot qoldirdi ❤️";
-}
-
-let pool;
-
-if(gender == 'Erkak'){
-pool = girls;
+save()
+render()
+alert("OK transfer (demo)")
 }else{
-pool = boys;
+alert("Error")
 }
-
-let match = pool[Math.floor(Math.random()*pool.length)];
-
-document.getElementById('s4').classList.remove('active');
-document.getElementById('s5').classList.add('active');
-
-document.getElementById('result').innerHTML = `
-
-<div class="graph-wrap">
-<div class="circle" style="--percent:${score}">
-<div style="position:relative;z-index:2;text-align:center;">
-<div class="percent">${score}%</div>
-<div class="match-text">Moslik</div>
-</div>
-</div>
-</div>
-
-<div class="comment">
-🧠 ${advice}
-</div>
-
-<div class="nick-box">
-<div class="nick-title">AI Tavsiya Qilgan Instagram</div>
-<div class="username">@${match.username}</div>
-</div>
-
-<a href="https://instagram.com/${match.username}" target="_blank">
-<button>Instagram Profil</button>
-</a>
-
-`;
-
 }
 
 </script>
