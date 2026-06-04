@@ -2,8 +2,8 @@
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bek.uz - Ultimate Enterprise Open Market</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Bek.uz - Professional Enterprise Open Market</title>
     <style>
         /* --- CORE SYSTEM DESIGN: AMAZON EMBER STYLE --- */
         :root {
@@ -21,113 +21,128 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Amazon Ember", Arial, sans-serif; }
-        body { background-color: var(--bg-body); color: var(--text); padding-bottom: 100px; min-height: 100vh; }
+        body { background-color: var(--bg-body); color: var(--text); padding-bottom: 90px; min-height: 100vh; -webkit-tap-highlight-color: transparent; }
 
         /* HEADER & NAVIGATION */
         header { background: var(--amz-black); color: white; position: sticky; top: 0; z-index: 9999; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
-        .header-main { display: flex; justify-content: space-between; align-items: center; padding: 12px 18px; max-width: 1400px; margin: 0 auto; }
-        .logo-box { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-        .logo { font-size: 28px; font-weight: bold; color: white; cursor: pointer; }
-        .logo span { color: var(--amz-orange); font-size: 14px; vertical-align: super; }
+        .header-main { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; max-width: 1400px; margin: 0 auto; gap: 10px; }
+        .logo-box { display: flex; align-items: center; gap: 5px; text-decoration: none; }
+        .logo { font-size: 24px; font-weight: bold; color: white; cursor: pointer; }
+        .logo span { color: var(--amz-orange); font-size: 12px; vertical-align: super; }
         
-        .header-right { display: flex; align-items: center; gap: 25px; }
-        .user-nav { font-size: 13px; cursor: pointer; text-align: left; line-height: 1.2; position: relative; padding: 5px; border: 1px solid transparent; }
-        .user-nav:hover { border: 1px solid white; border-radius: 2px; }
-        .user-nav b { font-size: 14px; display: block; white-space: nowrap; overflow: hidden; max-width: 120px; text-overflow: ellipsis; }
+        .header-right { display: flex; align-items: center; gap: 15px; }
+        
+        /* USER MENU AND DROPDOWN DROPAWAY */
+        .user-nav { font-size: 12px; cursor: pointer; text-align: left; line-height: 1.2; position: relative; padding: 6px; border: 1px solid transparent; transition: 0.2s; }
+        .user-nav:hover { border: 1px solid white; border-radius: 4px; }
+        .user-nav b { font-size: 13px; display: flex; align-items: center; gap: 3px; white-space: nowrap; overflow: hidden; max-width: 90px; text-overflow: ellipsis; }
+        .user-nav b::after { content: " ▾"; font-size: 10px; color: #ccc; }
 
-        .cart-trigger { position: relative; cursor: pointer; display: flex; align-items: center; padding: 5px; border: 1px solid transparent; }
-        .cart-trigger:hover { border: 1px solid white; border-radius: 2px; }
-        .cart-num { position: absolute; top: -2px; right: 0; background: #e47911; color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; }
+        .profile-popup { position: absolute; top: 42px; right: 0; background: white; color: black; border: 1px solid #ddd; border-radius: 6px; padding: 12px; min-width: 190px; display: none; box-shadow: 0 6px 25px rgba(0,0,0,0.25); z-index: 100000; }
+        .profile-popup.show { display: block; animation: popupAnim 0.2s ease; }
+        @keyframes popupAnim { from { opacity:0; transform: translateY(-5px); } to { opacity:1; transform: translateY(0); } }
+        .profile-popup p { font-size: 11px; color: #555; word-break: break-all; margin-bottom: 8px; }
+        .profile-popup button { width: 100%; background: #f0f2f2; border: 1px solid #d5d9d9; padding: 8px; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: bold; color: #111; transition: 0.2s; }
+        .profile-popup button:hover { background: #e3e6e6; border-color: #a2a6a6; }
 
-        .search-container { padding: 0 18px 12px; max-width: 1400px; margin: 0 auto; }
-        .search-wrap { display: flex; background: white; border-radius: 6px; overflow: hidden; height: 48px; border: 3px solid transparent; transition: 0.2s; }
+        .cart-trigger { position: relative; cursor: pointer; display: flex; align-items: center; padding: 6px; border: 1px solid transparent; }
+        .cart-num { position: absolute; top: -2px; right: -2px; background: #e47911; color: white; border-radius: 50%; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; }
+
+        .search-container { padding: 0 12px 10px; max-width: 1400px; margin: 0 auto; }
+        .search-wrap { display: flex; background: white; border-radius: 6px; overflow: hidden; height: 42px; border: 2px solid transparent; transition: 0.2s; }
         .search-wrap:focus-within { border-color: var(--amz-gold); }
-        .search-wrap input { flex: 1; border: none; padding: 0 15px; outline: none; font-size: 16px; color: #333; }
-        .search-wrap button { background: var(--amz-orange); border: none; width: 55px; cursor: pointer; font-size: 22px; display: flex; align-items: center; justify-content: center; }
+        .search-wrap input { flex: 1; border: none; padding: 0 12px; outline: none; font-size: 15px; color: #333; width: 100%; }
+        .search-wrap button { background: var(--amz-orange); border: none; width: 48px; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; }
 
-        .nav-sub { background: var(--amz-dark); color: white; padding: 10px 18px; display: flex; gap: 20px; overflow-x: auto; white-space: nowrap; font-size: 14px; }
+        .nav-sub { background: var(--amz-dark); color: white; padding: 8px 12px; display: flex; gap: 15px; overflow-x: auto; white-space: nowrap; font-size: 13px; }
         .nav-sub::-webkit-scrollbar { display: none; }
         .nav-sub a { color: white; text-decoration: none; font-weight: 500; transition: 0.2s; }
-        .nav-sub a:hover { color: var(--amz-orange); }
 
         /* BANNER & HERO SECTION */
-        .hero-banner { height: 260px; position: relative; overflow: hidden; background: #000; }
-        .banner-stage { display: flex; height: 100%; transition: 1s cubic-bezier(0.4, 0, 0.2, 1); }
+        .hero-banner { height: 150px; position: relative; overflow: hidden; background: #000; }
+        .banner-stage { display: flex; height: 100%; transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
         .slide { min-width: 100%; height: 100%; position: relative; }
-        .slide img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
-        .slide-info { position: absolute; top: 40px; left: 50px; background: rgba(255,255,255,0.9); padding: 25px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); max-width: 350px; }
-        .slide-info h2 { font-size: 24px; color: var(--amz-black); margin-bottom: 10px; }
+        .slide img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
+        .slide-info { position: absolute; top: 20px; left: 20px; background: rgba(255,255,255,0.92); padding: 12px; border-radius: 6px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); max-width: 260px; }
+        .slide-info h2 { font-size: 16px; color: var(--amz-black); margin-bottom: 4px; }
+        .slide-info p { font-size: 11px; color: #444; line-height: 1.3; }
 
-        /* PRODUCT ARCHITECTURE */
-        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+        /* PRODUCT ARCHITECTURE (RESPONSIVE GRID) */
+        .container { max-width: 1400px; margin: 0 auto; padding: 12px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(145px, 1fr)); gap: 10px; }
         
-        .product-card { background: white; border-radius: 6px; padding: 15px; display: flex; flex-direction: column; cursor: pointer; transition: 0.3s; border: 1px solid #ddd; }
-        .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); border-color: var(--amz-orange); }
-        .product-card .img-box { width: 100%; height: 180px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; background: #f9f9f9; border-radius: 4px; }
-        .product-card img { max-width: 90%; max-height: 90%; object-fit: contain; }
-        .product-card h3 { font-size: 15px; font-weight: 500; height: 40px; overflow: hidden; margin-bottom: 8px; color: #007185; }
-        .product-card .rating { color: #ffa41c; font-size: 14px; margin-bottom: 8px; }
-        .product-card .price { font-size: 22px; font-weight: bold; color: var(--text); margin-bottom: 10px; }
-        .product-card .vendor { font-size: 12px; color: #565959; margin-bottom: 15px; }
+        .product-card { background: white; border-radius: 6px; padding: 10px; display: flex; flex-direction: column; cursor: pointer; transition: 0.2s; border: 1px solid #ddd; position: relative; }
+        .product-card .img-box { width: 100%; height: 130px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; background: #f9f9f9; border-radius: 4px; }
+        .product-card img { max-width: 85%; max-height: 85%; object-fit: contain; }
+        .product-card h3 { font-size: 13px; font-weight: 400; height: 34px; overflow: hidden; margin-bottom: 6px; color: #007185; line-height: 1.3; }
+        .product-card .rating { color: #ffa41c; font-size: 11px; margin-bottom: 4px; }
+        .product-card .price { font-size: 18px; font-weight: bold; color: var(--text); margin-bottom: 6px; }
+        .product-card .vendor { font-size: 11px; color: #565959; margin-bottom: 10px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         
-        .btn-add { background: var(--amz-btn); border: 1px solid #fcd200; padding: 10px; border-radius: 25px; font-size: 13px; font-weight: 600; cursor: pointer; width: 100%; transition: 0.2s; }
-        .btn-add:hover { background: #f7ca00; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .btn-add { background: var(--amz-btn); border: 1px solid #fcd200; padding: 8px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; width: 100%; }
 
         /* PAGE ENGINE */
-        .page { display: none; min-height: 600px; }
-        .active-page { display: block; animation: slideIn 0.5s ease-out; }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .page { display: none; }
+        .active-page { display: block; animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         /* AUTH & OPEN MARKET INTERFACE */
-        .auth-container { max-width: 420px; margin: 40px auto; background: white; padding: 35px; border-radius: 10px; border: 1px solid #ddd; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .auth-container h1 { font-size: 32px; font-weight: 400; margin-bottom: 25px; text-align: center; }
-        .field { margin-bottom: 20px; }
-        .field label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 8px; }
-        .field input, .field textarea, .field select { width: 100%; padding: 12px; border: 1px solid #888; border-radius: 4px; outline: none; font-size: 15px; transition: 0.3s; }
-        .field input:focus { border-color: #e77600; box-shadow: 0 0 5px rgba(231,118,0,0.4); }
-        .btn-amazon { background: var(--amz-gold); border: 1px solid #a88734; border-radius: 4px; padding: 12px; width: 100%; cursor: pointer; font-size: 15px; font-weight: 600; transition: 0.2s; }
-        .btn-amazon:hover { background: #e69a33; }
+        .auth-container { max-width: 100%; width: 100%; margin: 15px auto; background: white; padding: 20px; border-radius: 8px; border: 1px solid #ddd; }
+        @media(min-width: 480px) { .auth-container { max-width: 400px; padding: 30px; } }
+        .auth-container h1 { font-size: 24px; font-weight: 400; margin-bottom: 20px; text-align: center; }
+        .field { margin-bottom: 15px; }
+        .field label { display: block; font-size: 12px; font-weight: 700; margin-bottom: 6px; }
+        .field input, .field textarea, .field select { width: 100%; padding: 10px; border: 1px solid #777; border-radius: 4px; outline: none; font-size: 14px; -webkit-appearance: none; }
+        .field select { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'><path d='M0 3l5 5 5-5z' fill='%23666'/></svg>"); background-repeat: no-repeat; background-position: right 10px center; background-size: 12px; }
+        .field input:focus, .field select:focus { border-color: #e77600; box-shadow: 0 0 4px rgba(231,118,0,0.3); }
+        .btn-amazon { background: var(--amz-gold); border: 1px solid #a88734; border-radius: 4px; padding: 12px; width: 100%; cursor: pointer; font-size: 14px; font-weight: 600; text-align: center; }
 
-        /* MARKET DASHBOARD COMPONENTS */
-        .dashboard-header { background: white; padding: 20px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; }
-        .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px; }
-        .stat-card { background: white; padding: 25px; border-radius: 8px; border: 1px solid #ddd; border-left: 5px solid var(--amz-orange); }
-        .stat-card h3 { font-size: 14px; color: #565959; text-transform: uppercase; margin-bottom: 10px; }
-        .stat-card .value { font-size: 32px; font-weight: bold; color: var(--amz-black); }
-        .stat-card .fee-text { font-size: 12px; color: var(--price); margin-top: 5px; }
+        /* DASHBOARD RESPONSIVE LAYOUT */
+        .dashboard-header { background: white; padding: 15px; border-radius: 6px; border: 1px solid #ddd; margin-bottom: 15px; display: flex; flex-direction: column; gap: 10px; }
+        @media(min-width: 600px) { .dashboard-header { flex-direction: row; justify-content: space-between; align-items: center; } }
+        .stat-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 20px; }
+        @media(min-width: 480px) { .stat-grid { grid-template-columns: repeat(3, 1fr); } }
+        .stat-card { background: white; padding: 15px; border-radius: 6px; border: 1px solid #ddd; border-left: 4px solid var(--amz-orange); text-align: center; }
+        .stat-card h3 { font-size: 11px; color: #565959; text-transform: uppercase; }
+        .stat-card .value { font-size: 20px; font-weight: bold; margin-top: 5px; }
+        .stat-card .fee-text { font-size: 10px; color: var(--price); }
 
-        /* CART & CHECKOUT ENHANCEMENTS */
-        .cart-wrapper { background: white; border-radius: 8px; padding: 30px; border: 1px solid #ddd; }
-        .cart-item { display: grid; grid-template-columns: 120px 1fr 150px; gap: 20px; padding: 20px 0; border-bottom: 1px solid #eee; align-items: center; }
-        .cart-item img { width: 100px; height: 100px; object-fit: contain; }
-        .cart-item-info h4 { font-size: 18px; color: var(--link); margin-bottom: 5px; cursor: pointer; }
-        .cart-item-info .vendor-tag { font-size: 12px; color: #067D62; font-weight: bold; }
-        .qty-control { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
-        .qty-btn { width: 28px; height: 28px; border-radius: 4px; border: 1px solid #ccc; background: #f0f2f2; cursor: pointer; }
-        .cart-price-side { text-align: right; font-size: 20px; font-weight: bold; }
+        .dashboard-main-layout { display: flex; flex-direction: column; gap: 20px; }
+        @media(min-width: 768px) { .dashboard-main-layout { display: grid; grid-template-columns: 1fr 2fr; } }
 
-        /* SECURE CHECKOUT UI */
-        .checkout-panel { background: #f7fafa; border: 1px solid #ddd; border-radius: 8px; padding: 25px; margin-top: 30px; }
-        .secure-card-input { display: flex; flex-direction: column; gap: 15px; max-width: 400px; margin-left: auto; }
-        .card-row { display: flex; gap: 10px; }
+        /* CART & CHECKOUT SYSTEMS */
+        .cart-wrapper { background: white; border-radius: 6px; padding: 15px; border: 1px solid #ddd; }
+        .cart-item { display: flex; flex-direction: column; gap: 12px; padding: 15px 0; border-bottom: 1px solid #eee; position: relative; }
+        @media(min-width: 480px) { .cart-item { display: grid; grid-template-columns: 80px 1fr 100px; gap: 15px; } }
+        .cart-item img { width: 80px; height: 80px; object-fit: contain; margin: 0 auto; }
+        .cart-item-info h4 { font-size: 14px; color: var(--link); line-height: 1.3; }
+        .qty-control { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+        .qty-btn { width: 26px; height: 26px; border: 1px solid #ccc; background: #f0f2f2; cursor: pointer; border-radius: 4px; font-weight: bold; }
+        .cart-price-side { text-align: right; font-size: 16px; font-weight: bold; color: var(--price); }
 
-        /* FOOTER & MOBILE NAV */
-        .mobile-nav { position: fixed; bottom: 0; width: 100%; background: white; display: flex; justify-content: space-around; padding: 15px 0; border-top: 1px solid #ddd; z-index: 10000; box-shadow: 0 -2px 15px rgba(0,0,0,0.1); }
-        .nav-item { text-align: center; font-size: 11px; color: #111; cursor: pointer; flex: 1; transition: 0.3s; }
-        .nav-item i { font-size: 24px; display: block; margin-bottom: 4px; font-style: normal; }
-        .nav-item.active { color: var(--amz-orange); transform: scale(1.1); }
+        /* GEO BRANCH DESIGN */
+        .geo-delivery-box { background: #f3f7f7; border: 1px dashed #007185; border-radius: 6px; padding: 15px; margin: 15px 0; }
+        .geo-delivery-box h4 { font-size: 13px; margin-bottom: 10px; display: flex; align-items: center; gap: 5px; color: #004b56; }
 
-        /* MODAL OVERLAY */
-        #modal-blur { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 20000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
-        .modal-card { background: white; padding: 40px; border-radius: 12px; width: 90%; max-width: 400px; text-align: center; position: relative; }
-        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: #888; }
-        
-        /* LOGOUT POPUP */
-        .profile-popup { position: absolute; top: 50px; right: 0; background: white; color: black; border: 1px solid #ddd; border-radius: 4px; padding: 15px; min-width: 200px; display: none; box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
-        .user-nav:hover .profile-popup { display: block; }
-        .profile-popup button { width: 100%; background: #f0f2f2; border: 1px solid #d5d9d9; padding: 8px; border-radius: 4px; margin-top: 10px; cursor: pointer; font-size: 13px; }
-        .profile-popup button:hover { background: #e3e6e6; }
+        /* BOTTOM MOBILE NAVIGATION */
+        .mobile-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: white; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #ddd; z-index: 10000; box-shadow: 0 -2px 10px rgba(0,0,0,0.08); }
+        .nav-item { text-align: center; font-size: 10px; color: #222; cursor: pointer; flex: 1; -webkit-user-select: none; user-select: none; }
+        .nav-item i { font-size: 20px; display: block; margin-bottom: 2px; font-style: normal; }
+        .nav-item.active { color: #e47911; font-weight: bold; }
+
+        /* MODAL DIALOGS */
+        #modal-blur { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.65); z-index: 20000; display: none; align-items: center; justify-content: center; padding: 15px; backdrop-filter: blur(3px); }
+        .modal-card { background: white; padding: 25px 20px; border-radius: 10px; width: 100%; max-width: 360px; text-align: center; }
+
+        /* RESPONSIVE LAYOUT ADJUSTMENTS */
+        @media(max-width: 480px) {
+            .hero-banner { height: 130px; }
+            .slide-info { max-width: 200px; top: 15px; left: 15px; }
+            .slide-info h2 { font-size: 13px; }
+            .slide-info p { display: none; }
+            .product-card h3 { font-size: 12px; height: 32px; }
+            .product-card .price { font-size: 16px; }
+        }
     </style>
 </head>
 <body>
@@ -139,57 +154,52 @@
         </a>
         
         <div class="header-right">
-            <div class="user-nav" id="user-context">
+            <div class="user-nav" id="user-context" onclick="app.toggleProfileDropdown(event)">
                 Hello, <b id="user-display">Sign in</b>
                 <div class="profile-popup" id="profile-actions">
-                    <p id="full-email-display" style="font-weight: bold; border-bottom: 1px solid #eee; padding-bottom: 8px;"></p>
-                    <button onclick="app.fullLogout()">Log Out Account</button>
+                    <p id="full-email-display"></p>
+                    <button onclick="app.fullLogout(event)">Log Out Account</button>
                 </div>
             </div>
             
             <div class="cart-trigger" onclick="app.showPage('cart')">
                 <span class="cart-num" id="cart-count">0</span>
-                <span style="font-size:28px;">🛒</span>
-                <span style="font-weight:bold; margin-left:10px; font-size:14px;">Cart</span>
+                <span style="font-size:24px;">🛒</span>
             </div>
         </div>
     </div>
     
     <div class="search-container">
         <div class="search-wrap">
-            <input type="text" id="main-search" placeholder="Search for electronics, fashion, or market shops...">
+            <input type="text" id="main-search" placeholder="Search product or store...">
             <button onclick="app.search()">🔍</button>
         </div>
     </div>
     
     <div class="nav-sub">
-        <a href="#" onclick="app.filter('All')">All Products</a>
+        <a href="#" onclick="app.filter('All')">All</a>
         <a href="#" onclick="app.filter('Electronics')">Electronics</a>
         <a href="#" onclick="app.filter('Fashion')">Fashion</a>
-        <a href="#" onclick="app.filter('Home')">Home & Kitchen</a>
+        <a href="#" onclick="app.filter('Home')">Home</a>
         <a href="#" onclick="app.filter('Beauty')">Beauty</a>
         <a href="#" onclick="app.filter('Books')">Books</a>
-        <a href="#" onclick="app.filter('Deals')">Today's Deals</a>
     </div>
 </header>
 
-<!-- HERO DYNAMIC SLIDER -->
 <div id="home-banner" class="hero-banner">
     <div class="banner-stage" id="banner-stage">
         <div class="slide">
             <img src="https://m.media-amazon.com/images/I/71Ie3JXGfVL._SX3000_.jpg">
             <div class="slide-info">
-                <h2>Mega Deals on Gadgets</h2>
-                <p>Save up to 60% on the latest electronics and premium gadgets this week.</p>
-                <button class="btn-amazon" style="margin-top:15px; width:150px;">Shop Now</button>
+                <h2>Electronics Deals</h2>
+                <p>Save up to 60% on smart devices this season.</p>
             </div>
         </div>
         <div class="slide">
             <img src="https://m.media-amazon.com/images/I/61zAjw4bqPL._SX3000_.jpg">
             <div class="slide-info">
-                <h2>Summer Fashion 2026</h2>
-                <p>Explore the new arrivals from global fashion brands at local prices.</p>
-                <button class="btn-amazon" style="margin-top:15px; width:150px;">Explore</button>
+                <h2>Summer Trends</h2>
+                <p>Explore hot styles from local market vendors.</p>
             </div>
         </div>
     </div>
@@ -197,149 +207,147 @@
 
 <div class="container">
     
-    <!-- PAGE: HOME -->
     <div id="page-home" class="page active-page">
-        <h2 style="margin-bottom:20px; font-weight:500;">Recommended for You</h2>
         <div class="grid" id="product-grid"></div>
     </div>
 
-    <!-- PAGE: AUTHENTICATION -->
     <div id="page-auth" class="page">
         <div class="auth-container">
             <h1>Sign-In</h1>
             <div class="field">
                 <label>Email or Username</label>
-                <input type="text" id="auth-email" placeholder="example">
-                <p style="font-size:11px; color:#565959; margin-top:4px;">* @gmail.com will be added automatically</p>
+                <input type="text" id="auth-email" placeholder="Enter username">
+                <p style="font-size:11px; color:#555; margin-top:5px;">* System will auto-append @gmail.com if missing</p>
             </div>
             <button class="btn-amazon" onclick="app.triggerOTP('login')">Continue</button>
-            <p style="font-size:12px; margin-top:20px; color:#565959; line-height:1.5;">By signing-in you agree to Bek.uz <b>Conditions of Use</b> and <b>Privacy Notice</b>.</p>
         </div>
     </div>
 
-    <!-- PAGE: SELL ON BEK (MARKET REGISTRATION) -->
     <div id="page-sell" class="page">
-        <div class="auth-container" style="max-width:500px;">
-            <h1 style="color:var(--success);">Market Partnership</h1>
-            <p style="text-align:center; color:#565959; margin-bottom:30px;">Open your shop today and reach millions of customers.</p>
-            
+        <div class="auth-container">
+            <h1 style="color:var(--success);">Partnership Panel</h1>
             <div id="market-reg-form">
-                <div class="field"><label>Legal Business Email</label><input type="email" id="m-email"></div>
-                <div class="field"><label>Market Name (Store Name)</label><input type="text" id="m-name"></div>
-                <div class="field"><label>Business Type</label>
-                    <select><option>Individual Seller</option><option>Retail Store</option><option>Manufacturer</option></select>
-                </div>
-                <button class="btn-amazon" style="background:var(--amz-btn)" onclick="app.triggerOTP('market')">Register My Market</button>
+                <div class="field"><label>Business Email</label><input type="email" id="m-email" placeholder="store@mail.com"></div>
+                <div class="field"><label>Store / Market Name</label><input type="text" id="m-name" placeholder="Apple Premium Store"></div>
+                <button class="btn-amazon" style="background:var(--amz-btn)" onclick="app.triggerOTP('market')">Open My Store</button>
             </div>
             
-            <div id="credentials-display" style="display:none; margin-top:30px; background:#f7fafa; padding:25px; border:2px dashed var(--success); border-radius:8px;">
-                <h3 style="color:var(--success); margin-bottom:15px;">✓ Market Created Successfully!</h3>
-                <p style="font-size:14px; margin-bottom:20px;">Save these credentials to manage your store. They will not be shown again.</p>
-                <div style="background:white; padding:15px; border-radius:4px;">
-                    <p>Market Login ID: <b id="gen-login" style="color:var(--price)"></b></p>
-                    <p>Security Password: <b id="gen-pass" style="color:var(--price)"></b></p>
-                </div>
-                <button class="btn-amazon" style="margin-top:20px;" onclick="app.showPage('open-market')">Go to Market Login</button>
+            <div id="credentials-display" style="display:none; margin-top:20px; background:#f4f9f9; padding:15px; border:2px dashed var(--success); border-radius:6px;">
+                <h3 style="color:var(--success); font-size:14px; margin-bottom:10px;">✓ Store Created!</h3>
+                <p style="font-size:12px; margin-bottom:10px;">Keep these private parameters secured:</p>
+                <p style="font-size:13px;">Login ID: <b id="gen-login" style="color:var(--price)"></b></p>
+                <p style="font-size:13px;">Password: <b id="gen-pass" style="color:var(--price)"></b></p>
+                <button class="btn-amazon" style="margin-top:15px;" onclick="app.showPage('open-market')">Login Terminal</button>
             </div>
         </div>
     </div>
 
-    <!-- PAGE: OPEN MARKET DASHBOARD -->
     <div id="page-open-market" class="page">
-        <!-- LOGIN SECTION -->
         <div id="market-login-area">
             <div class="auth-container">
-                <h1>Market Terminal</h1>
+                <h1>Market Gateway</h1>
                 <div class="field"><label>Market ID</label><input type="text" id="gate-id"></div>
                 <div class="field"><label>Password</label><input type="password" id="gate-pass"></div>
-                <button class="btn-amazon" onclick="app.accessDashboard()">Open Dashboard</button>
-                <p style="text-align:center; margin-top:20px; font-size:13px; color:var(--link); cursor:pointer;" onclick="app.showPage('sell')">Create new market?</p>
+                <button class="btn-amazon" onclick="app.accessDashboard()">Authorization</button>
             </div>
         </div>
 
-        <!-- ADMIN DASHBOARD SECTION -->
         <div id="market-admin-area" style="display:none;">
             <div class="dashboard-header">
                 <div>
-                    <h2 id="admin-shop-name" style="color:var(--amz-black);">Loading...</h2>
-                    <p style="font-size:12px; color:var(--success);">Status: Active | Partnership: 12% Fee</p>
+                    <h2 id="admin-shop-name" style="font-size:18px;">Store Manager</h2>
+                    <p style="font-size:11px; color:var(--success);">12% Transaction Fee Deducted on Payouts</p>
                 </div>
-                <button class="btn-amazon" style="width:auto; padding:8px 25px; background:#f0f2f2; border:1px solid #d5d9d9;" onclick="app.logoutMarket()">Log Out Market</button>
+                <button class="btn-amazon" style="width:auto; padding:6px 15px; background:#f0f2f2; border:1px solid #ccc;" onclick="app.logoutMarket()">Exit Terminal</button>
             </div>
 
             <div class="stat-grid">
                 <div class="stat-card">
-                    <h3>Total Sales (Gross)</h3>
+                    <h3>Gross Trade</h3>
                     <div class="value" id="stat-gross">$0.00</div>
                 </div>
                 <div class="stat-card">
-                    <h3>Net Profit (After 12% Fee)</h3>
+                    <h3>Net Balance</h3>
                     <div class="value" id="stat-net" style="color:var(--success);">$0.00</div>
-                    <p class="fee-text" id="stat-fees">Bek.uz Fee: $0.00 (12%)</p>
+                    <p class="fee-text" id="stat-fees">Fees: $0.00</p>
                 </div>
                 <div class="stat-card">
-                    <h3>Active Orders</h3>
+                    <h3>Orders</h3>
                     <div class="value" id="stat-orders">0</div>
                 </div>
             </div>
 
-            <div style="display:grid; grid-template-columns: 1fr 2fr; gap:30px;">
-                <!-- ADD PRODUCT FORM -->
-                <div class="auth-container" style="margin:0; width:100%; max-width:100%;">
-                    <h3>List New Product</h3><br>
-                    <div class="field"><label>Product Title</label><input type="text" id="p-title" placeholder="Brand Name, Specs..."></div>
+            <div class="dashboard-main-layout">
+                <div class="auth-container" style="margin:0; padding:15px;">
+                    <h3 style="font-size:14px; margin-bottom:10px;">Publish Product</h3>
+                    <div class="field"><label>Title</label><input type="text" id="p-title"></div>
                     <div class="field"><label>Category</label>
                         <select id="p-cat">
                             <option>Electronics</option><option>Fashion</option><option>Home</option><option>Beauty</option><option>Books</option>
                         </select>
                     </div>
-                    <div class="field"><label>Retail Price ($)</label><input type="number" id="p-price" placeholder="0.00"></div>
-                    <div class="field"><label>Image URL</label><input type="text" id="p-img" placeholder="https://..."></div>
-                    <button class="btn-amazon" style="background:var(--amz-orange)" onclick="app.postProduct()">Publish to Bek.uz</button>
+                    <div class="field"><label>Price ($)</label><input type="number" id="p-price"></div>
+                    <div class="field"><label>Image URL</label><input type="text" id="p-img"></div>
+                    <button class="btn-amazon" style="background:var(--amz-orange)" onclick="app.postProduct()">Deploy Product</button>
                 </div>
 
-                <!-- LIVE INVENTORY -->
                 <div>
-                    <h3 style="margin-bottom:20px;">Live Store Inventory</h3>
-                    <div id="my-live-products" class="grid" style="grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));"></div>
+                    <h3 style="margin-bottom:10px; font-size:15px;">Store Inventory</h3>
+                    <div id="my-live-products" class="grid" style="grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- PAGE: CART & CHECKOUT -->
     <div id="page-cart" class="page">
         <div class="cart-wrapper">
-            <h1 style="border-bottom: 1px solid #ddd; padding-bottom:15px; margin-bottom:15px;">Shopping Cart</h1>
-            <div id="cart-items-list">
-                <!-- Cart items load here -->
-            </div>
+            <h2 style="font-size:18px; margin-bottom:15px;">Your Shopping Basket</h2>
+            <div id="cart-items-list"></div>
             
             <div id="checkout-section" style="display:none;">
-                <div class="checkout-panel">
-                    <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
-                        <h2 style="font-weight:500;">Order Summary</h2>
-                        <h2 id="total-price-display" style="color:var(--price);">$0.00</h2>
+                <div class="geo-delivery-box">
+                    <h4>📍 Select Bek.uz Distribution Branch Office</h4>
+                    <div style="display:grid; grid-template-columns: 1fr; gap:10px; margin-top:10px;">
+                        <div class="field" style="margin:0;">
+                            <label style="font-size:11px;">Region / Viloyat</label>
+                            <select id="geo-region" onchange="app.handleRegionChange()">
+                                <option value="">-- Choose Region --</option>
+                                <option value="Tashkent">Toshkent barcha filiallar</option>
+                                <option value="Samarkand">Samarqand barcha filiallar</option>
+                                <option value="Fergana">Farg'ona barcha filiallar</option>
+                                <option value="Bukhara">Buxoro barcha filiallar</option>
+                            </select>
+                        </div>
+                        <div class="field" style="margin:0;">
+                            <label style="font-size:11px;">District / Tuman</label>
+                            <select id="geo-district" disabled onchange="app.handleDistrictChange()">
+                                <option value="">-- Choose District --</option>
+                            </select>
+                        </div>
+                        <div class="field" style="margin:0;">
+                            <label style="font-size:11px;">Available Official Branch / Filial</label>
+                            <select id="geo-branch" disabled>
+                                <option value="">-- Choose Branch --</option>
+                            </select>
+                        </div>
                     </div>
+                </div>
 
-                    <div class="secure-card-input">
-                        <div class="field">
-                            <label>Card Number</label>
-                            <input type="text" id="card-num" maxlength="16" placeholder="8600 0000 0000 0000">
-                        </div>
-                        <div class="card-row">
-                            <div class="field" style="flex:2">
-                                <label>Expiry Date (MMYY)</label>
-                                <input type="text" id="card-mmyy" maxlength="4" placeholder="1228">
-                            </div>
-                            <div class="field" style="flex:1">
-                                <label>CVV</label>
-                                <input type="password" id="card-cvv" maxlength="3" placeholder="***">
-                            </div>
-                        </div>
-                        <p style="font-size:12px; color:gray; margin-bottom:10px;">🔒 SSL Encrypted & 12% Platform Protected Transaction</p>
-                        <button class="btn-amazon" style="background:var(--amz-btn); height:50px; font-size:18px;" onclick="app.triggerOTP('payment')">Place Your Order</button>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin:15px 0;">
+                    <h3>Total:</h3>
+                    <h2 id="total-price-display" style="color:var(--price); font-size:22px;">$0.00</h2>
+                </div>
+
+                <div style="background:#fff; border:1px solid #ccc; padding:15px; border-radius:6px; margin-top:15px;">
+                    <div class="field">
+                        <label>Card Number (16 Digits)</label>
+                        <input type="text" id="card-num" maxlength="16" placeholder="8600 0000 0000 0000">
                     </div>
+                    <div style="display:flex; gap:10px;">
+                        <div class="field" style="flex:1;"><label>Expiry (MMYY)</label><input type="text" id="card-mmyy" maxlength="4" placeholder="1228"></div>
+                        <div class="field" style="flex:1;"><label>CVV</label><input type="password" id="card-cvv" maxlength="3" placeholder="***"></div>
+                    </div>
+                    <button class="btn-amazon" style="background:var(--amz-btn); margin-top:10px;" onclick="app.triggerOTP('payment')">Secure Checkout</button>
                 </div>
             </div>
         </div>
@@ -347,24 +355,18 @@
 
 </div>
 
-<!-- OTP MODAL SYSTEM -->
 <div id="modal-blur">
     <div class="modal-card">
-        <span class="close-modal" onclick="document.getElementById('modal-blur').style.display='none'">&times;</span>
-        <h2 id="otp-title" style="margin-bottom:15px;">Security Verification</h2>
-        <p id="otp-desc" style="color:#565959; margin-bottom:25px;">Enter the 4-digit code sent to your registered device.</p>
-        
-        <input type="text" id="otp-code" maxlength="4" placeholder="0000" style="font-size:36px; width:180px; text-align:center; padding:10px; letter-spacing:10px; margin-bottom:30px; border:2px solid #ddd; border-radius:8px;">
-        
-        <button class="btn-amazon" onclick="app.verifyOTP()">Verify and Continue</button>
-        <p style="font-size:12px; margin-top:20px; color:gray;">Code expire in 01:59. <span style="color:var(--link); cursor:pointer;">Resend Code</span></p>
-        <p style="font-size:11px; margin-top:10px; background:#fef8e7; padding:5px;">Dev Tip: Use <b>1234</b></p>
+        <h2 id="otp-title" style="font-size:18px;">Verification Required</h2>
+        <p id="otp-desc" style="font-size:12px; color:#555; margin:10px 0;">A 4-digit token has been requested securely.</p>
+        <input type="text" id="otp-code" maxlength="4" placeholder="0000" style="font-size:28px; width:140px; text-align:center; padding:8px; letter-spacing:6px; margin:15px 0; border:2px solid #ccc; border-radius:6px;">
+        <button class="btn-amazon" onclick="app.verifyOTP()">Validate Credentials</button>
+        <p style="font-size:11px; margin-top:12px; color:gray;"> <b></b></p>
     </div>
 </div>
 
-<!-- BOTTOM MOBILE NAVIGATION -->
 <nav class="mobile-nav">
-    <div class="nav-item" id="btn-nav-home" onclick="app.showPage('home')"><i>🏠</i>Home</div>
+    <div class="nav-item active" id="btn-nav-home" onclick="app.showPage('home')"><i>🏠</i>Home</div>
     <div class="nav-item" id="btn-nav-sell" onclick="app.showPage('sell')"><i>🏬</i>Sell</div>
     <div class="nav-item" id="btn-nav-market" onclick="app.showPage('open-market')"><i>⚙️</i>Market</div>
     <div class="nav-item" id="btn-nav-auth" onclick="app.showPage('auth')"><i>👤</i>Profile</div>
@@ -372,71 +374,65 @@
 
 <script>
     /* ----------------------------------------------------------------------------------
-       BEK.UZ ENTERPRISE ENGINE v3.0 (OPEN MARKET ARCHITECTURE)
+       BEK.UZ SECURE MARKETPLACE LOGIC DISTRIBUTOR ENGINE v4.0
        ---------------------------------------------------------------------------------- */
     
+    // REGIONAL MAP OBJECT DATABASE
+    const geoDatabase = {
+        Tashkent: {
+            districts: ["Yunusobod", "Chilonzor", "Mirzo Ulugbek"],
+            branches: {
+                Yunusobod: ["Yunusobod Mega Planet Branch 1", "Yunusobod Metro Station Hub"],
+                Chilonzor: ["Chilonzor Trade Center Branch 3", "Bunyodkor Stadium Delivery Point"],
+                "Mirzo Ulugbek": ["Mirzo Ulugbek Park Hub", "TTZ Regional Logistics Station"]
+            }
+        },
+        Samarkand: {
+            districts: ["Bulungur", "Pastdargom", "Samarqand Shahar"],
+            branches: {
+                Bulungur: ["Bulungur Main Highway Depot", "Bulungur Central Market Office"],
+                Pastdargom: ["Pastdargom Juma Delivery Terminal"],
+                "Samarqand Shahar": ["Registan Square Premium Branch", "Samarkand Airport Hub Station"]
+            }
+        },
+        Fergana: {
+            districts: ["Margilon", "Qo'qon", "Farg'ona Shahar"],
+            branches: {
+                Margilon: ["Margilon Silk Station Center"],
+                "Qo'qon": ["Kokand Palace Express Terminal", "Kokand Train Depot Center"],
+                "Farg'ona Shahar": ["Fergana Central Stadium Pick Point"]
+            }
+        },
+        Bukhara: {
+            districts: ["Gijduvon", "Buxoro Shahar"],
+            branches: {
+                Gijduvon: ["Gijduvon Ceramic Route Terminal"],
+                "Buxoro Shahar": ["Ark Fortress Historic Branch", "Bukhara New Airport Cargo Hub"]
+            }
+        }
+    };
+
     const app = {
-        // STATE MANAGEMENT
-        products: [], // Global list
-        cart: JSON.parse(localStorage.getItem('bek_v3_cart')) || [],
-        user: localStorage.getItem('bek_v3_user') || null,
-        
-        // MARKET STORAGE (Persistent Database for Shops)
-        allShops: JSON.parse(localStorage.getItem('bek_all_shops')) || [],
-        currentActiveShop: JSON.parse(localStorage.getItem('bek_current_shop')) || null,
-        
+        products: [],
+        cart: JSON.parse(localStorage.getItem('bek_v4_cart')) || [],
+        user: localStorage.getItem('bek_v4_user') || null,
+        allShops: JSON.parse(localStorage.getItem('bek_all_shops_v4')) || [],
+        currentActiveShop: JSON.parse(localStorage.getItem('bek_current_shop_v4')) || null,
         currentOtpTask: null,
+        pendingEmail: null,
 
         init() {
-            console.log("Bek.uz System Initializing...");
-            this.syncProducts(); // Load custom + mock products
+            this.syncProducts();
             this.renderProducts();
             this.initBanner();
             this.updateGlobalUI();
             this.setupSecurityFilters();
-        },
-
-        // 1. DATA SYNC & PERSISTENCE
-        syncProducts() {
-            // Start with base mock data
-            const categories = ['Electronics', 'Fashion', 'Home', 'Beauty', 'Books'];
-            const mockImgs = {
-                'Electronics': 'https://m.media-amazon.com/images/I/61SUj2W5ZoL._AC_UY218_.jpg',
-                'Fashion': 'https://m.media-amazon.com/images/I/71YyM9G6D8L._AC_UL320_.jpg',
-                'Home': 'https://m.media-amazon.com/images/I/81Pj01j68vL._AC_SL1500_.jpg',
-                'Beauty': 'https://m.media-amazon.com/images/I/71q+Xf86v3L._AC_UL320_.jpg',
-                'Books': 'https://m.media-amazon.com/images/I/910Xv1N+EFL._AC_UY218_.jpg'
-            };
-
-            const baseProducts = [];
-            for (let i = 1; i <= 60; i++) {
-                let cat = categories[i % 5];
-                baseProducts.push({
-                    id: 'mock_' + i,
-                    title: `Premium ${cat} Series - Gen 2026 Edition #${i}`,
-                    price: Math.floor(Math.random() * 800) + 20,
-                    img: mockImgs[cat],
-                    cat: cat,
-                    vendor: "Bek.uz Official",
-                    rating: (Math.random() * 2 + 3).toFixed(1)
-                });
-            }
-
-            // Get custom products from ALL shops
-            const customProducts = [];
-            this.allShops.forEach(shop => {
-                if(shop.inventory) {
-                    shop.inventory.forEach(p => customProducts.push(p));
-                }
-            });
-
-            this.products = [...customProducts, ...baseProducts];
+            this.setupGlobalClickDismissal();
         },
 
         setupSecurityFilters() {
-            // Real-time input digit filtering
-            const digitFields = ['card-num', 'card-mmyy', 'card-cvv', 'otp-code'];
-            digitFields.forEach(id => {
+            const fields = ['card-num', 'card-mmyy', 'card-cvv', 'otp-code'];
+            fields.forEach(id => {
                 const el = document.getElementById(id);
                 if(el) {
                     el.addEventListener('input', (e) => {
@@ -446,142 +442,236 @@
             });
         },
 
-        updateGlobalUI() {
-            // Cart count
-            const totalQty = this.cart.reduce((s, x) => s + x.qty, 0);
-            document.getElementById('cart-count').innerText = totalQty;
+        setupGlobalClickDismissal() {
+            // Closes user context menus gracefully if clicking outside
+            document.addEventListener('click', (e) => {
+                const popup = document.getElementById('profile-actions');
+                const nav = document.getElementById('user-context');
+                if(popup && nav && !nav.contains(e.target)) {
+                    popup.classList.remove('show');
+                }
+            });
+        },
 
-            // User Display
+        toggleProfileDropdown(event) {
+            event.stopPropagation();
+            if(!this.user) {
+                this.showPage('auth');
+                return;
+            }
+            const popup = document.getElementById('profile-actions');
+            popup.classList.toggle('show');
+        },
+
+        syncProducts() {
+            const categories = ['Electronics', 'Fashion', 'Home', 'Beauty', 'Books'];
+            const imgs = {
+                'Electronics': 'https://m.media-amazon.com/images/I/61SUj2W5ZoL._AC_UY218_.jpg',
+                'Fashion': 'https://m.media-amazon.com/images/I/71YyM9G6D8L._AC_UL320_.jpg',
+                'Home': 'https://m.media-amazon.com/images/I/81Pj01j68vL._AC_SL1500_.jpg',
+                'Beauty': 'https://m.media-amazon.com/images/I/71q+Xf86v3L._AC_UL320_.jpg',
+                'Books': 'https://m.media-amazon.com/images/I/910Xv1N+EFL._AC_UY218_.jpg'
+            };
+
+            const base = [];
+            for (let i = 1; i <= 50; i++) {
+                let cat = categories[i % 5];
+                base.push({
+                    id: 'mock_' + i,
+                    title: `Bek Premium ${cat} Line - Model ${2026 + i % 2}`,
+                    price: Math.floor(Math.random() * 600) + 15,
+                    img: imgs[cat],
+                    cat: cat,
+                    vendor: "Bek Warehouse System",
+                });
+            }
+
+            const customs = [];
+            this.allShops.forEach(shop => {
+                if(shop.inventory) {
+                    shop.inventory.forEach(p => customs.push(p));
+                }
+            });
+
+            this.products = [...customs, ...base];
+        },
+
+        updateGlobalUI() {
+            const qty = this.cart.reduce((s, x) => s + x.qty, 0);
+            document.getElementById('cart-count').innerText = qty;
+
             if (this.user) {
-                document.getElementById('user-display').innerText = this.user.split('@')[0];
+                const shortened = this.user.split('@')[0];
+                document.getElementById('user-display').innerText = shortened;
                 document.getElementById('full-email-display').innerText = this.user;
-                document.getElementById('profile-actions').style.display = 'block';
             } else {
                 document.getElementById('user-display').innerText = "Sign in";
-                document.getElementById('profile-actions').style.display = 'none';
+                document.getElementById('full-email-display').innerText = "";
             }
         },
 
-        // 2. PRODUCT RENDERING ENGINE
         renderProducts(data = this.products) {
             const grid = document.getElementById('product-grid');
             if(!grid) return;
 
             grid.innerHTML = data.map(p => `
                 <div class="product-card">
-                    <div class="img-box" onclick="app.viewProduct('${p.id}')">
-                        <img src="${p.img}" alt="product">
-                    </div>
-                    <h3 onclick="app.viewProduct('${p.id}')">${p.title}</h3>
-                    <div class="rating">★ ★ ★ ★ ☆ <span style="color:#007185; font-size:12px;">(1,240)</span></div>
-                    <div class="vendor">Sold by: <b>${p.vendor}</b></div>
+                    <div class="img-box" onclick="app.addToCart('${p.id}')"><img src="${p.img}"></div>
+                    <h3>${p.title}</h3>
+                    <div class="rating">★★★★★</div>
+                    <div class="vendor">Shop: <b>${p.vendor}</b></div>
                     <div class="price">$${p.price.toFixed(2)}</div>
                     <button class="btn-add" onclick="app.addToCart('${p.id}')">Add to Cart</button>
                 </div>
             `).join('');
         },
 
-        // 3. CART & QUANTITY LOGIC
         addToCart(id) {
             if (!this.user) {
-                alert("Security Action Required: Please sign-in first.");
+                alert("Security Action: Authorization required to acquire items.");
                 return this.showPage('auth');
             }
 
-            const product = this.products.find(p => p.id === id);
-            const inCart = this.cart.find(item => item.id === id);
+            const p = this.products.find(x => x.id === id);
+            const nested = this.cart.find(x => x.id === id);
 
-            if (inCart) {
-                inCart.qty++;
+            if(nested) {
+                nested.qty++;
             } else {
-                this.cart.push({ ...product, qty: 1 });
+                this.cart.push({ ...p, qty: 1 });
             }
 
             this.syncCartStorage();
-            alert(`Added: ${product.title}`);
+            alert("Updated cart parameters for: " + p.title);
         },
 
         syncCartStorage() {
-            localStorage.setItem('bek_v3_cart', JSON.stringify(this.cart));
+            localStorage.setItem('bek_v4_cart', JSON.stringify(this.cart));
             this.updateGlobalUI();
         },
 
         renderCart() {
             const list = document.getElementById('cart-items-list');
-            const checkSection = document.getElementById('checkout-section');
+            const box = document.getElementById('checkout-section');
             
             if (this.cart.length === 0) {
-                list.innerHTML = `
-                    <div style="text-align:center; padding:50px;">
-                        <img src="https://m.media-amazon.com/images/G/01/cart/empty/kettle-desaturated._CB445243794_.svg" width="200">
-                        <h2 style="margin-top:20px;">Your Bek.uz cart is empty.</h2>
-                        <a onclick="app.showPage('home')" style="color:var(--link); cursor:pointer;">Shop today's deals</a>
-                    </div>`;
-                checkSection.style.display = 'none';
+                list.innerHTML = `<p style="text-align:center; color:#555; padding:40px 0;">Your shopping platform cart is totally empty.</p>`;
+                box.style.display = 'none';
                 return;
             }
 
-            list.innerHTML = this.cart.map((item, idx) => `
+            list.innerHTML = this.cart.map((item, index) => `
                 <div class="cart-item">
                     <img src="${item.img}">
                     <div class="cart-item-info">
                         <h4>${item.title}</h4>
-                        <div class="vendor-tag">Store: ${item.vendor}</div>
-                        <div style="color:#007600; font-size:12px; margin-top:5px;">In Stock</div>
+                        <div style="font-size:11px; color:gray; margin-top:2px;">Vendor: ${item.vendor}</div>
                         <div class="qty-control">
-                            <button class="qty-btn" onclick="app.updateQty(${idx}, -1)">-</button>
-                            <span style="font-weight:bold;">${item.qty}</span>
-                            <button class="qty-btn" onclick="app.updateQty(${idx}, 1)">+</button>
-                            <span style="margin-left:15px; color:var(--link); cursor:pointer; font-size:12px;" onclick="app.removeFromCart(${idx})">Delete</span>
+                            <button class="qty-btn" onclick="app.mutateQty(${index}, -1)">-</button>
+                            <span>${item.qty}</span>
+                            <button class="qty-btn" onclick="app.mutateQty(${index}, 1)">+</button>
+                            <span style="color:var(--price); font-size:11px; margin-left:15px; cursor:pointer;" onclick="app.eraseCartItem(${index})">Remove</span>
                         </div>
                     </div>
-                    <div class="cart-price-side">
-                        $${(item.price * item.qty).toFixed(2)}
-                    </div>
+                    <div class="cart-price-side">$${(item.price * item.qty).toFixed(2)}</div>
                 </div>
             `).join('');
 
-            const subtotal = this.cart.reduce((s, x) => s + (x.price * x.qty), 0);
-            document.getElementById('total-price-display').innerText = `$${subtotal.toFixed(2)}`;
-            checkSection.style.display = 'block';
+            const sum = this.cart.reduce((s, x) => s + (x.price * x.qty), 0);
+            document.getElementById('total-price-display').innerText = `$${sum.toFixed(2)}`;
+            box.style.display = 'block';
         },
 
-        updateQty(idx, change) {
-            this.cart[idx].qty += change;
+        mutateQty(idx, shift) {
+            this.cart[idx].qty += shift;
             if (this.cart[idx].qty < 1) this.cart[idx].qty = 1;
             this.syncCartStorage();
             this.renderCart();
         },
 
-        removeFromCart(idx) {
+        eraseCartItem(idx) {
             this.cart.splice(idx, 1);
             this.syncCartStorage();
             this.renderCart();
         },
 
-        // 4. AUTH & SECURITY FLOWS
+        /* GEO CONDITIONAL CASCADE LOGIC MODULES */
+        handleRegionChange() {
+            const regSelect = document.getElementById('geo-region');
+            const distSelect = document.getElementById('geo-district');
+            const branchSelect = document.getElementById('geo-branch');
+            
+            const selectedRegion = regSelect.value;
+            
+            distSelect.innerHTML = '<option value="">-- Choose District --</option>';
+            branchSelect.innerHTML = '<option value="">-- Choose Branch --</option>';
+            branchSelect.disabled = true;
+
+            if(!selectedRegion) {
+                distSelect.disabled = true;
+                return;
+            }
+
+            const data = geoDatabase[selectedRegion];
+            data.districts.forEach(d => {
+                distSelect.innerHTML += `<option value="${d}">${d}</option>`;
+            });
+            distSelect.disabled = false;
+        },
+
+        handleDistrictChange() {
+            const regSelect = document.getElementById('geo-region').value;
+            const distSelect = document.getElementById('geo-district').value;
+            const branchSelect = document.getElementById('geo-branch');
+
+            branchSelect.innerHTML = '<option value="">-- Choose Branch --</option>';
+            
+            if(!distSelect) {
+                branchSelect.disabled = true;
+                return;
+            }
+
+            const options = geoDatabase[regSelect].branches[distSelect];
+            options.forEach(b => {
+                branchSelect.innerHTML += `<option value="${b}">${b}</option>`;
+            });
+            branchSelect.disabled = false;
+        },
+
+        // OTP LAYER ACTIVATORS
         triggerOTP(task) {
-            // Task-specific validation before showing OTP
             if (task === 'login') {
-                let email = document.getElementById('auth-email').value.trim();
-                if (!email) return alert("Enter email or username");
-                if (!email.endsWith('@gmail.com')) email += "@gmail.com";
-                this.pendingEmail = email;
+                let contextEmail = document.getElementById('auth-email').value.trim();
+                if(!contextEmail) return alert("System requires identifier input.");
+                
+                // CRITICAL MANDATORY RULES APPLIED SECURELY HERE
+                if (!contextEmail.endsWith('@gmail.com')) {
+                    contextEmail += "@gmail.com";
+                }
+                this.pendingEmail = contextEmail;
             }
 
             if (task === 'payment') {
+                const reg = document.getElementById('geo-region').value;
+                const dst = document.getElementById('geo-district').value;
+                const brn = document.getElementById('geo-branch').value;
+                
+                if(!reg || !dst || !brn) {
+                    return alert("Logistic Requirement: Please choose distribution branch location fully!");
+                }
+
                 const c = document.getElementById('card-num').value;
                 const m = document.getElementById('card-mmyy').value;
                 const v = document.getElementById('card-cvv').value;
                 if (c.length < 16 || m.length < 4 || v.length < 3) {
-                    return alert("Security Error: Card data incomplete.");
+                    return alert("Security Parameters Refused: Card parameters must be structurally correct.");
                 }
             }
 
-            if (task === 'market') {
-                const n = document.getElementById('m-name').value;
-                const e = document.getElementById('m-email').value;
-                if(!n || !e) return alert("Fill all market details!");
+            if(task === 'market') {
+                const mn = document.getElementById('m-name').value.trim();
+                const me = document.getElementById('m-email').value.trim();
+                if(!mn || !me) return alert("Forms incomplete.");
             }
 
             this.currentOtpTask = task;
@@ -589,102 +679,97 @@
         },
 
         verifyOTP() {
-            const code = document.getElementById('otp-code').value;
-            if (code === "1234") {
+            if (document.getElementById('otp-code').value === "1234") {
                 document.getElementById('modal-blur').style.display = 'none';
                 document.getElementById('otp-code').value = "";
-                this.finalizeProcess();
+                this.executeWorkflowClosure();
             } else {
-                alert("Incorrect Security Code!");
+                alert("Cryptographic signature mismatch!");
             }
         },
 
-        finalizeProcess() {
-            const task = this.currentOtpTask;
-            
-            if (task === 'login') {
+        executeWorkflowClosure() {
+            const t = this.currentOtpTask;
+            if (t === 'login') {
                 this.user = this.pendingEmail;
-                localStorage.setItem('bek_v3_user', this.user);
+                localStorage.setItem('bek_v4_user', this.user);
                 this.updateGlobalUI();
                 this.showPage('home');
             } 
-            else if (task === 'market') {
-                this.registerMarketStore();
-            }
-            else if (task === 'payment') {
-                this.executeOrder();
+            else if (t === 'market') this.registerMarketStore();
+            else if (t === 'payment') this.executeOrderTransaction();
+        },
+
+        fullLogout(event) {
+            event.stopPropagation();
+            if(confirm("Log out completely from this account?")) {
+                localStorage.removeItem('bek_v4_user');
+                localStorage.removeItem('bek_v4_cart');
+                this.user = null;
+                this.cart = [];
+                this.updateGlobalUI();
+                document.getElementById('profile-actions').classList.remove('show');
+                this.showPage('home');
             }
         },
 
-        fullLogout() {
-            if(confirm("Are you sure you want to log out from Bek.uz?")) {
-                localStorage.removeItem('bek_v3_user');
-                localStorage.removeItem('bek_v3_cart');
-                location.reload();
-            }
-        },
-
-        // 5. OPEN MARKET BUSINESS LOGIC
         registerMarketStore() {
             const name = document.getElementById('m-name').value;
             const email = document.getElementById('m-email').value;
             
-            const loginId = "MARKET_" + Math.floor(Math.random() * 90000 + 10000);
-            const password = Math.random().toString(36).slice(-6).toUpperCase();
+            const generatedId = "VND_" + Math.floor(Math.random() * 80000 + 10000);
+            const generatedPassword = Math.random().toString(36).slice(-6).toUpperCase();
 
-            const newMarket = {
-                id: Date.now(),
+            const payload = {
+                id: 'shop_' + Date.now(),
                 name: name,
                 email: email,
-                login: loginId,
-                pass: password,
+                login: generatedId,
+                pass: generatedPassword,
                 grossBalance: 0,
                 netBalance: 0,
                 orderCount: 0,
                 inventory: []
             };
 
-            // Save to permanent DB
-            this.allShops.push(newMarket);
-            localStorage.setItem('bek_all_shops', JSON.stringify(this.allShops));
+            this.allShops.push(payload);
+            localStorage.setItem('bek_all_shops_v4', JSON.stringify(this.allShops));
 
-            document.getElementById('gen-login').innerText = loginId;
-            document.getElementById('gen-pass').innerText = password;
+            document.getElementById('gen-login').innerText = generatedId;
+            document.getElementById('gen-pass').innerText = generatedPassword;
             document.getElementById('market-reg-form').style.display = 'none';
             document.getElementById('credentials-display').style.display = 'block';
         },
 
         accessDashboard() {
-            const id = document.getElementById('gate-id').value;
-            const ps = document.getElementById('gate-pass').value;
+            const inputId = document.getElementById('gate-id').value.trim();
+            const inputPass = document.getElementById('gate-pass').value.trim();
 
-            // Search in permanent DB
-            const shop = this.allShops.find(s => s.login === id && s.pass === ps);
+            const match = this.allShops.find(x => x.login === inputId && x.pass === inputPass);
 
-            if (shop) {
-                this.currentActiveShop = shop;
-                localStorage.setItem('bek_current_shop', JSON.stringify(shop));
-                this.renderDashboard();
+            if (match) {
+                this.currentActiveShop = match;
+                localStorage.setItem('bek_current_shop_v4', JSON.stringify(match));
+                this.paintDashboardUI();
                 document.getElementById('market-login-area').style.display = 'none';
                 document.getElementById('market-admin-area').style.display = 'block';
             } else {
-                alert("Terminal Access Denied: Market ID or Password incorrect.");
+                alert("Terminal rejection: Invalid parameters.");
             }
         },
 
-        renderDashboard() {
-            const s = this.currentActiveShop;
-            document.getElementById('admin-shop-name').innerText = s.name + " Dashboard";
-            document.getElementById('stat-gross').innerText = `$${s.grossBalance.toFixed(2)}`;
-            document.getElementById('stat-net').innerText = `$${s.netBalance.toFixed(2)}`;
-            document.getElementById('stat-fees').innerText = `Bek.uz Fee: $${(s.grossBalance * 0.12).toFixed(2)} (12%)`;
-            document.getElementById('stat-orders').innerText = s.orderCount;
-            
+        paintDashboardUI() {
+            const sh = this.currentActiveShop;
+            document.getElementById('admin-shop-name').innerText = "Management: " + sh.name;
+            document.getElementById('stat-gross').innerText = `$${sh.grossBalance.toFixed(2)}`;
+            document.getElementById('stat-net').innerText = `$${sh.netBalance.toFixed(2)}`;
+            document.getElementById('stat-fees').innerText = `Paid to Bek Platform: $${(sh.grossBalance * 0.12).toFixed(2)}`;
+            document.getElementById('stat-orders').innerText = sh.orderCount;
             this.renderMyProducts();
         },
 
         logoutMarket() {
-            localStorage.removeItem('bek_current_shop');
+            localStorage.removeItem('bek_current_shop_v4');
             this.currentActiveShop = null;
             document.getElementById('market-admin-area').style.display = 'none';
             document.getElementById('market-login-area').style.display = 'block';
@@ -693,112 +778,111 @@
         },
 
         postProduct() {
-            const title = document.getElementById('p-title').value;
-            const price = parseFloat(document.getElementById('p-price').value);
-            const img = document.getElementById('p-img').value || 'https://via.placeholder.com/200';
+            const t = document.getElementById('p-title').value.trim();
+            const p = parseFloat(document.getElementById('p-price').value);
+            const img = document.getElementById('p-img').value.trim() || 'https://via.placeholder.com/150';
             const cat = document.getElementById('p-cat').value;
 
-            if(!title || isNaN(price)) return alert("Invalid Product Data");
+            if(!t || isNaN(p)) return alert("Data Validation failed.");
 
-            const newProduct = {
+            const productObject = {
                 id: 'custom_' + Date.now(),
-                title: title,
-                price: price,
+                title: t,
+                price: p,
                 img: img,
                 cat: cat,
-                vendor: this.currentActiveShop.name,
-                rating: "5.0"
+                vendor: this.currentActiveShop.name
             };
 
-            // Add to current shop inventory
-            this.currentActiveShop.inventory.unshift(newProduct);
+            this.currentActiveShop.inventory.unshift(productObject);
             
-            // Sync with ALL shops database
-            const idx = this.allShops.findIndex(s => s.id === this.currentActiveShop.id);
-            this.allShops[idx] = this.currentActiveShop;
-            
-            // Save boti databases
-            localStorage.setItem('bek_all_shops', JSON.stringify(this.allShops));
-            localStorage.setItem('bek_current_shop', JSON.stringify(this.currentActiveShop));
+            const globalIndex = this.allShops.findIndex(x => x.id === this.currentActiveShop.id);
+            this.allShops[globalIndex] = this.currentActiveShop;
 
-            this.syncProducts(); // Refresh global list
+            localStorage.setItem('bek_all_shops_v4', JSON.stringify(this.allShops));
+            localStorage.setItem('bek_current_shop_v4', JSON.stringify(this.currentActiveShop));
+
+            this.syncProducts();
             this.renderProducts();
-            this.renderMyProducts();
-            
-            alert("Published: Your product is now live on Bek.uz!");
-            
-            // Clear inputs
+            this.paintDashboardUI();
+
+            alert("Item successfully compiled and listed globally!");
             document.getElementById('p-title').value = "";
             document.getElementById('p-price').value = "";
             document.getElementById('p-img').value = "";
         },
 
         renderMyProducts() {
-            const list = document.getElementById('my-live-products');
-            list.innerHTML = this.currentActiveShop.inventory.map(p => `
-                <div class="product-card" style="height:auto;">
-                    <div class="img-box" style="height:120px;"><img src="${p.img}"></div>
-                    <h3 style="font-size:12px;">${p.title}</h3>
-                    <div class="price" style="font-size:16px;">$${p.price.toFixed(2)}</div>
+            const target = document.getElementById('my-live-products');
+            target.innerHTML = this.currentActiveShop.inventory.map(p => `
+                <div class="product-card" style="padding:5px;">
+                    <div class="img-box" style="height:80px;"><img src="${p.img}"></div>
+                    <h3 style="font-size:10px; height:24px;">${p.title}</h3>
+                    <div class="price" style="font-size:13px;">$${p.price}</div>
                 </div>
             `).join('');
         },
 
-        // 6. ORDER EXECUTION & 12% COMMISSION
-        executeOrder() {
-            const totalGross = this.cart.reduce((s, x) => s + (x.price * x.qty), 0);
-            
-            // Update individual vendors balances
-            this.cart.forEach(item => {
-                // Find vendor in allShops
-                const shopIdx = this.allShops.findIndex(s => s.name === item.vendor);
-                if (shopIdx !== -1) {
-                    const itemGross = item.price * item.qty;
-                    const itemFee = itemGross * 0.12; // 12% platform fee
-                    const itemNet = itemGross - itemFee;
+        // TRANSACTIONS AND SELLER RETENTION CHARGES MODULE
+        executeOrderTransaction() {
+            const cardValue = document.getElementById('card-num').value;
+            const chosenBranch = document.getElementById('geo-branch').value;
+            const grossSum = this.cart.reduce((s, x) => s + (x.price * x.qty), 0);
 
-                    this.allShops[shopIdx].grossBalance += itemGross;
-                    this.allShops[shopIdx].netBalance += itemNet;
-                    this.allShops[shopIdx].orderCount += 1;
+            this.cart.forEach(cartItem => {
+                const targetShopIdx = this.allShops.findIndex(s => s.name === cartItem.vendor);
+                if (targetShopIdx !== -1) {
+                    const lineGross = cartItem.price * cartItem.qty;
+                    const lineFee = lineGross * 0.12; // 12% absolute platform cut
+                    const lineNet = lineGross - lineFee;
+
+                    this.allShops[targetShopIdx].grossBalance += lineGross;
+                    this.allShops[targetShopIdx].netBalance += lineNet;
+                    this.allShops[targetShopIdx].orderCount += 1;
                 }
             });
 
-            // Save database
-            localStorage.setItem('bek_all_shops', JSON.stringify(this.allShops));
+            localStorage.setItem('bek_all_shops_v4', JSON.stringify(this.allShops));
 
-            alert(`Order Placed Successfully!\n\nGross Amount: $${totalGross.toFixed(2)}\nSecurity: Verified SSL\n\nThank you for shopping at Bek.uz`);
+            alert(`🔒 SECURE TRANSACTION COMPLETED!\n\nDestination: ${chosenBranch}\nPaid Gross: $${grossSum.toFixed(2)}\nCard: **** **** **** ${cardValue.slice(-4)}\n\nOrder assigned successfully to the branch!`);
             
             this.cart = [];
             this.syncCartStorage();
             this.showPage('home');
+
+            // Form resets
+            document.getElementById('card-num').value = "";
+            document.getElementById('card-mmyy').value = "";
+            document.getElementById('card-cvv').value = "";
         },
 
-        // 7. NAVIGATION & SEARCH
         showPage(id) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
             document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
             
             document.getElementById('page-' + id).classList.add('active-page');
-            const navBtn = document.getElementById('btn-nav-' + (id === 'open-market' ? 'market' : id));
+            
+            const targetNavId = 'btn-nav-' + (id === 'open-market' ? 'market' : id);
+            const navBtn = document.getElementById(targetNavId);
             if(navBtn) navBtn.classList.add('active');
 
             document.getElementById('home-banner').style.display = (id === 'home' ? 'block' : 'none');
             
             if (id === 'cart') this.renderCart();
-            if (id === 'open-market' && this.currentActiveShop) this.renderDashboard();
+            if (id === 'open-market' && this.currentActiveShop) this.paintDashboardUI();
 
             window.scrollTo(0,0);
         },
 
         initBanner() {
-            let i = 0;
+            let slideIndex = 0;
             setInterval(() => {
                 const stage = document.getElementById('banner-stage');
                 if(stage) {
-                    i = (i + 1) % 2;
-                    stage.style.transform = `translateX(-${i * 100}%)`;
+                    slideIndex = (slideIndex + 1) % 2;
+                    stage.style.transform = `translateX(-${slideIndex * 100}%)`;
                 }
-            }, 6000);
+            }, 5000);
         },
 
         filter(cat) {
@@ -812,22 +896,19 @@
         },
 
         search() {
-            const q = document.getElementById('main-search').value.toLowerCase().trim();
-            if(!q) return this.renderProducts();
+            const query = document.getElementById('main-search').value.toLowerCase().trim();
+            if(!query) return this.renderProducts();
             
-            const results = this.products.filter(p => 
-                p.title.toLowerCase().includes(q) || 
-                p.vendor.toLowerCase().includes(q) ||
-                p.cat.toLowerCase().includes(q)
+            const filtered = this.products.filter(p => 
+                p.title.toLowerCase().includes(query) || 
+                p.cat.toLowerCase().includes(query)
             );
-            this.renderProducts(results);
+            this.renderProducts(filtered);
             this.showPage('home');
         }
     };
 
-    // BOOTSTRAP SYSTEM
     window.onload = () => app.init();
-
 </script>
 </body>
 </html>
