@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FITBURN PRO // NEXT-GEN AI FITNESS PLATFORM</title>
+    <title>FITBURN ULTIMATE // CYBERPUNK FITNESS OS</title>
     <style>
-        /* GOOGLE FONTS INTEGRATION */
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
         :root {
-            --bg-cyber: #060608;
-            --surface-glass: rgba(22, 22, 30, 0.75);
-            --card-cyber: #13131a;
-            --neon-glow: #38bdf8;
+            --bg-cyber: #040406;
+            --surface-glass: rgba(18, 18, 26, 0.85);
+            --card-cyber: #0f0f14;
+            --neon-glow: #00f0ff;
             --neon-orange: #ff5500;
             --neon-laser: #ff0055;
             --matrix-green: #00ff66;
@@ -20,6 +19,7 @@
             --text-cyber-pure: #ffffff;
             --text-cyber-muted: #64748b;
             --glass-border: rgba(255, 255, 255, 0.05);
+            --sticker-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
         }
 
         * {
@@ -32,64 +32,65 @@
         *::-webkit-scrollbar { display: none; }
 
         body {
-            background: radial-gradient(circle at 50% 50%, #111115 0%, var(--bg-cyber) 100%);
+            background: radial-gradient(circle at 50% 50%, #0e0e14 0%, var(--bg-cyber) 100%);
             color: var(--text-cyber-pure);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px;
+            padding: 10px;
             overflow: hidden;
         }
 
-        /* PREMIUM SMARTPHONE CONTAINER CHASSIS */
+        /* STRICT MOBILE VIEWPORT SPECIFICATION */
         .phone-frame {
-            width: 100%;
-            max-width: 440px;
-            height: 900px;
+            width: 412px;
+            height: 840px;
             background-color: var(--bg-cyber);
-            border-radius: 48px;
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(255, 85, 0, 0.15);
+            border-radius: 44px;
+            box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.9), inset 0 0 30px rgba(255, 85, 0, 0.1);
             overflow: hidden;
             position: relative;
             display: flex;
             flex-direction: column;
-            border: 6px solid #1e1e24;
+            border: 6px solid #1a1a22;
         }
 
-        /* TOP GLOWING CYBER HEADER */
         header {
-            padding: 30px 20px 20px 20px;
-            background: linear-gradient(180deg, #0d0d11 0%, rgba(6, 6, 8, 0) 100%);
+            padding: 24px 20px 14px 20px;
+            background: linear-gradient(180deg, #09090d 0%, rgba(4, 4, 6, 0) 100%);
             border-bottom: 1px solid var(--glass-border);
             text-align: center;
             position: relative;
             z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         header h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 900;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             background: linear-gradient(90deg, var(--neon-orange), var(--electric-gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 15px rgba(255, 85, 0, 0.3);
+            text-shadow: 0 0 12px rgba(255, 85, 0, 0.25);
         }
 
-        /* SCREEN ROUTER STYLING */
         .app-viewport {
             flex: 1;
-            padding: 24px;
+            padding: 20px;
             overflow-y: auto;
             position: relative;
-            padding-bottom: 110px;
+            padding-bottom: 100px;
         }
         .screen-view {
             display: none;
             opacity: 0;
-            transform: scale(0.98) translateY(10px);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: scale(0.97) translateY(8px);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .screen-view.active-view {
             display: block;
@@ -98,277 +99,263 @@
         }
 
         h2 {
-            font-size: 24px;
+            font-size: 21px;
             font-weight: 800;
             letter-spacing: -0.5px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .subtitle {
             color: var(--text-cyber-muted);
-            font-size: 14px;
-            margin-bottom: 24px;
-            line-height: 1.6;
+            font-size: 13px;
+            margin-bottom: 18px;
+            line-height: 1.5;
         }
 
-        /* CYBERPUNK GLASSMORPHISM CARDS */
         .cyber-card {
             background: var(--card-cyber);
             border: 1px solid var(--glass-border);
-            padding: 24px;
-            border-radius: 24px;
-            margin-bottom: 20px;
+            padding: 18px;
+            border-radius: 20px;
+            margin-bottom: 16px;
             position: relative;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-        .cyber-card:hover {
-            border-color: rgba(255, 85, 0, 0.2);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
         }
 
-        /* FORMS AND INPUT CONTROLS */
-        .form-element { margin-bottom: 18px; }
+        .form-element { margin-bottom: 14px; }
         .form-element label {
             display: block;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 800;
             color: var(--text-cyber-muted);
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 8px;
+            letter-spacing: 1.2px;
+            margin-bottom: 6px;
         }
-        input, select, textarea {
+        input, select {
             width: 100%;
-            background-color: #09090d;
-            border: 1px solid #22222a;
+            background-color: #06060a;
+            border: 1px solid #1d1d26;
             color: var(--text-cyber-pure);
-            padding: 16px;
-            border-radius: 16px;
-            font-size: 15px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            font-size: 14px;
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: all 0.25s ease;
         }
         input:focus, select:focus {
             border-color: var(--neon-orange);
-            background-color: #0d0d12;
+            background-color: #0b0b10;
             outline: none;
-            box-shadow: 0 0 15px rgba(255, 85, 0, 0.15);
+            box-shadow: 0 0 12px rgba(255, 85, 0, 0.15);
         }
 
-        /* PREMIUM BUTTONS WITH NEON PULSE */
         .cyber-btn {
             width: 100%;
             background: linear-gradient(135deg, var(--neon-orange) 0%, #cc3300 100%);
             color: var(--text-cyber-pure);
-            padding: 18px;
+            padding: 14px;
             border: none;
-            border-radius: 18px;
-            font-size: 15px;
+            border-radius: 14px;
+            font-size: 14px;
             font-weight: 800;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             cursor: pointer;
             text-transform: uppercase;
-            box-shadow: 0 6px 20px rgba(255, 85, 0, 0.25);
-            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 85, 0, 0.2);
+            transition: all 0.25s ease;
         }
         .cyber-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 85, 0, 0.4);
-        }
-        .cyber-btn-alt {
-            background: #181822;
-            border: 1px solid #2d2d3d;
-            box-shadow: none;
-            margin-top: 12px;
-        }
-        .cyber-btn-alt:hover {
-            background: #222230;
-            box-shadow: none;
-            transform: none;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(255, 85, 0, 0.35);
         }
 
-        /* DYNAMIC ROUTINE LIST ELEMENTS */
+        /* NEON LOGO STICKER EMBLEMS */
+        .sticker-badge {
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: rgba(255, 85, 0, 0.1);
+            border: 1px solid rgba(255, 85, 0, 0.2);
+            box-shadow: var(--sticker-shadow);
+        }
+        .sticker-badge svg { width: 22px; height: 22px; }
+
+        /* ROUTINE NODES WITH DELETE INTERFACE */
         .routine-node {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: #161622;
-            padding: 18px;
-            border-radius: 20px;
-            margin-bottom: 12px;
-            border-left: 5px solid var(--electric-gold);
-            transition: all 0.3s ease;
+            background: #111118;
+            padding: 14px;
+            border-radius: 16px;
+            margin-bottom: 10px;
+            border-left: 4px solid var(--electric-gold);
+            gap: 10px;
         }
         .routine-node.done-state {
             border-left-color: var(--matrix-green);
-            background: rgba(0, 255, 102, 0.03);
-            opacity: 0.5;
+            background: rgba(0, 255, 102, 0.02);
+            opacity: 0.4;
         }
         .routine-node.done-state span { text-decoration: line-through; color: var(--text-cyber-muted); }
-        .time-badge { font-family: 'Orbitron', sans-serif; color: var(--neon-orange); font-size: 12px; font-weight: 700; display: block; margin-bottom: 2px; }
-
-        /* CUSTOM HAND-CRAFTED CHECKBOX */
+        .time-badge { font-family: 'Orbitron', sans-serif; color: var(--neon-orange); font-size: 11px; font-weight: 700; }
+        
+        .routine-controls { display: flex; align-items: center; gap: 12px; }
         .cyber-check {
-            width: 26px;
-            height: 26px;
-            border: 2px solid #3a3a4e;
-            border-radius: 8px;
+            width: 22px;
+            height: 22px;
+            border: 2px solid #2d2d3d;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.2s ease;
         }
-        .cyber-check::after {
-            content: '✓';
-            color: #000;
-            font-weight: 900;
-            font-size: 16px;
-            display: none;
-        }
-        .routine-node.done-state .cyber-check {
-            background-color: var(--matrix-green);
-            border-color: var(--matrix-green);
-            box-shadow: 0 0 10px rgba(0, 255, 102, 0.4);
-        }
+        .cyber-check::after { content: '✓'; color: #000; font-weight: 900; font-size: 13px; display: none; }
+        .routine-node.done-state .cyber-check { background-color: var(--matrix-green); border-color: var(--matrix-green); }
         .routine-node.done-state .cyber-check::after { display: block; }
-
-        /* ADVANCED AI COACH ENGINE BOX */
-        .ai-core-intelligence {
-            background: linear-gradient(135deg, #09091e 0%, #05050f 100%);
-            border: 1px solid #1e1b4b;
-            padding: 22px;
-            border-radius: 24px;
-            margin-top: 25px;
-            box-shadow: inset 0 0 20px rgba(56, 189, 248, 0.05);
+        
+        .trash-trigger {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--neon-laser);
+            opacity: 0.7;
+            transition: opacity 0.2s;
             display: flex;
-            gap: 16px;
+            align-items: center;
+        }
+        .trash-trigger:hover { opacity: 1; }
+        .trash-trigger svg { width: 18px; height: 18px; fill: currentColor; }
+
+        /* AI COACH CHASSIS CORES */
+        .ai-core-intelligence {
+            background: linear-gradient(135deg, #070716 0%, #03030a 100%);
+            border: 1px solid #16143c;
+            padding: 16px;
+            border-radius: 18px;
+            margin-top: 20px;
+            display: flex;
+            gap: 12px;
             align-items: flex-start;
         }
         .ai-avatar-matrix {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--neon-glow) 0%, #1d4ed8 100%);
-            border-radius: 16px;
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--neon-glow) 0%, #1234a5 100%);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
-            animation: floatBot 3s infinite alternate ease-in-out;
+            font-size: 20px;
+            box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
         }
-        @keyframes floatBot { from { transform: translateY(0); } to { transform: translateY(-6px); } }
-        .ai-speech-bubble { flex: 1; }
-        .ai-speech-bubble h4 { font-family: 'Orbitron', sans-serif; font-size: 13px; color: var(--neon-glow); margin-bottom: 6px; letter-spacing: 1px; }
-        .ai-speech-bubble p { font-size: 13px; color: #cbd5e1; line-height: 1.5; }
+        .ai-speech-bubble h4 { font-family: 'Orbitron', sans-serif; font-size: 11px; color: var(--neon-glow); margin-bottom: 4px; letter-spacing: 0.5px; }
+        .ai-speech-bubble p { font-size: 12px; color: #cbd5e1; line-height: 1.4; }
 
-        /* REAL SCIENTIFIC TRAINING ITEM */
+        /* ORIREGINAL DYNAMIC STICKER CHIPS FOR DRILLS */
         .drill-card {
             display: flex;
             align-items: center;
-            gap: 16px;
-            padding: 16px;
-            background: #111116;
-            border-radius: 18px;
-            margin-bottom: 12px;
-            border: 1px solid #1a1a24;
-            transition: all 0.3s ease;
+            gap: 12px;
+            padding: 12px;
+            background: #0b0b10;
+            border-radius: 14px;
+            margin-bottom: 10px;
+            border: 1px solid #14141f;
         }
-        .drill-card.drill-complete {
-            border-color: rgba(0, 255, 102, 0.2);
-            background: rgba(0, 255, 102, 0.02);
-        }
+        .drill-card.drill-complete { border-color: rgba(0, 255, 102, 0.15); background: rgba(0, 255, 102, 0.01); }
         .drill-index {
-            width: 32px;
-            height: 32px;
-            background: #1c1c24;
-            border-radius: 10px;
+            width: 28px;
+            height: 28px;
+            background: #14141f;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: 'Orbitron', sans-serif;
-            font-size: 13px;
+            font-size: 11px;
             font-weight: 700;
             color: var(--neon-orange);
         }
-        .drill-card.drill-complete .drill-index {
-            background: var(--matrix-green);
-            color: #000;
-        }
+        .drill-card.drill-complete .drill-index { background: var(--matrix-green); color: #000; }
         .drill-meta { flex: 1; }
-        .drill-meta h5 { font-size: 14px; font-weight: 700; color: var(--text-cyber-pure); margin-bottom: 4px; }
-        .drill-meta p { font-size: 11px; color: var(--neon-glow); font-weight: 600; }
+        .drill-meta h5 { font-size: 13px; font-weight: 700; color: var(--text-cyber-pure); margin-bottom: 2px; }
+        .drill-meta p { font-size: 10px; color: var(--neon-glow); font-weight: 500; }
 
-        /* DYNAMIC PROGRESS LINE METRIC */
-        .progress-hud { margin-bottom: 20px; }
-        .progress-hud-labels { display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; margin-bottom: 8px; color: var(--text-cyber-muted); }
-        .progress-hud-bar { width: 100%; height: 10px; background: #161622; border-radius: 5px; overflow: hidden; }
-        .progress-hud-fill { height: 100%; background: linear-gradient(90deg, var(--neon-orange), var(--matrix-green)); width: 0%; transition: width 0.5s ease; }
+        .progress-hud { margin-bottom: 16px; }
+        .progress-hud-labels { display: flex; justify-content: space-between; font-size: 11px; font-weight: 700; margin-bottom: 6px; color: var(--text-cyber-muted); }
+        .progress-hud-bar { width: 100%; height: 8px; background: #12121c; border-radius: 4px; overflow: hidden; }
+        .progress-hud-fill { height: 100%; background: linear-gradient(90deg, var(--neon-orange), var(--matrix-green)); width: 0%; transition: width 0.4s ease; }
 
-        /* BOTTOM OS FOOTER NAV BAR */
+        /* OS FOOTER DOCK */
         .navigation-dock {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 85px;
-            background-color: rgba(10, 10, 14, 0.9);
-            backdrop-filter: blur(20px);
+            height: 75px;
+            background-color: rgba(6, 6, 10, 0.92);
+            backdrop-filter: blur(15px);
             border-top: 1px solid var(--glass-border);
             display: flex;
             justify-content: space-around;
             align-items: center;
-            padding: 0 20px;
+            padding: 0 16px;
             z-index: 100;
         }
         .dock-tab {
             color: var(--text-cyber-muted);
             cursor: pointer;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 800;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 6px;
-            transition: all 0.3s ease;
+            gap: 4px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
         .dock-tab.active-tab { color: var(--neon-orange); }
-        .dock-tab svg { width: 24px; height: 24px; fill: currentColor; transition: transform 0.3s ease; }
-        .dock-tab:hover svg { transform: translateY(-3px); }
+        .dock-tab svg { width: 20px; height: 20px; fill: currentColor; }
     </style>
 </head>
 <body>
 
 <div class="phone-frame">
     <header>
-        <h1>FITBURN // AI PRO</h1>
+        <div class="sticker-badge" id="header-sticker">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#ff5500" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h1>FITBURN // OS</h1>
     </header>
 
     <div class="app-viewport">
         <div id="view-onboarding" class="screen-view active-view">
             <h2>Biometrik Matritsa</h2>
-            <p class="subtitle">AI Coach siz tanlagan hayotiy maqsad va tibbiy holatga mos 55 ta maxsus algoritmni ishga tushiradi.</p>
+            <p class="subtitle">Istalgan maqsad va tibbiy holatga mos 55 ta maxsus algoritmni ishga tushiring.</p>
             
             <div class="cyber-card">
                 <div class="form-element">
-                    <label>Ism Familiya / Taxallus</label>
+                    <label>Ism Familiya</label>
                     <input type="text" id="user-fullname" placeholder="Anvar Iskandari">
                 </div>
                 <div class="form-element">
-                    <label>Global Hayotiy Maqsad</label>
+                    <label>Asosiy Hayotiy Maqsad</label>
                     <select id="user-primary-goal">
                         <option value="diet">Ekstremal Ozish & Yog' Eritish</option>
                         <option value="bulk">Muskul Massasini Oshirish (Semirish)</option>
                         <option value="power">Mutloq Kuch Yig'ish (Powerlifting)</option>
-                        <option value="health">Kardio Salomatlik & Tonusni Tiklash</option>
+                        <option value="health">Kardio Salomatlik & Tiklanish</option>
                     </select>
                 </div>
-                <div style="display: flex; gap: 12px;">
+                <div style="display: flex; gap: 10px;">
                     <div class="form-element" style="flex: 1;">
                         <label>Vazn (kg)</label>
                         <input type="number" id="user-mass" placeholder="85">
@@ -378,7 +365,7 @@
                         <input type="number" id="user-target-mass" placeholder="72">
                     </div>
                 </div>
-                <div style="display: flex; gap: 12px;">
+                <div style="display: flex; gap: 10px;">
                     <div class="form-element" style="flex: 1;">
                         <label>Bo'y (sm)</label>
                         <input type="number" id="user-growth" placeholder="180">
@@ -391,37 +378,37 @@
                 <div class="form-element">
                     <label>Tibbiy Cheklovlar</label>
                     <select id="user-medical-condition">
-                        <option value="none">Sog'lom (Hech qanday cheklov yo'q)</option>
+                        <option value="none">Sog'lom (Cheklov yo'q)</option>
                         <option value="spine">Umurtqa churrasi / Bel og'rig'i</option>
                         <option value="joints">Tizza bo'g'imlari shikastlanishi</option>
-                        <option value="heart">Gipertoniya / Yurak tez urishi</option>
+                        <option value="heart">Gipertoniya / Yurak muammosi</option>
                     </select>
                 </div>
-                <button class="cyber-btn" onclick="initializeCyberPlatform()">Tizimni Ishga Tushirish</button>
+                <button class="cyber-btn" onclick="initializeCyberPlatform()">Matritsani Yuklash</button>
             </div>
         </div>
 
         <div id="view-routine" class="screen-view">
             <h2>Kun Tartibi Registri</h2>
-            <p class="subtitle">Vaqt intervallari bilan majburiy kun tartibingizni boshqaring. Bajarilgan har qanday amalni tasdiqlang.</p>
+            <p class="subtitle">Vaqt intervallari bilan rejalarni kiriting, o'chiring yoki tasdiqlang.</p>
             
             <div class="cyber-card">
-                <div style="display: flex; gap: 10px; margin-bottom: 12px;">
-                    <input type="text" id="routine-time-window" placeholder="07:30 - 07:35" style="flex: 1.5;">
-                    <input type="text" id="routine-action-desc" placeholder="Kiyinish va tayyorgarlik" style="flex: 2.5;">
+                <div style="display: flex; gap: 8px; margin-bottom: 10px;">
+                    <input type="text" id="routine-time-window" placeholder="07:30" style="flex: 1.2;">
+                    <input type="text" id="routine-action-desc" placeholder="Ertalabki dush" style="flex: 2.8;">
                 </div>
-                <button class="cyber-btn" style="padding: 12px; font-size:13px;" onclick="registerRoutineNode()">+ Yadroni Qo'shish</button>
+                <button class="cyber-btn" style="padding: 10px; font-size:12px;" onclick="registerRoutineNode()">+ Rejani Qo'shish</button>
             </div>
 
             <div id="routine-nodes-anchor"></div>
         </div>
 
         <div id="view-missions" class="screen-view">
-            <h2>AI Missiyalar Ombori</h2>
-            <p class="subtitle">Quyida siz uchun maxsus 55 ta turlicha yo'nalishga ega professional dasturlar joylashgan.</p>
+            <h2>AI Missiyalar (55 Variant)</h2>
+            <p class="subtitle">Siz uchun maxsus unikal mashq dasturlari ombori.</p>
 
             <div class="form-element">
-                <label>Faol Missiyani Tanlang (55 ta Variant)</label>
+                <label>Faol Missiyani Tanlang</label>
                 <select id="master-mission-index" onchange="recompileMissionViewer()"></select>
             </div>
 
@@ -441,7 +428,7 @@
                 <div class="ai-avatar-matrix">🤖</div>
                 <div class="ai-speech-bubble">
                     <h4>FitBurn AI Coach</h4>
-                    <p id="ai-coach-voice-output">Profil tahlil qilinmoqda. Missiyani tanlang, sizga individual yuklama ko'rsatkichlarini hisoblab beraman.</p>
+                    <p id="ai-coach-voice-output">Yuklanmoqda...</p>
                 </div>
             </div>
         </div>
@@ -460,139 +447,138 @@
 </div>
 
 <script>
-    // CORE GLOBAL STORAGE STATE
-    let globalUser = JSON.parse(localStorage.getItem('fbp_user')) || null;
-    let globalRoutine = JSON.parse(localStorage.getItem('fbp_routine')) || [
-        { time: "07:00 - 07:10", desc: "Uyg'onish va dush", completed: true },
-        { time: "07:30 - 07:35", desc: "Kiyinish va sumka yig'ish", completed: false }
+    // DATA LAYER & ENGINE STATE
+    let globalUser = JSON.parse(localStorage.getItem('fbu_user')) || null;
+    let globalRoutine = JSON.parse(localStorage.getItem('fbu_routine')) || [
+        { time: "07:00", desc: "Uyg'onish va kontrastli dush", completed: true },
+        { time: "07:30", desc: "Metabolik nonushta", completed: false }
     ];
-    let globalMissionState = JSON.parse(localStorage.getItem('fbp_mission_state')) || {};
+    let globalMissionState = JSON.parse(localStorage.getItem('fbu_mission_state')) || {};
 
-    // IMMUTABLE MATRIX: 55 PROFESSIONAL DISTINCT FITNESS & LIFE MISSIONS
+    // IMMUTABLE MATRIX - 55 DISTINCT MISSIONS WITH 20 SPECIFIC DRILLS (TOTAL 1100 ITEMS)
     const masterMissionMatrix = [
-        // 1-15: OZISH VA KARDIO (FAT LOSS & CARDIO FOCUS)
-        { id: 1, title: "1. Ekspress Jadal Yog' Eritish", type: "diet", drills: [
-            "Tredmilda Intervalli Yugurish", "Burpi Portlash Mashqi", "Alpinist (Mountain Climbers)", "Arqonda Tezkor Sakrash",
-            "Gantellar bilan Thruster", "Planka Jek (Plank Jacks)", "Baland Tizzalar bilan Yugurish", "Velosiped Ko'rinishidagi Press",
-            "Suvchilar Plankasi", "Yondan Qadam Tashlash (Skater)", "Gantel bilan Chuqur Squat", "Boks Soya Urushi (Shadow Boxing)",
-            "Yarim Cho'kkalab Sakrash", "Gorizontal Otjimanie", "Zinapoyaga Yugurib Chiqish", "Yondagi Statik Planka",
-            "Oyoqlarni Yotgan Holda Ko'tarish", "Kettlebell Sving Mashqi", "Aylanma Kardio Yurish", "To'liq Tana Cho'zilishi"
+        { id: 1, title: "1. Jadal Kardio va Lipoliz Portlashi", type: "diet", drills: [
+            "Tredmilda Intervalli Sprint (30s yugurish / 30s yurish)", "Burpi Portlash Mashqi (Maksimal intensivlikda)", "Alpinist (Mountain Climbers) tezkor harakat", "Arqonda Yuqori Tezlikda Sakrash (Double-Unders)",
+            "Gantellar bilan Thruster (Chuqur o'tirib tepaga ko'tarish)", "Planka Jek (Plank Jacks sakrash bilan)", "Baland Tizzalar bilan Joyida Sprint", "Velosiped Ko'rinishidagi Intensiv Press",
+            "Suvchilar Plankasi (Qo'llarni ketma-ket oldinga cho'zish)", "Yondan Qadam Tashlash (Skater Bounds)", "Gantel bilan Chuqur Goblet Squats", "Boks Soya Urushi (Shadow Boxing - og'irlik bilan)",
+            "Yarim Cho'kkalab Portlovchi Sakrash", "Gorizontal Otjimanie (Klassik Push-ups)", "Zinapoyaga Yugurib Chiqish va tushish", "Yondagi Statik Planka (O'ng tomon)",
+            "Oyoqlarni Yotgan Holda To'g'ri Ko'tarish", "Kettlebell Sving Mashqi (Chanoq portlashi)", "Aylanma Kardio Yurish (Tezkor tempda)", "To'liq Tana Muskullarini Cho'zilishi (Stretching)"
         ]},
-        { id: 2, title: "2. Qorin Qismidagi Vizseral Yog'larni Eritish", type: "diet", drills: [
-            "V-Simmon Press Burilishlari", "Planka Shassi Harakati", "Oyoqlarni Qaychi Shaklida Pirillatish", "Yotib Tizzalarni Ko'krakka Tortish",
-            "Gantel yordamida Ruscha Burilish", "Roll-out (Rolik bilan press)", "Osilib Oyoq Ko'tarish", "Gantelni Bir Qo'lda Yonga Tortish",
-            "Qorin bilan Yotib Oyoq-Qo'l Ko'tarish", "Qisqich Simmon Bukilish", "O'tirib Qoringa Tizza Urish", "Planka Holatidan Otjimaniega O'tish",
-            "Polda O'tirib Oyoq Aylantirish", "Tirsak-Tizza Diagonal Tekizish", "Yon tomonga Haqiqiy Bukilish", "Gantel bilan Cho'kkalash va Burilish",
-            "Oyoqlarni Vertikal Sakratish", "Statik Qorin Plankasi (Vakuum)", "Tredmilda 15 daraja Nishablikda Yurish", "Kobra Pozasida Cho'zilish"
+        { id: 2, title: "2. Qorin va Bel Qismidagi Yog'larni Bloklash", type: "diet", drills: [
+            "V-Simmon Press Burilishlari", "Planka Korpusni Oldinga-Orqaga Surish", "Oyoqlarni Qaychi Shaklida Gorizontal Pirillatish", "Yotib Tizzalarni Ko'krakka Jadal Tortish",
+            "Gantel yordamida Ruscha Burilish (Russian Twists)", "Ab-Roller (Rolik yordamida qorinni cho'zish)", "Turnikda Osilib Oyoqlarni Tizzadan Ko'tarish", "Gantelni Bir Qo'lda Yonga Egilib Tortish",
+            "Qorin bilan Yotib Oyoq-Qo'llarni Birga Ko'tarish", "Qisqich Simmon Qorin Bukilishi (V-Ups)", "O'tirib Qoringa Tixza Urish", "Planka Holatidan Qo'llarga Ko'tarilish",
+            "Polda O'tirib Oyoqlar bilan Aylana Chizish", "Tirsak-Tizza Diagonal Tekizish Crunches", "Yon tomonga Haqiqiy Bukilish (Oblique Crunches)", "Gantel bilan Cho'kkalash va Dinamik Burilish",
+            "Oyoqlarni Vertikal Holatda Yuqoriga Sakratish", "Statik Qorin Vakuum Mashqi (Och qoringa)", "Tredmilda 12 daraja Nishablikda Tezkor Yurish", "Kobra Pozasida Qorin Muskullarini Cho'zish"
         ]},
-        { id: 3, title: "3. To'piq va Son Qismidagi Sellyulitlarni Yo'qotish", type: "diet", drills: [
-            "Keng Plie Squat", "Gantellar bilan Revers Lunges", "Yonga Qadam Tashlash (Rezinka bilan)", "Glute Bridge (Yodda Chanoq Ko'tarish)",
-            "Donkey Kicks (Eshak tepishi)", "Yotgan Holda Oyoqni Yonga Ko'tarish", "Bolgarcha Split O'tirish", "Shtanga bilan Chuqur Squat",
-            "Oyoqlarni Trenajorda Yonga Ochish", "Gantel bilan Rumyncha Tyaga", "Sakrash bilan Squat", "Gantellar bilan Diagonal Lunges",
-            "Platformaga Bir Oyoqlab Chiqish", "Oyoqni Orqaga Rezinka bilan Tortish", "Statik Devorga Suyanish (Wall Sit)", "Oyoqlarni Trenajorda Bukish",
-            "Yengil Tempda Joyida Yugurish", "Glute Bridge Bitta Oyoqda", "Gantel bilan Qora Chayka Mashqi", "Katta Son Mushaklari Cho'zilishi"
+        { id: 3, title: "3. Son va Dumg'aza Sellyulit Tizimi", type: "diet", drills: [
+            "Keng Plie Squats (Oyoq uchlari yonga)", "Gantellar bilan Revers Lunges (Orqaga qadam)", "Yonga Qadam Tashlash (Fitness Rezinka bilan)", "Glute Bridge (Yotgan holda chanoq ko'tarish)",
+            "Donkey Kicks (Orqaga oyoq tepish)", "Yotgan Holda Oyoqni Yonga Maksimal Ko'tarish", "Bolgarcha Split Squats (Orqa oyoq stulda)", "Shtanga bilan Chuqur Klassik Squats",
+            "Oyoqlarni Trenajorda Yonga Kuch bilan Ochish", "Gantel bilan Rumyncha Tyaga (To'g'ri oyoqda)", "Sakrash bilan Bajariladigan Air Squats", "Gantellar bilan Diagonal Lunges (Orqaga kesishuvchi)",
+            "Platformaga Bir Oyoqlab Ketma-ket Chiqish", "Oyoqni Orqaga Krossover Simida Tortish", "Statik Devorga Suyanish (Wall Sit holding)", "Oyoqlarni Trenajorda O'tirib Bukish",
+            "Yengil Tempda Tizzani Baland Ko'tarmay Yugurish", "Glute Bridge (Bitta oyoqni osmonga ko'tarib)", "Gantel bilan Qora Chayka (Egilgan holda oyoq yonga)", "Katta Son va Chanoq Muskullari Cho'zilishi"
         ]},
-        { id: 4, title: "4. Uglevod Blokadasi (Metabolizmni Tezlashtirish)", type: "diet", drills: [
-            "Tabata Protokoli bo'yicha Burpi", "Gantel bilan Snatch", "Krossfit uslubidagi Otjimanie", "Medbolni Polga Kuch bilan Urish",
-            "Rezinka bilan Gorizontal Tortish", "Aylana bo'ylab Sakrashlar", "Zinasimon Yugurish", "Gantellar bilan Kombinatsiyalangan Lunges",
-            "Baland Sakrashlar", "Planka tirsakda oldinga-orqaga", "Gantel bilan Bir Qo'llab Tozalash", "Otjimanie + Tizza Ko'krakka",
-            "Skorostnoy Arqon Sakrash", "Qaychi Sakrashlar", "Medbol bilan O'tirib Turish", "Velosiped Simmon Tezkor Press",
-            "Gantel bilan Fermer Yurishi", "Gantellar bilan Yelkaga Maxovlar", "Eshkak Eshish Trenajori (Rowing)", "Ko'krak Qafasini Ochish Cho'zilishi"
+        { id: 4, title: "4. Uglevod Blokadasi & Tezkor Metabolizm", type: "diet", drills: [
+            "Tabata Protokoli bo'yicha Maksimal Burpi", "Gantel bilan Snatch (Yerdan tepaga portlash)", "Krossfit uslubidagi Otjimanie (Qo'llarni poldan uzib)", "Medbolni Polga Butun Kuch bilan Urish",
+            "Rezinka bilan Gorizontal Keng Tortish", "Aylana bo'ylab Sakrashlar (Agility Drills)", "Zinasimon Jadal Yugurish (Fast Feet)", "Gantellar bilan Kombinatsiyalangan Lunges Walk",
+            "Joydan Turib Balandlikka Sakrash", "Planka Tirsakda Oldinga va Orqaga Surilish", "Gantel bilan Bir Qo'llab Tozalash (Clean)", "Otjimanie + Har safar Tizzani Ko'krakka Urish",
+            "Skorostnoy Arqon Sakrash (Maksimal Tezlik)", "Qaychi Sakrashlar (Scissors Jumps)", "Medbolni Ko'krakda Ushlab Squats", "Velosiped Simmon Tezkor Press (30 soniya)",
+            "Gantel bilan Fermer Yurishi (Og'ir yuk bilan)", "Gantellar bilan Yelkaga Maxovlar (Yonga ochish)", "Eshkak Eshish Trenajori (Rowing Machine 500m)", "Ko'krak Qafasi va O'pkani Kengaytirish Cho'zilishi"
         ]},
-        { id: 5, title: "5. HIIT Kardio Master (Maximum Kaloriya Yo'qotish)", type: "diet", drills: [
-            "High-Knee Sprint", "Burpee Tuck Jumps", "Mountain Climbers Jadal", "Jumping Lunges",
-            "Push-up to Jack", "Bear Crawl (Ayiq yurishi)", "Crab Walk (Qisqichbaqa yurishi)", "Skater Jumps",
-            "Star Jumps (Yulduzcha sakrash)", "Plank Shoulder Taps", "Dumbbell Renegade Row", "Medbol Slams",
-            "Kettlebell American Swings", "Zina Sprinti", "Shadow Boxing Jadal", "Side Plank Crunch",
-            "Leg Raises Tezkor", "Air Squats Maksimal Temp", "Assault Bike (Velotrenajor)", "Full Body Release"
+        { id: 5, title: "5. HIIT Kardio Master Dasturi", type: "diet", drills: [
+            "High-Knee Sprint (Baland tizza bilan yugurish)", "Burpee Tuck Jumps (Burpidan keyin tizzani qoringa urish)", "Mountain Climbers Jadal Tempda", "Jumping Lunges (Sakrab qadam tashlash)",
+            "Push-up to Jack (Otjimanie va oyoqni ochish)", "Bear Crawl (Ayiq yurishi polda)", "Crab Walk (Qisqichbaqa yurishi)", "Skater Jumps (Yon tomonga sakrashlar)",
+            "Star Jumps (Yulduzcha bo'lib sakrash)", "Plank Shoulder Taps (Yelkaga urish)", "Dumbbell Renegade Row (Plankada og'irlik tortish)", "Medbol Slams Portlash",
+            "Kettlebell American Swings (Girani bosh ustiga)", "Zina Boylab Yuqoriga Sprint", "Shadow Boxing Jadal Raund", "Side Plank Crunch (Yondagi press)",
+            "Leg Raises Tezkor Ko'tarish", "Air Squats Maksimal Tempda", "Assault Bike (Velotrenajor sprint)", "Full Body Release Cho'zilish"
         ]},
         { id: 6, title: "6. Detoks Kardio (Yengil Tana Rejimi)", type: "diet", drills: [
-            "Yengil Kardio Yurish", "Air Squats Sekin", "Qo'llarni Aylantirish", "Yengil Cho'zilish",
-            "Devorga tayanib otjimanie", "Glute Bridge Vaznsiz", "Qorin Vakuum Mashqi", "Yotgan holda oyoq aylantirish",
-            "Yelkalar aylanishi", "Mushuk Pozasi Cho'zilishi", "Yengil Velotrenajor", "Yonboshlab oyoq ko'tarish",
-            "Qo'llarni yonga cho'zish", "Nafas mashqlari", "Yengil chayqalishlar", "Tana buralishi",
-            "Oyoq uchida turish", "Kobra holati", "Yengil piyoda yurish", "Meditatsiya cho'zilishi"
+            "Yengil Kardio Yurish Tredmilda", "Air Squats Sekin va Kontrolli", "Qo'llarni Keng Aylantirish", "Yengil Bo'g'inlar Cho'zilishi",
+            "Devorga Tayanib Otjimanie Qilish", "Glute Bridge Vaznsiz O'rtacha", "Qorin Vakuum Mashqi (3 set)", "Yotgan Holda Oyoq Aylantirish",
+            "Yelkalar Aylanishi Revers", "Mushuk Pozasi Cho'zilishi (Cat-Cow)", "Yengil Velotrenajor (Qarshiliksiz)", "Yonboshlab Oyoq Ko'tarish",
+            "Qo'llarni Yonga Cho'zish Statika", "Chuqur Diafragma Nafas Mashqlari", "Yengil Chayqalishlar (Kovrikda)", "Tana Korpusini Buralishi",
+            "Oyoq Uchida Turish (Boldir uchun)", "Kobra Holatida Belni Bo'shashtirish", "Yengil Piyoda Yurish Ochiq Havoda", "Meditatsiya va Nafasni Tiklash"
         ]},
-        { id: 7, title: "7. Ertalabki Metobolik Portlash (Metabolism Ignition)", type: "diet", drills: [
-            "Uyg'onish Squats", "Jumping Jacks O'rtacha", "Arm Circles", "Incline Pushups",
-            "Bird-Dog Mashqi", "Glute Bridge", "Plank Statik 30s", "Knee Strikes",
-            "Butt Kicks", "Side Lunges", "Abdominal Crunches", "Superman Mashqi",
-            "Calf Raises", "Chest Openers", "Triceps Dips stulda", "Ankle Circles",
-            "Tezkor qadamlar", "Yonbosh cho'zilish", "Chaqaloq pozasi", "Chuqur nafas mashqi"
+        { id: 7, title: "7. Ertalabki Metobolik Portlash", type: "diet", drills: [
+            "Uyg'onish Squats Vaznsiz", "Jumping Jacks O'rtacha Tempda", "Arm Circles (Qo'llarni aylantirish)", "Incline Pushups (Stulga tayanib)",
+            "Bird-Dog Mashqi (Muvozanat)", "Glute Bridge Statik ushlab turish", "Plank Statik 30 soniya", "Knee Strikes (Tizza urishlari)",
+            "Butt Kicks (Oyoqni orqaga urish)", "Side Lunges (Yonga qadam)", "Abdominal Crunches (Yengil press)", "Superman Mashqi (Bel uchun)",
+            "Calf Raises Bodyweight", "Chest Openers (Ko'krak ochish)", "Triceps Dips Stulda", "Ankle Circles (To'piq aylanishi)",
+            "Tezkor Qadamlar Joyida", "Yonbosh Mushaklar Cho'zilishi", "Chaqaloq Pozasi (Child's Pose)", "Chuqur Nafas Mashqi (3 marta)"
         ]},
-        { id: 8, title: "8. Uglevodlarni Yoqish (Glyukogen Depo Bo'shatish)", type: "diet", drills: [
-            "Thrusters Gantel bilan", "Burpee Jadal", "Shtanga Squat", "Pullups",
-            "Pushups Jadal", "Deadlift O'rtacha", "Kettlebell Swings", "Leg Press",
-            "Lat Pulldown", "Seated Row", "Overhead Press", "Dumbbell Lunge",
-            "Hanging Leg Raise", "Plank Reach", "Hammer Curls", "Skull Crushers",
-            "Calf Raises Og'irlik bilan", "Russian Twists", "Rowing Machine Sprint", "Stretching"
+        { id: 8, title: "8. Uglevodlarni Yoqish (Glyukogen Depo)", type: "diet", drills: [
+            "Thrusters Gantel bilan Og'ir", "Burpee Jadal Davomli", "Shtanga bilan Orqada Squat", "Turnikda To'g'ri Tortilish",
+            "Pushups Jadal Tempda", "Deadlift O'rtacha Og'irlikda", "Kettlebell Swings (Gira uchirish)", "Leg Press Trenajorda",
+            "Lat Pulldown Blokni Ko'krakka", "Seated Row Blokni Belga", "Overhead Press (Yelkaga press)", "Dumbbell Lunge Walk",
+            "Hanging Leg Raise (Osilib oyoq ko'tarish)", "Plank Reach (Plankada qo'l cho'zish)", "Hammer Curls (Biceps)", "Skull Crushers (Triceps)",
+            "Calf Raises Og'irlik bilan", "Russian Twists Og'ir Medbol bilan", "Rowing Machine Sprint 300m", "To'liq Mushaklar Cho'zilishi"
         ]},
-        { id: 9, title: "9. Tungi Kaloriya Destroyer (Kechki Dastur)", type: "diet", drills: [
-            "Yengil Tredmil", "Air Squats Control", "Wall Pushups", "Glute Bridge",
-            "Dead Bug Mashqi", "Plank Touch", "Side Plank", "Bird-Dog",
-            "Cat-Cow Stretch", "Seated Forward Bend", "Childs Pose", "Legs Up Wall",
-            "Spinal Twist", "Butterfly Stretch", "Shoulder Stretch", "Wrist Rollers",
-            "Neck Mobility", "Deep Breathing", "Progressive Relaxation", "Sleep Prep Stretch"
+        { id: 9, title: "9. Tungi Kaloriya Destroyer (Kechki)", type: "diet", drills: [
+            "Yengil Tredmil Yurish", "Air Squats Kontrolli Sekin", "Wall Pushups (Devorga)", "Glute Bridge Sekin",
+            "Dead Bug Mashqi (Nafas bilan)", "Plank Touch (Yelkaga asta teginish)", "Side Plank Izometrik", "Bird-Dog (Sekin fiksatsiya)",
+            "Cat-Cow Stretch Smooth", "Seated Forward Bend", "Childs Pose Relaks", "Legs Up Wall (Oyoqni devorga qo'yish)",
+            "Spinal Twist Kovrikda", "Butterfly Stretch (Kapalak)", "Shoulder Stretch (Yelka cho'zish)", "Wrist Rollers (Bilak)",
+            "Neck Mobility (Bo'yin sekin)", "Deep Breathing (Diafragma)", "Progressive Muscle Relaxation", "Sleep Prep Stretch (Uxlatuvchi cho'zilish)"
         ]},
-        { id: 10, title: "10. Yurak Chidamliligi (Venera Kardio)", type: "diet", drills: [
-            "Steady State Jogging", "Cycling O'rtacha", "Elliptical Trainer", "Rowing Continuous",
-            "Stair Climber Pace", "Jumping Jacks Kontrolli", "Step Aerobics", "Shadow Boxing Steady",
-            "Mountain Climbers O'rtacha", "Burpee Without Jump", "Air Squats Continuous", "Walking Lunges",
-            "Plank Hold Dynamic", "High Knees Low Impact", "Butt Kicks Steady", "Skipping Light",
-            "Speed Bag Punching", "Side Shuffles", "Fast Walking", "Cool Down Stretch"
+        { id: 10, title: "10. Yurak Chidamliligi (Kardio Vaskulyar)", type: "diet", drills: [
+            "Steady State Jogging (Yugurish)", "Cycling O'rtacha Qarshilikda", "Elliptical Trainer (10 daqiqa)", "Rowing Continuous (Eshkak esish)",
+            "Stair Climber Kontrolli Pace", "Jumping Jacks Kontrolli", "Step Aerobics Harakatlari", "Shadow Boxing Barqaror Temp",
+            "Mountain Climbers O'rtacha Sekin", "Burpee Without Jump (Sakrashsiz)", "Air Squats To'xtovsiz", "Walking Lunges (Gantelsiz)",
+            "Plank Hold Dynamic (Keng-tor)", "High Knees Low Impact", "Butt Kicks Barqaror", "Skipping Light (Arqonsiz sakrash)",
+            "Speed Bag Punching (Tezkor nok)", "Side Shuffles (Yonga qadamlar)", "Fast Walking Tredmilda", "Cool Down Stretch (Yurakni tinchlantirish)"
         ]},
-        { id: 11, title: "11. Kam Uglevodli Kun Dasturi (Ketogenik Fokus)", type: "diet", drills: [
-            "Heavy Squat Low Reps", "Deadlift Low Reps", "Bench Press Low Reps", "Overhead Press",
-            "Barbell Row", "Weighted Dips", "Weighted Pullups", "Romanian Deadlift",
-            "Incline Dumbbell Press", "Dumbbell Lateral Raise", "Rear Delt Fly", "Barbell Bicep Curl",
-            "Triceps Pushdown", "Hanging Crunch", "Plank Weighted", "Calf Raises Heavy",
-            "Farmers Walk", "Leg Press Heavy", "Close Grip Bench", "Deep Muscle Foam Roll"
+        { id: 11, title: "11. Keto-Fokus (Kam Uglevodli Shok)", type: "diet", drills: [
+            "Heavy Squat Low Reps (Og'ir squat)", "Deadlift Low Reps (Og'ir tortish)", "Bench Press Low Reps", "Overhead Press Shtanga",
+            "Barbell Row (Belga tortish)", "Weighted Dips (Brus vazn bilan)", "Weighted Pullups (Turnik vazn bilan)", "Romanian Deadlift Heavy",
+            "Incline Dumbbell Press", "Dumbbell Lateral Raise", "Rear Delt Fly (Orqa elka)", "Barbell Bicep Curl",
+            "Triceps Pushdown Blokda", "Hanging Crunch", "Plank Weighted (Og'irlik bilan)", "Calf Raises Heavy",
+            "Farmers Walk Heavy", "Leg Press Heavy Weight", "Close Grip Bench Press", "Deep Muscle Foam Roller"
         ]},
-        { id: 12, title: "12. Shakar Kechishi (Anti-Sugar Metabolism)", type: "diet", drills: [
-            "Sprint Intervalli", "Kettlebell Clean and Press", "Medbol Choti Urish", "Burpee over Bar",
-            "Thrusters Jadal", "Box Jumps", "Battle Ropes", "Pullups Dynamic",
-            "Toes to Bar", "Push Jumps", "Dumbbell Snatch Alternating", "Lunges Jump",
-            "Plank Dynamic Walk", "Bicycle Crunch Fast", "Russian Twist Heavy", "Superman Hold",
-            "Leg Press Explosive", "Sled Push", "Rowing Machine Jadal", "Full Stretch Reset"
+        { id: 12, title: "12. Shakar Kechishi (Anti-Sugar Engine)", type: "diet", drills: [
+            "Sprint Intervalli Tredmilda", "Kettlebell Clean and Press", "Medbol Choti Urish Portlash", "Burpee over Bar (Shtangadan sakrab)",
+            "Thrusters Jadal Tempda", "Box Jumps (Qutiga sakrash)", "Battle Ropes (Og'ir arqonlar)", "Pullups Dynamic (Tezkor turnik)",
+            "Toes to Bar (Oyoqni turnikka)", "Push Jumps (Shtanga itarish)", "Dumbbell Snatch Alternating", "Lunges Jump (Sakrab qadam)",
+            "Plank Dynamic Walk", "Bicycle Crunch Fast", "Russian Twist Heavy Gantel", "Superman Hold Statika",
+            "Leg Press Explosive", "Sled Push (Chanalarni itarish)", "Rowing Machine Jadal Sprint", "Full Stretch Reset (Qayta yuklash)"
         ]},
-        { id: 13, title: "13. Fasting Kardio (Och Qoringa Yoqish)", type: "diet", drills: [
-            "Low Intensity Walking", "Steady Cycling", "Elliptical Easy", "Mobility Drills",
-            "Bodyweight Squats Sekin", "Bird-Dog", "Dead Bug", "Glute Bridge",
-            "Wall Sit Light", "Calf Raises Bodyweight", "Arm Warmups", "Torso Twists",
-            "Cat-Cow", "Childs Pose", "Light Rowing", "Shoulder Rolls",
-            "Gentle Stretching", "Hamstring Stretch", "Quad Stretch", "Hydration Breathing"
+        { id: 13, title: "13. Fasting Kardio (Och Qoringa Lipoliz)", type: "diet", drills: [
+            "Low Intensity Walking (Yurish)", "Steady Cycling (Barqaror velo)", "Elliptical Easy Rejim", "Mobility Drills (Bo'g'inlar)",
+            "Bodyweight Squats Sekin", "Bird-Dog Balans", "Dead Bug Kontrol", "Glute Bridge Korreksiya",
+            "Wall Sit Light (Devorga)", "Calf Raises Bodyweight", "Arm Warmups", "Torso Twists (Burilishlar)",
+            "Cat-Cow (Uf tortish)", "Childs Pose (Tinchlanish)", "Light Rowing", "Shoulder Rolls",
+            "Gentle Stretching", "Hamstring Stretch", "Quad Stretch", "Hydration Breathing (Suv balansi nafas)"
         ]},
-        { id: 14, title: "14. Ofis Kaloriya Nazorati (O'tirib Ishlovchilar)", type: "diet", drills: [
-            "Chair Squats", "Desk Pushups", "Seated Leg Extensions", "Standing Calf Raises",
-            "Desk Planka", "Seated Twists", "Shoulder Shrugs Ofis", "Neck Stretches",
-            "Wrist Mobility", "Ankle Rolls Seated", "Doorway Chest Stretch", "Standing Side Bend",
-            "Seated Hamstring Stretch", "High Knees Standing", "Butt Kicks Standing", "Wall Sit Ofis",
-            "Arm Circles Standing", "Deep Diaphragm Breathing", "Piyoda Yurish Ofis", "Spine Decompression"
+        { id: 14, title: "14. Ofis Kaloriya Nazorati", type: "diet", drills: [
+            "Chair Squats (Stulga o'tirib)", "Desk Pushups (Stolga tayanib)", "Seated Leg Extensions Ofis", "Standing Calf Raises (Boldir)",
+            "Desk Planka (Stol ustida)", "Seated Twists (Stulda burilish)", "Shoulder Shrugs Ofis", "Neck Stretches (Bo'yin)",
+            "Wrist Mobility (Bilaklar)", "Ankle Rolls Seated", "Doorway Chest Stretch", "Standing Side Bend",
+            "Seated Hamstring Stretch", "High Knees Standing Sekin", "Butt Kicks Standing Sekin", "Wall Sit Ofis Rejim",
+            "Arm Circles Standing", "Deep Diaphragm Breathing", "Piyoda Yurish Ofis Atrofida", "Spine Decompression (Umurtqa yozish)"
         ]},
-        { id: 15, title: "15. Plyometrik Yog' Destroyer (Sakrash Fokus)", type: "diet", drills: [
-            "Box Jumps High", "Tuck Jumps", "Broad Jumps", "Lateral Bounds",
-            "Depth Jumps", "Squat Jumps", "Lunge Jumps", "Clapping Pushups",
-            "Burpee Box Jump", "Single Leg Hops", "Power Skips", "Ankle Hops",
-            "Medicine Ball Overhead Throw", "Plank Jacks Explosive", "Mountain Climbers Fast", "Double Under Jump Rope",
-            "Slam Ball", "Speed Skating Jumps", "Pop Squats", "Reactive Stretching"
+        { id: 15, title: "15. Plyometrik Yog' Destroyer", type: "diet", drills: [
+            "Box Jumps High (Baland qutiga)", "Tuck Jumps (Tizzani ko'krakka)", "Broad Jumps (Uzoqqa sakrash)", "Lateral Bounds (Yonga sakrash)",
+            "Depth Jumps (Plitkadan pastga)", "Squat Jumps Portlash", "Lunge Jumps (Navbatma-navbat)", "Clapping Pushups (Karsak bilan)",
+            "Burpee Box Jump Kombinatsiya", "Single Leg Hops (Bitta oyoqda)", "Power Skips (Kuchli qadamlar)", "Ankle Hops (To'piqda sakrash)",
+            "Medicine Ball Overhead Throw", "Plank Jacks Explosive", "Mountain Climbers Fast Sprint", "Double Under Jump Rope",
+            "Slam Ball (To'pni urish)", "Speed Skating Jumps", "Pop Squats Tezkor", "Reactive Stretching (Reaktiv cho'zilish)"
         ]},
 
-        // 16-30: MUSKUL VA SEMIRISH (MUSCLE GAIN & BULK FOCUS)
+        // 16-30: MUSKUL VA SEMIRISH
         { id: 16, title: "16. Gipertrofiya: Sparta Ko'krak Mushaklari", type: "bulk", drills: [
             "Shtanga bilan Gorizontal Bench Press", "Gantellar bilan Nishablikdagi Press", "Brusda Og'irlik bilan Otjimanie", "Krossoverda Qo'llarni Uchrashtirish",
             "Polda Otjimanie (Keng Qo'lda)", "Gantellar bilan Gorizontal Fly (Ochish)", "Shtanga bilan Tor Qo'lda Press", "Smit Trenajorida Incline Press",
             "Pullover Gantel bilan", "Krossover Pastdan Yuqoriga", "Otjimanie Plitka ustida", "Gantel bilan Svend Press",
-            "Gantellarni Eksponentsial tushirish", "Krossover O'rtacha Balandlikda", "Otjimanie Brusda Korpus Oldinga", "Shtanga Incline Kam Reps",
+            "Gantellarni Eksponentsial tushirish", "Krossover O'tacha Balandlikda", "Otjimanie Brusda Korpus Oldinga", "Shtanga Incline Kam Reps",
             "Gantellar Gorizontal Drop-set", "Otjimanie Tizrada Maksimal", "Krossover Yuqoridan Pastga", "Ko'krak Mushaklari Statik Cho'zilishi"
         ]},
-        { id: 17, title: "17. Temir Orqa Korpus (Keng Orqa va Bel)", type: "bulk", drills: [
+        { id: 17, title: "17. Temir Orqa Korpus (Keng Orqa)", type: "bulk", drills: [
             "Turnikda Keng Qo'llab Tortilish", "Deadlift (Klassik Shtanga tortish)", "Shtangani Egilgan Holda Belga Tortish", "Blokni O'tirib Belga Tortish",
             "Gantelni Bir Qo'llab Belga Tortish", "T-Grif Trenajorida Tortish", "Giperekstenziya (Og'irlik bilan)", "Blokni Ko'krakka Keng Tortish",
             "Turnikda Parallel Qo'llab Tortilish", "Gantellarni Egilgan Holda Yonga Ochish", "Pullover Blok Simi bilan", "Shtanga Gud-Morning Mashqi",
             "Blokni Iyakka To'g'ri Tortish", "Smitt Mashqida Belga Tortish", "Turnik teskari ushlam", "Gantel bilan Shrugs (Elka qisish)",
-            "Shtanga Shrugs Orqada", "Giperekstenziya Statik Statika", "Blok Keng Orqa Drop", "Uchinchi Umurtqa Relaksi"
+            "Shtanga Shrugs Orqada", "Giperekstenziya Statik Usulda", "Blok Keng Orqa Drop", "Uchinchi Umurtqa Relaksi"
         ]},
-        { id: 18, title: "18. Titan Oyoqlar (Kvadriceps va Biceps Femoris)", type: "bulk", drills: [
+        { id: 18, title: "18. Titan Oyoqlar (Kvadriceps va Biceps)", type: "bulk", drills: [
             "Shtanga bilan Orqada Squat", "Leg Press (Trenajorda Oyoq Pressi)", "Gantellar bilan Bolgarcha O'tirish", "Oyoqlarni Trenajorda To'g'rilash",
             "Oyoqlarni Yotgan Holda Bukish", "Shtanga bilan Oldinda Squat (Front)", "Xak-Squat Trenajorida O'tirish", "Gantellar bilan Yurib Lunges",
             "Rumyncha Shtanga Tortish", "Oyoq Uchlarida Turish (Calf Heavy)", "Goblet Squat Gantel bilan", "Oyoq Uchlarida O'tirib Turish",
@@ -606,77 +592,77 @@
             "Gantel Oldinga Drop", "Bus rulini burish (Gantel bilan)", "Krossover Bir Qo'llab Yonga", "Orqa Delta Pec-Deck",
             "Gantellar O'tirib Press Drop", "Yelkalar Oldi Statika", "Krossover Orqa Delta Keng", "Yelka Bo'g'imlari Dinamik Cho'zilishi"
         ]},
-        { id: 20, title: "20. Anabolik Armiya (Biceps va Triceps Gipertrofiyasi)", type: "bulk", drills: [
+        { id: 20, title: "20. Anabolik Armiya (Qo'l Muskullari)", type: "bulk", drills: [
             "Biceps uchun Shtanga Ko'tarish (To'g'ri Grif)", "Triceps Frantsuzcha Press (EZ Grif)", "Biceps Gantel Skott Skameykasida", "Triceps Blokda Arqon bilan Pushdown",
             "Gantellar Molot (Hammer Curls)", "Brusda Otjimanie Tor Qo'lda", "Biceps Gantel bilan Suprotsiya", "Teskari Otjimanie Stuldan",
             "Biceps uchun Teskari Ushlamda Shtanga", "Triceps Gantel Bosh Orqasidan", "Krossover Biceps Konsetratsiya", "Triceps Bir Qo'llab Blokda",
             "Biceps Molot Drop-set", "Triceps Frantsuzcha Drop", "Shtanga Biceps Drop", "Triceps Arqon Pushdown Drop",
             "Krossover Biceps Double", "Tor Qo'llab Otjimanie Polda", "Biceps Skott Drop", "Qo'l Mushaklari To'liq Cho'zilishi"
         ]},
-        { id: 21, title: "21. Mass-Gain Alfa (Umumiy Og'irlik Qo'shish)", type: "bulk", drills: [
-            "Heavy Barbell Squat", "Klassik Deadlift", "Bench Press Heavy", "Overhead Press Heavy",
+        { id: 21, title: "21. Mass-Gain Alfa (Vazn Qo'shish)", type: "bulk", drills: [
+            "Heavy Barbell Squat", "Klassik Deadlift Og'ir", "Bench Press Heavy", "Overhead Press Heavy",
             "Barbell Rows Heavy", "Weighted Pullups", "Weighted Dips", "Leg Press High Weight",
             "Romanian Deadlift", "Dumbbell Incline Press", "Close Grip Bench Press", "Barbell Cheat Curls",
             "EZ Bar Skull Crushers", "Seated Cable Rows", "Dumbbell Shoulder Press", "Calf Raises Standing Heavy",
-            "Hanging Leg Raises", "Farmers Walk Heavy", "Cable Pushdowns Heavy", "Foam Roller Full Body"
+            "Hanging Leg Raises", "Farmers Walk Heavy", "Cable Pushdowns Heavy", "Foam Roller Full Body Matrix"
         ]},
-        { id: 22, title: "22. Estetik V-Shakli (Keng Orqa & Tor Bel)", type: "bulk", drills: [
-            "Wide Grip Pullups", "Lat Pulldown Behind Neck", "Straight Arm Pulldown", "Barbell Row Underhand",
-            "One Arm Dumbbell Row", "Seated Row Wide Grip", "T-Bar Row Wide", "Rack Pulls",
+        { id: 22, title: "22. Estetik V-Shakli (Keng Yelka / Tor Bel)", type: "bulk", drills: [
+            "Wide Grip Pullups (Keng turnik)", "Lat Pulldown Behind Neck", "Straight Arm Pulldown", "Barbell Row Underhand",
+            "One Arm Dumbbell Row", "Seated Row Wide Grip", "T-Bar Row Wide", "Rack Pulls (Yarim o'lik tortish)",
             "Dumbbell Lateral Raise Heavy", "Cable Lateral Raise", "Rear Delt Dumbbell Fly", "Machine Rear Delt",
             "Hanging Straight Leg Raise", "Plank Dynamic Side", "Vacuum Exercise Hold", "Dumbbell Shrugs Control",
             "Pullups Medium Grip", "Lat Pulldown V-Bar", "Face Pulls Krossover", "Latissimus Dorsi Stretch"
         ]},
         { id: 23, title: "23. Trapetsiya va Bo'yin Monstri", type: "bulk", drills: [
             "Barbell Shrugs Front", "Barbell Shrugs Behind Back", "Dumbbell Shrugs Seated", "Smith Machine Shrugs",
-            "Cable Shrugs", "Upright Row Close Grip", "Face Pulls High Angle", "Dumbbell Lyying Rear Delt Row",
-            "Prone Neck Extension", "Prone Neck Flexion", "Lateral Neck Resistance", "Clean Pulls",
+            "Cable Shrugs Heavy", "Upright Row Close Grip", "Face Pulls High Angle", "Dumbbell Lying Rear Delt Row",
+            "Prone Neck Extension", "Prone Neck Flexion", "Lateral Neck Resistance", "Clean Pulls (Shtanga ko'tarish)",
             "Heavy Deadlift Hold", "Farmers Walk Extended", "Overhead Carry Heavy", "Snatch Grip Shrugs",
             "Dumbbell Shrugs Rotation", "Krossover Trapetsiya Fly", "Barbell Shrugs Drop-set", "Neck Trapezius Release"
         ]},
-        { id: 24, title: "24. Po'lat Bilaklar va Grip Strength", type: "bulk", drills: [
-            "Barbell Wrist Curl", "Barbell Reverse Wrist Curl", "Dumbbell Wrist Curl Seated", "Dumbbell Reverse Wrist Curl",
-            "Behind Back Barbell Wrist Curl", "Wrist Roller Device", "Reverse Grip Barbell Curl", "Hammer Curls Slow",
-            "Farmers Walk Plate Pinch", "Deadlift Static Hold", "Towel Pullups", "Hand Gripper Maximum Squeeze",
+        { id: 24, title: "24. Po'tal Bilaklar (Fermer Panjasi)", type: "bulk", drills: [
+            "Barbell Wrist Curl (Bilak bukish)", "Barbell Reverse Wrist Curl", "Dumbbell Wrist Curl Seated", "Dumbbell Reverse Wrist Curl",
+            "Behind Back Barbell Wrist Curl", "Wrist Roller Device (Rolik)", "Reverse Grip Barbell Curl", "Hammer Curls Slow",
+            "Farmers Walk Plate Pinch", "Deadlift Static Hold", "Towel Pullups (Sochiqda turnik)", "Hand Gripper Maximum Squeeze",
             "Finger Walk on Weight Plates", "Dumbbell Rotation Wrist", "Cable Wrist Curls", "Reverse Grip Cable Curl",
-            "Static Hang on Bar", "Dumbbell Farmers Walk Heavy", "Barbell Wrist Curl Drop", "Forearm Flexor Stretch"
+            "Static Hang on Bar (Turnikda osilish)", "Dumbbell Farmers Walk Heavy", "Barbell Wrist Curl Drop", "Forearm Flexor Stretch"
         ]},
-        { id: 25, title: "25. Ko'krak Ichki va Tashqi Kesimi", type: "bulk", drills: [
-            "Incline Dumbbell Fly", "Flat Dumbbell Fly", "Decline Dumbbell Press", "Cable Crossover Mid Height",
+        { id: 25, title: "25. Ko'krak Ichki va Tashqi Chiziqlari", type: "bulk", drills: [
+            "Incline Dumbbell Fly (Nishablikda)", "Flat Dumbbell Fly (Gorizontal)", "Decline Dumbbell Press", "Cable Crossover Mid Height",
             "Cable Crossover Low to High", "Cable Crossover High to Low", "Pec Deck Fly Machine", "Svend Press Plate",
-            "Incline Barbell Press Tor Ushtlam", "Landmine Press One Arm", "Dips Wide Grip Weighted", "Pushups Diamond",
+            "Incline Barbell Press Tor Ushtlam", "Landmine Press One Arm", "Dips Wide Grip Weighted", "Pushups Diamond (Olmali otjimanie)",
             "Pushups Incline Deficit", "Dumbbell Pullover Heavy", "Smith Machine Decline Press", "Krossover Cross Press",
             "Flat Dumbbell Press Twist", "Incline Dumbbell Fly Drop", "Pec Deck Fly Drop", "Pectoral Fascia Stretch"
         ]},
-        { id: 26, title: "26. Orqa Son va Dumg'aza Ajratish", type: "bulk", drills: [
-            "Romanian Deadlift Heavy", "Lying Leg Curls", "Seated Leg Curls", "Standing Leg Curl Machine",
-            "Good Mornings Barbell", "Sumo Squat Heavy", "Glute Ham Raise", "Barbell Hip Thrusts Heavy",
+        { id: 26, title: "26. Orqa Son va Gluteal Ajratish", type: "bulk", drills: [
+            "Romanian Deadlift Heavy", "Lying Leg Curls (Yotib oyoq bukish)", "Seated Leg Curls (O'tirib)", "Standing Leg Curl Machine",
+            "Good Mornings Barbell", "Sumo Squat Heavy", "Glute Ham Raise", "Barbell Hip Thrusts Heavy (Dumba)",
             "Cable Pull Throughs", "Dumbbell Romanian Deadlift", "Deficit Deadlift", "Glute Kickbacks Cable",
             "Abductor Machine Heavy", "Stiff Leg Deadlift", "Walking Lunges Heavy Gantel", "Bulgarian Split Squat Glute Focus",
             "Leg Curls Drop-set", "Hip Thrust Hold 10s", "Sumo Deadlift", "Hamstring Foam Rolling"
         ]},
-        { id: 27, title: "27. Yosh Bodibilder Maktabi (Dastlabki Baza)", type: "bulk", drills: [
-            "Goblet Squat", "Pushups Bodyweight", "Assisted Pullups", "Dumbbell Bench Press",
+        { id: 27, title: "27. Yosh Bodibilder Maktabi (Baza)", type: "bulk", drills: [
+            "Goblet Squat Perfect", "Pushups Bodyweight", "Assisted Pullups (Rezinkada)", "Dumbbell Bench Press",
             "Dumbbell Rows Two Arms", "Seated Dumbbell Shoulder Press", "Lat Pulldown Front", "Back Extension Bodyweight",
             "Dumbbell Bicep Curls", "Triceps Pushdown Machine", "Leg Press Light", "Lying Leg Curls Light",
             "Standing Calf Raises Light", "Abdominal Crunch", "Plank Bodyweight 45s", "Dumbbell Lateral Raise Light",
             "Machine Chest Press", "Machine Seated Row", "Air Squats Perfect Form", "Full Body Static Stretching"
         ]},
-        { id: 28, title: "28. Quvvat va Zichlik (Power-Bulk Simbiyoz)", type: "bulk", drills: [
-            "Squat 5x5 Heavy", "Bench Press 5x5 Heavy", "Deadlift 3x5 Heavy", "Overhead Press 5x5",
+        { id: 28, title: "28. Quvvat va Zichlik (Power-Bulk)", type: "bulk", drills: [
+            "Squat 5x5 Heavy Weights", "Bench Press 5x5 Heavy", "Deadlift 3x5 Heavy", "Overhead Press 5x5",
             "Barbell Row 5x5", "Weighted Pullups 5x5", "Weighted Dips 5x5", "Incline Bench Press Heavy",
             "Rack Pulls Heavy", "Leg Press Maximum", "Romanian Deadlift Heavy", "Close Grip Bench Heavy",
             "Barbell Bicep Curls Heavy", "Dumbbell Lateral Raise Heavy", "Hanging Leg Raise Control", "Farmers Walk Maximum",
             "Sled Push Heavy", "Kettlebell Swings Heavy", "Smit Machine Shrugs Heavy", "Deep Tissue Foam Rolling"
         ]},
-        { id: 29, title: "29. Kamchiliklarni To'ldirish (Symmetry & Proportion)", type: "bulk", drills: [
-            "Incline Dumbbell Press Left/Right Isolated", "One Arm Lat Pulldown", "Dumbbell Lateral Raise Strict Form", "Rear Delt Cable Fly",
-            "Concentration Bicep Curl", "One Arm Triceps Extension Cable", "Bulgarian Split Squat Unilateral", "Single Leg Press",
+        { id: 29, title: "29. Proportsiya va Simmetriya Korreksiyasi", type: "bulk", drills: [
+            "Incline Dumbbell Press Isolated", "One Arm Lat Pulldown (Bir qo'llab)", "Dumbbell Lateral Raise Strict Form", "Rear Delt Cable Fly",
+            "Concentration Bicep Curl", "One Arm Triceps Extension Cable", "Bulgarian Split Squat Unilateral", "Single Leg Press (Bitta oyoqda)",
             "Lying Single Leg Curl", "Standing Single Calf Raise", "Cable Crossover One Arm", "Dumbbell Row One Arm Strict",
             "Arnold Press One Arm", "Preacher Curl One Arm", "Triceps Kickback Dumbbell", "Hanging Leg Raise Twist",
             "Woodchopper Cable", "Plank Side Dynamic", "Superman Diagonal", "Full Body Symmetry Assessment Stretch"
         ]},
-        { id: 30, title: "30. Eksponent Drop-Set (Tana Mushaklarini Shoklash)", type: "bulk", drills: [
+        { id: 30, title: "30. Eksponent Drop-Set (Mushak Shoki)", type: "bulk", drills: [
             "Bench Press Drop-set", "Barbell Row Drop-set", "Leg Press Drop-set", "Dumbbell Shoulder Press Drop-set",
             "Lat Pulldown Drop-set", "Leg Extension Drop-set", "Leg Curl Drop-set", "Bicep Barbell Curl Drop-set",
             "Triceps Pushdown Drop-set", "Dumbbell Lateral Raise Drop-set", "Chest Fly Machine Drop-set", "Seated Row Drop-set",
@@ -684,106 +670,106 @@
             "Cable Crossover Drop-set", "Hanging Crunch Maximum", "Pushups Bodyweight to Failure", "Total Muscle Exhaustion Cool Down"
         ]},
 
-        // 31-45: ABSOLUTE POWER / MUTLOQ KUCH (POWERLIFTING & STRENGTH FOCUS)
-        { id: 31, title: "31. Mutloq Kuch: Bench Press Maksimum", type: "power", drills: [
+        // 31-45: MUTLOQ KUCH
+        { id: 31, title: "31. Bench Press Rekord (Maksimal Kuch)", type: "power", drills: [
             "Shtanga Bench Press (1-3 Reps)", "Tor ushlamda Bench Press Heavy", "Dozator (Board Press)", "Otjimanie Brusda heavy",
             "Gantellar Gorizontal Press Heavy", "Zanjirlar bilan Bench Press", "Rezinkalar bilan Bench Press", "Incline Barbell Press Heavy",
             "Yotib gantellarni parallel sıqısh", "Floor Press (Polda yotib press)", "Otjimanie plitka og'irlik bilan", "Triceps kabel pushdown",
             "Overhead Press Heavy", "Arnold Press Heavy", "Face Pulls og'ir", "Gantel yonga ochish sekin",
             "Bench Press Max Hold (Statika)", "Teskari ushlamda press", "Brusda drop", "Ko'krak elka fiksatsiya"
         ]},
-        { id: 32, title: "32. Temir Oyoqlar: Heavy Squat poydevori", type: "power", drills: [
+        { id: 32, title: "32. Heavy Squat Poydevori (Oyoq Kuchi)", type: "power", drills: [
             "Shtanga Squat (1-3 Reps)", "Front Squat Heavy", "Box Squat (Qutiga o'tirish)", "Pause Squat (To'xtash bilan)",
             "Leg Press Og'ir", "Hack Squat Heavy", "Romanian Deadlift Heavy", "Good Morning heavy",
             "Bulgarcha Split Squat og'ir", "Oyoq to'g'rilash heavy", "Oyoq bukish og'ir", "Calf raises heavy",
             "Sled push maks", "Lunges heavy shtanga", "Goblet Squat heavy", "Planka og'irlik bilan",
             "Squat statik ushlab turish", "Oyoq press drop", "Calf raise drop", "Kvadriceps fiksatsiya"
         ]},
-        { id: 33, title: "33. Yer Tortish Kuchi: Deadlift Rekord", type: "power", drills: [
+        { id: 33, title: "33. Deadlift Rekord Tizimi", type: "power", drills: [
             "Klassik Deadlift (1-3 Reps)", "Sumo Deadlift Heavy", "Deficit Deadlift (Chuqurdan)", "Rack Pulls (Tizg'oqdan heavy)",
             "Egilgan holda shtanga belga heavy", "Gantel bir qo'llab og'ir", "T-bar row heavy", "Lat pulldown heavy",
             "Giperekstenziya og'ir shtanga bilan", "Shrugs shtanga og'ir", "Farmers walk maks og'irlik", "Static hang heavy bar",
             "Teskari ushlamda curl og'ir", "Wrist roller heavy", "Planka tirsakda og'ir", "Hanging leg raise og'ir",
             "Deadlift holding maks soniya", "Seated row heavy drop", "Shrugs drop", "Bel umurtqa relaksi"
         ]},
-        { id: 34, title: "34. Olimpik Kuch (Snatch & Clean & Jerk Kompleks)", type: "power", drills: [
+        { id: 34, title: "34. Olimpik Kuch (Snatch / Clean & Jerk)", type: "power", drills: [
             "Barbell Clean and Jerk", "Barbell Snatch", "Power Clean", "Hang Snatch",
             "Push Press Heavy", "Overhead Squat", "Front Squat Explosive", "Barbell High Pull",
             "Snatch Pull", "Clean Pull", "Split Jerk", "Thruster Heavy",
             "Kettlebell Snatch Heavy", "Medicine Ball Slam Heavy", "Box Jump High Explosive", "Plyometric Pushups",
             "Heavy Barbell Squat Fast", "Deadlift Speed Pulls", "Plank Dynamic", "Olympic Athlete Stretch"
         ]},
-        { id: 35, title: "35. Toshko'tarar Pahlavon (Strongman Baza)", type: "power", drills: [
-            "Farmers Walk Maximum", "Log Press / Heavy Shoulder Press", "Atlas Stones / Heavy Medball Lift", "Tire Flip / Og'ir Shinani Agdarish",
+        { id: 35, title: "35. Strongman Toshko'tarar Pahlavon", type: "power", drills: [
+            "Farmers Walk Maximum", "Log Press Heavy", "Atlas Stones Lift", "Tire Flip (Og'ir Shina)",
             "Sled Push Maximum", "Sled Pull Heavy", "Heavy Dumbbell Clean and Press", "Axle Bar Deadlift",
-            "Sandbag Carry Extended", "Suitcase Carry Heavy", "Yoke Walk / Og'irlikni Elkada Tashish", "Barbell Shrugs Heavy",
+            "Sandbag Carry Extended", "Suitcase Carry Heavy", "Yoke Walk Heavy", "Barbell Shrugs Heavy",
             "Rack Pulls Maximum", "Kettlebell Swings Heavy", "Dumbbell Wrist Curls Heavy", "Static Bar Hang Heavy",
             "Heavy Squat Low Reps", "Push Press Barbell", "Plank Weighted Heavy", "Strongman Muscle Recovery Stretch"
         ]},
-        { id: 36, title: "36. Jangovar Kuch (MMA va Kurash uchun Baza)", type: "power", drills: [
+        { id: 36, title: "36. Jangovar Kuch (MMA va Kurash)", type: "power", drills: [
             "Power Clean Explosive", "Thrusters Heavy", "Medicine Ball Rotational Slams", "Pullups Explosive",
             "Pushups Clapping", "Kettlebell Swings Heavy", "Deadlift Fast Pulls", "Barbell Landmine Twist",
             "Sled Sprint", "Battle Ropes Jadal", "Burpee Tuck Jump", "Bear Crawl Heavy",
             "Dumbbell Snatch Alternating", "Hanging Leg Raises Fast", "Russian Twist Heavy", "Turkish Get-Up Kettlebell",
             "Shadow Boxing Weighted", "Neck Resistance Training", "Plank Dynamic", "Fighter Mobility Stretch"
         ]},
-        { id: 37, title: "37. Portlovchi Kuch (Explosive Speed-Strength)", type: "power", drills: [
+        { id: 37, title: "37. Portlovchi Tezkor Quvvat", type: "power", drills: [
             "Squat Jumps Weighted", "Bench Press Dynamic Effort", "Speed Deadlift", "Box Jumps Maximum Height",
             "Clapping Pushups Deficit", "Medicine Ball Chest Pass Explosive", "Kettlebell Clean Fast", "Snatch High Pull",
             "Broad Jumps Extended", "Lateral Bounds Explosive", "Tuck Jumps Continuous", "Dumbbell Push Press Fast",
             "Pullups Inersiyali", "Cable Woodchoppers Fast", "Sprint Start Drills", "Plank Jacks Fast",
             "Mountain Climbers Sprint", "Burpee Explosive Max", "Assault Bike Sprint", "Elastic Muscle Stretch"
         ]},
-        { id: 38, title: "38. Pay va Bo'g'im Kuchaytirish (Iron Tendons)", type: "power", drills: [
+        { id: 38, title: "38. Pay va Bo'g'im Kuchaytirish", type: "power", drills: [
             "Isometric Squat Hold Heavy", "Isometric Bench Press Pin Hold", "Deadlift Isometric Pull against Pins", "Partial Rack Pulls Ultra Heavy",
             "Heavy Calf Raises Eccentric Slow", "Slow Eccentric Pullups", "Slow Eccentric Dips", "Wrist Curls Static Hold",
             "Reverse Wrist Curls Static", "Farmers Walk Plate Pinch Extended", "Static Hang Extended", "Plank Weighted Static",
             "Glute Ham Raise Slow", "Nordic Hamstring Curl Negatives", "Wall Sit Heavy Og'irlik", "Dumbbell Lateral Raise Hold",
             "Barbell Bicep Curl Isometric", "Triceps Pushdown Static Hold", "Superman Hold Extended", "Deep Joint Mobility Activation"
         ]},
-        { id: 39, title: "39. Harbiy To'liq Dastur (Tactical Strength & Conditioning)", type: "power", drills: [
-            "Ruck Marching / Og'ir Sumka bilan Yurish", "Pullups Strict Form", "Pushups Strict Form", "Barbell Clean and Press",
+        { id: 39, title: "39. Taktik Harbiy To'liq Kombonat", type: "power", drills: [
+            "Ruck Marching / Og'ir Sumka", "Pullups Strict Form", "Pushups Strict Form", "Barbell Clean and Press",
             "Deadlift Klassik", "Squat Perfect Form", "Farmers Walk Extended", "Sandbag Lift and Carry",
             "Hanging Leg Raises", "Dips Bodyweight", "Burpee Continuous", "Mountain Climbers Steady",
             "Bear Crawl Extended", "Kettlebell Goblet Squat", "Dumbbell Rows Two Arms", "Plank Hold 2 Minutes",
             "Sprint Intervalli", "Walking Lunges Extended", "Bodyweight Air Squats High Reps", "Tactical Cool Down Stretch"
         ]},
-        { id: 40, title: "40. Alfa-Grip (Mutloq Panja va Bilak Kuchi)", type: "power", drills: [
+        { id: 40, title: "40. Alfa-Panja Mutloq Kuch", type: "power", drills: [
             "Fat Gripz Barbell Curl", "Fat Gripz Deadlift Hold", "Plate Pinch Walk", "Towel Pullups Strict",
             "Captain of Crush Gripper Squeeze", "Barbell Wrist Curls Heavy", "Barbell Reverse Wrist Curls Heavy", "Wrist Roller Heavy Weights",
-            "Dumbbell Hex Hold / Gantel Uchidan Ushlash", "Static Hang One Arm", "Farmers Walk Extended Heavy", "Cable Wrist Flexion",
+            "Dumbbell Hex Hold", "Static Hang One Arm", "Farmers Walk Extended Heavy", "Cable Wrist Flexion",
             "Reverse Grip Barbell Curl Heavy", "Hammer Curls Slow", "Finger Pushups", "Rice Bucket Hand Exercises",
             "Dumbbell Rotation Wrist Heavy", "Barbell Hold Maximum Time", "Cable Reverse Curl Drop", "Forearm Extensions Stretch"
         ]},
-        { id: 41, title: "41. Landmine Kuch Tizimi (3D Rotatsion Kuch)", type: "power", drills: [
+        { id: 41, title: "41. Landmine 3D Rotatsion Tizim", type: "power", drills: [
             "Landmine Press One Arm", "Landmine Twist Rotational", "Landmine Squat to Press", "Landmine Row One Arm",
             "Landmine Reverse Lunge", "Landmine Sumo Squat", "Landmine Single Leg Romanian Deadlift", "Landmine Meadows Row",
             "Landmine Overhead Press Two Arms", "Landmine Curtsy Lunge", "Landmine Lateral Lunge", "Landmine Anti-Rotation Hold",
             "Landmine Shrugs", "Landmine Floor Press", "Landmine Clean and Press", "Landmine Jerk",
             "Landmine Twist Fast", "Landmine Row Two Arms", "Landmine Squat Heavy", "Core Decompression Stretch"
         ]},
-        { id: 42, title: "42. Og'ir Kettlebell Girevoy Master", type: "power", drills: [
+        { id: 42, title: "42. Girevoy Heavy Master (Gira Kuchi)", type: "power", drills: [
             "Kettlebell Two Arm Swing Heavy", "Kettlebell One Arm Snatch", "Kettlebell Clean and Press", "Kettlebell Turkish Get-Up",
             "Kettlebell Goblet Squat Heavy", "Kettlebell Renegade Row", "Kettlebell Windmill", "Kettlebell Rack Lunge",
             "Kettlebell Push Press", "Kettlebell Sumo Deadlift High Pull", "Kettlebell Halos Core", "Kettlebell Floor Press",
-            "Kettlebell Slingshot / Bel atrofida aylantirish", "Kettlebell Single Leg Deadlift", "Kettlebell Double Clean", "Kettlebell Double Squat",
+            "Kettlebell Slingshot", "Kettlebell Single Leg Deadlift", "Kettlebell Double Clean", "Kettlebell Double Squat",
             "Kettlebell Jerk Two Arms", "Kettlebell Farmers Walk", "Kettlebell Swing Drop-set", "Shoulder Hip Mobility Girevoy"
         ]},
-        { id: 43, title: "43. Zanjir va Rezinkalar (Variable Resistance)", type: "power", drills: [
+        { id: 43, title: "43. Zanjir va Kauchuk Rezinkalar", type: "power", drills: [
             "Bench Press with Chains", "Squat with Bands", "Deadlift with Bands", "Overhead Press with Chains",
             "Barbell Row with Bands", "Pushups with Band Resistance", "Bicep Curls with Band", "Triceps Pushdown with Band and Cable",
             "Leg Press with Bands Attached", "Dumbbell Fly with Band Assistance", "Pullups with Band Resistance Heavy", "Dips with Chains around Neck",
             "Romanian Deadlift with Bands", "Shrugs with Chains", "Lateral Raises with Bands", "Good Mornings with Bands",
             "Bench Press with Bands Maximum Tension", "Squat with Chains Heavy", "Deadlift with Chains Speed", "Elastic Recovery Stretching"
         ]},
-        { id: 44, title: "44. To'liq Statik Blokada (Overcoming Isometrics)", type: "power", drills: [
+        { id: 44, title: "44. To'liq Isometrik Blokada", type: "power", drills: [
             "Static Bench Press against Immovable Bar", "Static Squat against Immovable Pins", "Static Deadlift Pull against Bottom Pins", "Static Overhead Press Pin Push",
             "Static Shrugs Maximum Effort", "Static Bicep Pull against Bench Bottom", "Plank Weighted Maximum Effort", "Wall Sit Maximum Static Weight",
             "Static Leg Extension against Lock", "Static Seated Row Pull against Frame", "Static Calf Raise Push against Block", "Static Finger Squeeze Max",
             "Static Neck Resistance Immovable", "Static Hip Abduction against Strap", "Static Chest Fly Iso-Hold", "Static Lat Pulldown Iso-Hold",
             "Static Leg Curl Iso-Hold", "Static Giperekstenziya Hold Heavy", "Static Superman Hold Heavy", "Full Nervous System Calming Stretch"
         ]},
-        { id: 45, title: "45. Temir Orqa Zanjir (Posterior Chain Absolute)", type: "power", drills: [
+        { id: 45, title: "45. Orqa Zanjir Muskullari (Posterior Chain)", type: "power", drills: [
             "Klassik Deadlift Heavy", "Sumo Deadlift Heavy", "Romanian Deadlift Heavy", "Good Mornings Heavy Barbell",
             "Giperekstenziya Og'irlik bilan", "Glute Ham Raise Heavy", "Barbell Hip Thrusts Maximum", "Snatch Grip Deadlift",
             "Deficit Deadlift Heavy", "Rack Pulls Ultra Heavy", "Barbell Shrugs Heavy", "Egilgan holda Barbell Row",
@@ -791,71 +777,71 @@
             "Dumbbell Romanian Deadlift Heavy", "Farmers Walk Heavy Weight", "Deadlift Static Hold Heavy", "Posterior Chain Myofascial Release"
         ]},
 
-        // 46-55: SALOMATLIK VA REABILITATSIYA (HEALTH, ACCESSIBILITY & CORE FOCUS)
-        { id: 46, title: "46. Umurtqa Fiksatsiyasi & Bel Salomatligi", type: "health", drills: [
+        // 46-55: SALOMATLIK VA REABILITATSIYA
+        { id: 46, title: "46. Umurtqa Fiksatsiyasi & Bel Sog'lig'i", type: "health", drills: [
             "Giperekstenziya (Vaznsiz, Statik Nazorat)", "Bird-Dog (Diagonal Oyoq-Qo'l Ko'tarish)", "Dead Bug (O'lik Qo'ng'iz Mashqi)", "Glute Bridge (Chanoq Ko'tarish Kontrol)",
             "Mushuk-Sigir Pozasi (Cat-Cow)", "Planka Tirsakda (To'g'ri Texnika)", "Yondan Statik Planka", "Kobra Pozasida Belni Cho'zish",
             "Chaqaloq Pozasi Relaks (Child's Pose)", "Oyoqlarni Devorga Suyab Yotish", "Tizlarni Yotgan Holda Yonga Burish", "Prone Superman (Yengil)",
             "Abdominal Vakuum Mashqi", "O'tirgan Holda Umurtqa Cho'zilishi", "Yotib Bir Oyoqni Ko'krakka Tortish", "Pilates Uslubidagi Suzish",
             "Rezinka bilan Yelkani Orqaga Tortish", "O'tirib Belni Aylantirish", "Yengil Piyoda Yurish (20 daqiqa)", "Umurtqani To'liq Dekompressiya Qilish"
         ]},
-        { id: 47, title: "47. Tizza va Bo'g'imlar Reabilitatsiyasi", type: "health", drills: [
-            "Statik Devorga Suyanish (Wall Sit - Yuqori burchak)", "Glute Bridge Ikki Oyoqlab", "Yotgan Holda Oyoqni To'g'ri Ko'tarish", "Oyoq Uchlarida Yengil Turish",
+        { id: 47, title: "47. Tizza Bo'g'imlari Reabilitatsiyasi", type: "health", drills: [
+            "Statik Devorga Suyanish (Wall Sit)", "Glute Bridge Ikki Oyoqlab", "Yotgan Holda Oyoqni To'g'ri Ko'tarish", "Oyoq Uchlarida Yengil Turish",
             "Kauchuk Rezinka bilan Oyoq To'g'rilash", "Tiz Bo'g'imini Yengil Aylantirish", "O'tirgan Holda Oyoqni Bukish-Yozish", "Yonboshlab Oyoqni Yonga Ko'tarish",
-            "Step-Platformaga Yengil Qadam (Past balandlik)", "Glute Bridge To'piqlarni Bosib", "Yengil Velotrenajor (Kam Qarshilik)", "Oyoq Muskullarini Qo'lda Massaj Qilish",
-            "Muvozanatni Saqlash (Bitta Oyoqda Turish)", "Sonning Orqa Mushagi Cho'zilishi", "Sonning Old Mushagi Cho'zilishi (Yotgan holda)", "Boldir Mushaklari Relaksi",
+            "Step-Platformaga Yengil Qadam", "Glute Bridge To'piqlarni Bosib", "Yengil Velotrenajor (Kam Qarshilik)", "Oyoq Muskullarini Qo'lda Massaj Qilish",
+            "Muvozanatni Saqlash (Bitta Oyoqda)", "Sonning Orqa Mushagi Cho'zilishi", "Sonning Old Mushagi Cho'zilishi", "Boldir Mushaklari Relaksi",
             "Kovrik Ustida Yengil Yurish", "Tiz Ostiga Sochiq Qo'yib Bosish", "Yodda Chanoqni Yonga Burish", "To'liq Oyoq Bo'g'imlari Relaksi"
         ]},
-        { id: 48, title: "48. Gipertoniya va Kardio Tonus (Yurak Nazorati)", type: "health", drills: [
-            "Yengil Doimiy Tempdagi Yurish", "Nafas Nazorati ostida Air Squats", "Devorga Tayanib Otjimanie (Wall Push-ups)", "Qo'llarni Yonga Aylantirish",
+        { id: 48, title: "48. Gipertoniya va Kardio Tonus (Yurak)", type: "health", drills: [
+            "Yengil Doimiy Tempdagi Yurish", "Nafas Nazorati ostida Air Squats", "Devorga Tayanib Otjimanie", "Qo'llarni Yonga Aylantirish",
             "Yodda Chuqur Diafragma Nafas Mashqi", "Yengil Tempda Velotrenajor", "Yelkalar va Bo'yin Mobilizatsiyasi", "O'tirgan holda qo'llarni tepaga ko'tarish",
             "Yengil Yonbosh Qadamlar", "Tana Muvozanati Mashqlari", "Kovrikda Chaqaloq Pozasi", "Qo'l Bo'g'imlari Mashqlari",
             "Oyoq Bo'g'imlari Yengil Harakati", "Teskari Kapalak Cho'zilishi", "O'tirib Hamstring Cho'zish", "Ko'krak Qafasini Keng Ochish",
             "Yengil Aylana bo'ylab yurish", "Statik Devor Cho'zilishi", "Chuqur Cho'zilish va Relaksatsiya", "Nafasni Normallashtirish Meditatsiyasi"
         ]},
-        { id: 49, title: "49. Postura Master (Qomatni Tiklash, Skoliozga Qarshi)", type: "health", drills: [
-            "Face Pulls Yengil Rezinka bilan", "Wall Slides / Devorga orqa bilan tayanib qo'l ko'tarish", "Y-W-T Lifts / Polda yotib qo'llar harakati", "Prone Cobra / Polda korpus ko'tarish",
+        { id: 49, title: "49. Postura Master (Qomat Tiklash, Skolioz)", type: "health", drills: [
+            "Face Pulls Yengil Rezinka bilan", "Wall Slides Devorga", "Y-W-T Lifts", "Prone Cobra / Korpus ko'tarish",
             "Bird-Dog Strict Form", "Cat-Cow Stretch perfect", "Doorway Chest Stretch", "Seated Row Past Og'irlik",
-            "Band Pull-Apart / Rezinka yonga ochish", "Chin Tucks / Bo'yinni ichkariga tortish", "Thoracic Extension / Ko'krak umurtqasi egilishi", "Planka Mukammal To'g'ri",
+            "Band Pull-Apart Rezinka", "Chin Tucks Bo'yin", "Thoracic Extension", "Planka Mukammal To'g'ri",
             "Side Plank Left/Right", "Childs Pose Twist", "Kettlebell Halo Light", "Superman Hold Control",
-            "Glute Bridge Chest Opener", "Standing Spine Roll Down", "挂 Turnikda Yengil Osilish", "Full Posture Alignment Control"
+            "Glute Bridge Chest Opener", "Standing Spine Roll Down", "Turnikda Yengil Osilish", "Full Posture Alignment Control"
         ]},
-        { id: 50, title: "50. Stress-Relief va Kortizol Kamaytirish (Yoga & Stretch)", type: "health", drills: [
-            "Deep Diaphragmatic Breathing", "Childs Pose Extended", "Cat-Cow Flow Sekin", "Downward Facing Dog / Yoga Pozasi",
-            "Warrior I Pose / Jangchi pozasi", "Cobra Pose Slow", "Pigeon Pose / Kabutar pozasi Left", "Pigeon Pose Right",
+        { id: 50, title: "50. Anti-Stress & Kortizol Kamaytirish", type: "health", drills: [
+            "Deep Diaphragmatic Breathing", "Childs Pose Extended", "Cat-Cow Flow Sekin", "Downward Facing Dog Yoga",
+            "Warrior I Pose Jangchi", "Cobra Pose Slow", "Pigeon Pose Left", "Pigeon Pose Right",
             "Seated Forward Fold", "Butterfly Stretch", "Happy Baby Pose", "Spinal Twist Lying",
-            "Sphinx Pose", "Puppy Dog Pose", "Thread the Needle Stretch", "Corpse Pose / Savasana Relaks",
+            "Sphinx Pose", "Puppy Dog Pose", "Thread the Needle Stretch", "Corpse Pose Savasana",
             "Anuloma Viloma Nafas Mashqi", "Gentle Neck and Shoulder Flow", "Legs Up the Wall Relaxation", "Mindful Body Scan Meditation"
         ]},
-        { id: 51, title: "51. Kundalik Moslashuvchanlik (Flexibility Matrix)", type: "health", drills: [
+        { id: 51, title: "51. Moslashuvchanlik Matritsai (Flexibility)", type: "health", drills: [
             "Standing Forward Bend", "Seated Hamstring Stretch", "Standing Quad Stretch", "Dynamic Side Lunges",
             "Hip Opener Stretch", "Cobra to Childs Pose Flow", "Chest Opener Doorway", "Shoulder Pass-Throughs Stick",
             "Triceps Over Head Stretch", "Wrist and Forearm Stretch", "Calf Stretch Wall", "Glute Stretch Lying",
             "Butterfly Pose Dynamic", "Spinal Roll Down", "Low Lunge Hip Flexor Stretch", "Kossak Squats Bodyweight",
             "Deep Squat Hold", "Arm Circles Dynamic", "Torso Twists Dynamic", "Full Body Passive Stretch"
         ]},
-        { id: 52, title: "52. Chidamlilik va Funksional Core (Po'lat Korpus)", type: "health", drills: [
+        { id: 52, title: "52. Po'lat Korpus (Chidamlilik va Core)", type: "health", drills: [
             "Plank Forearm Hold 1 Min", "Side Plank Dynamic Left", "Side Plank Dynamic Right", "Bird-Dog Extended",
             "Dead Bug Controlled", "Russian Twist Bodyweight", "Bicycle Crunch Strict", "Hanging Leg Raise L-Sit",
             "V-Ups Controlled", "Reverse Crunch", "Plank Shoulder Taps Control", "Mountain Climbers Slow Form",
             "Superman Hold 30s", "Pallof Press Cable/Band", "Woodchopper Band", "Flutter Kicks",
-            "Plank Saw / Oldinga orqaga surilish", "Bear Crawl Hold / Ayiq holati statika", "Glute Bridge Single Leg", "Core Vacuum Stability"
+            "Plank Saw", "Bear Crawl Hold", "Glute Bridge Single Leg", "Core Vacuum Stability"
         ]},
-        { id: 53, title: "53. Senior Fitness (Kattalar uchun Salomatlik Baza)", type: "health", drills: [
-            "Chair Squats perfect form", "Wall Pushups Control", "Seated Leg Extensions", "Standing Calf Raises with Chair Support",
+        { id: 53, title: "53. Senior Fitness (Kattalar uchun Sog'lomlik)", type: "health", drills: [
+            "Chair Squats perfect form", "Wall Pushups Control", "Seated Leg Extensions", "Standing Calf Raises Support",
             "Bird-Dog Light", "Glute Bridge Bodyweight Easy", "Step-ups Light", "Arm Circles Light",
             "Seated Torso Twists", "Standing Balance on One Leg", "Cat-Cow Stretch", "Chest Opener Standing",
             "Hamstring Stretch Seated", "Shoulder Rolls", "Ankle Circles Seated", "Wrist Flexion Light",
             "Gentle Walking Steady", "Low Impact Side Steps", "Childs Pose Relaxation", "Deep Breathing Oxygenation"
         ]},
-        { id: 54, title: "54. Office Anti-Fatigue (Charchoqni Yo'qotish)", type: "health", drills: [
+        { id: 54, title: "54. Office Anti-Fatigue (Ofis Charchog'i)", type: "health", drills: [
             "Standing Desk Squats", "Desk Incline Pushups", "Seated Spinal Twist Ofis", "Neck Mobility Matrix",
             "Shoulder Shrugs and Rolls", "Wrist Extension Stretch", "Seated Hamstring Stretch Ofis", "Standing Calf Raises Ofis",
             "Chest Opener Wall", "Hip Flexor Stretch Standing", "Seated Figure 4 Glute Stretch", "Ankle Mobility Rolls",
-            "Standing Side Bends", "Forward Fold Hanging", "Scapular Squeezes / Kuraklar qisishi", "Plank on Desk",
+            "Standing Side Bends", "Forward Fold Hanging", "Scapular Squeezes", "Plank on Desk",
             "High Knees Slow Standing", "Deep Diaphragm Breathing", "Eye Fatigue Relief Exercises", "Spine Decompression Hang"
         ]},
-        { id: 55, title: "55. To'liq Tana Energetik Reab (Full Body Engine Reset)", type: "health", drills: [
+        { id: 55, title: "55. To'liq Energetik Tizimni Qayta Yuklash", type: "health", drills: [
             "Full Body Foam Rolling Activation", "Joint Mobility Dynamic Warmup", "Light Bodyweight Squats", "Bird-Dog High Precision",
             "Dead Bug High Precision", "Glute Bridge Hold 5s", "Perfect Posture Wall Sit", "Scapular Wall Slides",
             "Y-W-T Prone Raises", "Band Pull-Aparts Control", "Cat-Cow Flow Smooth", "Low Lunge Stretch Left/Right",
@@ -864,7 +850,6 @@
         ]}
     ];
 
-    // APPLICATION RUNTIME CONTROLLER ENGINE
     function initializeCyberPlatform() {
         const fullname = document.getElementById('user-fullname').value.trim();
         const mass = document.getElementById('user-mass').value;
@@ -875,17 +860,16 @@
         const medical = document.getElementById('user-medical-condition').value;
 
         if (!fullname || !mass || !targetMass || !growth || !years) {
-            alert("⚠️ Matrix ERROR: Barcha biometrik ma'lumotlarni kiriting!");
+            alert("⚠️ Matrix Error: Ma'lumotlarni to'liq kiriting!");
             return;
         }
 
         globalUser = { fullname, mass, targetMass, growth, years, primaryGoal, medical };
-        localStorage.setItem('fbp_user', JSON.stringify(globalUser));
+        localStorage.setItem('fbu_user', JSON.stringify(globalUser));
 
-        // BUILD THE CHOSEN SELECT OPTIONS FOR THE 55 MISSIONS
         populateMissionSelectMenu();
+        updateDynamicStickers();
 
-        // BOOTING VIEW CONTROLLERS
         document.getElementById('view-onboarding').classList.remove('active-view');
         document.getElementById('view-routine').classList.add('active-view');
         document.getElementById('app-navigation-dock').style.display = 'flex';
@@ -897,18 +881,38 @@
     function populateMissionSelectMenu() {
         const selector = document.getElementById('master-mission-index');
         selector.innerHTML = "";
-        
         masterMissionMatrix.forEach(m => {
             const opt = document.createElement('option');
             opt.value = m.id;
             opt.textContent = m.title;
-            
-            // AUTO-SELECT BEST MATCH BASED ON PROFILE PURPOSE
             if(globalUser && globalUser.primaryGoal === m.type) {
-                opt.textContent += " ⭐ (AI Tavsiya)";
+                opt.textContent += " ⭐ (AI Match)";
             }
             selector.appendChild(opt);
         });
+    }
+
+    function updateDynamicStickers() {
+        const headerSticker = document.getElementById('header-sticker');
+        if (!globalUser) return;
+        
+        let strokeColor = "#ff5500";
+        let svgPath = '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>'; // Diet/Default
+
+        if(globalUser.primaryGoal === 'bulk') {
+            strokeColor = "#00ff66";
+            svgPath = '<path d="M6 12h12M12 6v12M4 8v8M20 8v8"/>';
+        } else if(globalUser.primaryGoal === 'power') {
+            strokeColor = "#ffaa00";
+            svgPath = '<path d="M12 2v20M17 5H7M19 9H5M21 13H3"/>';
+        } else if(globalUser.primaryGoal === 'health') {
+            strokeColor = "#00f0ff";
+            svgPath = '<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>';
+        }
+
+        headerSticker.style.borderColor = strokeColor;
+        headerSticker.style.background = `rgba(${strokeColor === "#ff5500" ? '255,85,0' : strokeColor === "#00ff66" ? '0,255,102' : strokeColor === "#ffaa00" ? '255,170,0' : '0,240,255'}, 0.15)`;
+        headerSticker.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="${strokeColor}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">${svgPath}</svg>`;
     }
 
     function executeNavigation(targetViewId) {
@@ -920,13 +924,13 @@
         if(targetViewId === 'view-missions') document.getElementById('tab-missions').classList.add('active-tab');
     }
 
-    // ROUTINE MODULE MANTIG'I
+    // ROUTINE CONTROLLER WITH ERASE ENGINE
     function renderRoutineSystem() {
         const anchor = document.getElementById('routine-nodes-anchor');
         anchor.innerHTML = "";
 
         if(globalRoutine.length === 0) {
-            anchor.innerHTML = `<p style="color:var(--text-cyber-muted); font-size:14px; text-align:center; padding:20px;">Kun tartibi bo'sh. Yuqoridan rejalarni kiriting.</p>`;
+            anchor.innerHTML = `<p style="color:var(--text-cyber-muted); font-size:12px; text-align:center; padding:30px;">Hozircha rejalaringiz yo'q.</p>`;
             return;
         }
 
@@ -934,11 +938,16 @@
             const div = document.createElement('div');
             div.className = `routine-node ${node.completed ? 'done-state' : ''}`;
             div.innerHTML = `
-                <div>
+                <div style="flex: 1;">
                     <span class="time-badge">${node.time}</span>
-                    <span style="font-size:15px; font-weight:600;">${node.desc}</span>
+                    <span style="font-size:14px; font-weight:600; display:block; margin-top:2px;">${node.desc}</span>
                 </div>
-                <div class="cyber-check" onclick="toggleRoutineNode(${idx})"></div>
+                <div class="routine-controls">
+                    <div class="cyber-check" onclick="toggleRoutineNode(${idx})"></div>
+                    <button class="trash-trigger" onclick="eraseRoutineNode(${idx})" title="O'chirish">
+                        <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+                    </button>
+                </div>
             `;
             anchor.appendChild(div);
         });
@@ -951,7 +960,7 @@
         if(!time || !desc) return;
 
         globalRoutine.push({ time, desc, completed: false });
-        localStorage.setItem('fbp_routine', JSON.stringify(globalRoutine));
+        localStorage.setItem('fbu_routine', JSON.stringify(globalRoutine));
         renderRoutineSystem();
 
         document.getElementById('routine-time-window').value = "";
@@ -960,11 +969,17 @@
 
     function toggleRoutineNode(idx) {
         globalRoutine[idx].completed = !globalRoutine[idx].completed;
-        localStorage.setItem('fbp_routine', JSON.stringify(globalRoutine));
+        localStorage.setItem('fbu_routine', JSON.stringify(globalRoutine));
         renderRoutineSystem();
     }
 
-    // HIGH INTELLECTUAL MISSION METRIC VIEW COMPILER
+    function eraseRoutineNode(idx) {
+        globalRoutine.splice(idx, 1);
+        localStorage.setItem('fbu_routine', JSON.stringify(globalRoutine));
+        renderRoutineSystem();
+    }
+
+    // MISSION CORE MATRIX COMPILER
     function recompileMissionViewer() {
         const currentId = document.getElementById('master-mission-index').value || 1;
         const anchor = document.getElementById('mission-drills-anchor');
@@ -977,55 +992,51 @@
             globalMissionState[currentId] = Array(20).fill(false);
         }
 
-        let completedDrillsCount = globalMissionState[currentId].filter(Boolean).length;
-        let percentage = Math.floor((completedDrillsCount / 20) * 100);
+        let completedCount = globalMissionState[currentId].filter(Boolean).length;
+        let percentage = Math.floor((completedCount / 20) * 100);
 
-        // UPDATE HUD METRICS
         document.getElementById('hud-percentage-text').textContent = `${percentage}%`;
         document.getElementById('hud-bar-core').style.width = `${percentage}%`;
 
-        // CALCULATE BIO METRICS DYNAMICALLY FOR THE SPEECH
         const massDelta = Math.abs(globalUser.mass - globalUser.targetMass);
         
-        // SCIENTIFIC INTELLIGENT SPEECH GENERATION LOGIC
         if(percentage === 100) {
-            coachSpeech.innerHTML = `🔥 <b>Matritsa Yakunlandi!</b> Hurmatli ${globalUser.fullname}, siz ushbu missiyaning barcha 20 ta bosqichini yo'q qildingiz. Haqiqiy pro darajadasiz!`;
+            coachSpeech.innerHTML = `🎉 <b>Missiya Muvaffaqiyatli Yakunlandi!</b> Barcha 20 ta shart bajarildi. Keyingi algoritmlarga o'tishingiz mumkin!`;
         } else {
-            let medicalWarning = "";
-            if(globalUser.medical === 'spine') medicalWarning = " ⚠️ Diqqat: Umurtqangizda og'riq borligi sababli barcha harakatlarni belni bukmasdan, statik fiksatsiyada bajaring.";
-            if(globalUser.medical === 'joints') medicalWarning = " ⚠️ Diqqat: Tizzada jarohat aniqlangan, tiz cho'kish burchagini 90 darajadan chuqur qilmang.";
-            if(globalUser.medical === 'heart') medicalWarning = " ⚠️ Diqqat: Gipertoniya xavfi tufayli pulsni daqiqasiga 135 dan oshirmang.";
+            let warning = "";
+            if(globalUser.medical === 'spine') warning = " ⚠️ Bel xavfsizligi: umurtqani yuklamang.";
+            if(globalUser.medical === 'joints') warning = " ⚠️ Bo'g'im nazorati: tiz cho'kish burchagini cheklang.";
+            if(globalUser.medical === 'heart') warning = " ⚠️ Yurak himoyasi: pulsni barqaror ushlang.";
 
             if(currentMission.type === 'diet') {
-                coachSpeech.innerHTML = `🦾 <b>AI Haqiqiy Trener:</b> Sizning vazningiz ${globalUser.mass} kg, maqsad esa ${globalUser.targetMass} kg. Oradagi ${massDelta} kg yog' qatlamini yoqish uchun ushbu 20 ta jadal mashqlarni jami 21 kun davomida kuniga 45 daqiqadan bajaramiz. Har bir kardio raundida tezlikni maksimal ushlang!${medicalWarning}`;
+                coachSpeech.innerHTML = `🦾 <b>AI Trener:</b> Vazningiz ${globalUser.mass} kg, maqsad esa ${globalUser.targetMass} kg. Oradagi ${massDelta} kg yukni yoqish uchun ushbu 20 ta jadal kardio mashqini bajaramiz. Tezlik va barqarorlik shart!${warning}`;
             } else if(currentMission.type === 'bulk') {
-                coachSpeech.innerHTML = `💪 <b>AI Haqiqiy Trener:</b> Mushak massasi va umumiy vazn yig'ish dasturi faollashdi. Ushbu 20 ta mashqni haftada 4 marta, har birini 4 setdan 12 tagacha jiddiy og'irlik bilan, jami 30 kun bajarasiz. Ratsionda oqsilni 2 barobar oshiring!${medicalWarning}`;
+                coachSpeech.innerHTML = `💪 <b>AI Trener:</b> Massa va oqsil sintezi rejimi. 20 ta mashqni 4 setdan anabolik yuklama bilan bajaramiz. Ratsionga diqqat qiling!${warning}`;
             } else if(currentMission.type === 'power') {
-                coachSpeech.innerHTML = `⚡ <b>AI Haqiqiy Trener:</b> Markaziy asab tizimini maksimal quvvatga yuklash rejimi. Ushbu 20 ta og'ir bazaviy elementlarni 5 setdan 3-5 rep intervalida, jami 6 hafta davomida bajaramiz. Kuch ko'rsatkichlaringiz 25% gacha o'sadi!${medicalWarning}`;
+                coachSpeech.innerHTML = `⚡ <b>AI Trener:</b> Mutloq kuch asab tizimi blokadasi. 5 setdan past qaytariqda rekord yuklamalar ishlaydi!${warning}`;
             } else {
-                coachSpeech.innerHTML = `🧘 <b>AI Haqiqiy Trener:</b> Salomatlik, tiklanish va qomat postural korreksiyasi. Har bir mashqni xotirjamlik bilan, nafas sinxronizatsiyasida bajaring. Ushbu kompleks 14 kun ichida tana kortizol darajasini tushirib, tonus beradi.${medicalWarning}`;
+                coachSpeech.innerHTML = `🧘 <b>AI Trener:</b> Sog'lomlashtirish va postural harakatlar kompleksi. Nafasni tekis saqlab, tana moslashuvchanligini oshiring.${warning}`;
             }
         }
 
-        // GENERATING THE 20 REAL DRILL CARDS
         anchor.innerHTML = "";
         currentMission.drills.forEach((drill, index) => {
-            let isDrillDone = globalMissionState[currentId][index];
+            let isDone = globalMissionState[currentId][index];
             const div = document.createElement('div');
-            div.className = `drill-card ${isDrillDone ? 'drill-complete' : ''}`;
+            div.className = `drill-card ${isDone ? 'drill-complete' : ''}`;
             
-            let technicalSpecs = currentMission.type === 'diet' ? "3 Raund x 45 soniya | Dam olish 15s" : 
-                                 currentMission.type === 'bulk' ? "4 Set x 12 Qaytariq | Maksimal Massa" :
-                                 currentMission.type === 'power' ? "5 Set x 3 Qaytariq | Mutloq Kuch Rejimi" : 
-                                 "3 Set x 60 soniya Statika | Salomatlik";
+            let specs = currentMission.type === 'diet' ? "3 Raund x 45s | Rest 15s" : 
+                        currentMission.type === 'bulk' ? "4 Set x 12 Reps | Hypertrophy" :
+                        currentMission.type === 'power' ? "5 Set x 3 Reps | Power Mode" : 
+                        "3 Set x 60s Hold | Health";
 
             div.innerHTML = `
                 <div class="drill-index">${index + 1}</div>
                 <div class="drill-meta">
-                    <h5 style="${isDrillDone ? 'text-decoration: line-through; color:var(--text-cyber-muted);' : ''}">${drill}</h5>
-                    <p>${technicalSpecs}</p>
+                    <h5 style="${isDone ? 'text-decoration: line-through; color:var(--text-cyber-muted);' : ''}">${drill}</h5>
+                    <p>${specs}</p>
                 </div>
-                <input type="checkbox" ${isDrillDone ? 'checked' : ''} onchange="toggleDrillState(${currentId}, ${index})" style="width:22px; height:22px; accent-color: var(--matrix-green); cursor:pointer;">
+                <input type="checkbox" ${isDone ? 'checked' : ''} onchange="toggleDrillState(${currentId}, ${index})" style="width:18px; height:18px; accent-color: var(--matrix-green); cursor:pointer;">
             `;
             anchor.appendChild(div);
         });
@@ -1033,7 +1044,7 @@
 
     function toggleDrillState(missionId, drillIdx) {
         globalMissionState[missionId][drillIdx] = !globalMissionState[missionId][drillIdx];
-        localStorage.setItem('fbp_mission_state', JSON.stringify(globalMissionState));
+        localStorage.setItem('fbu_mission_state', JSON.stringify(globalMissionState));
         recompileMissionViewer();
     }
 
@@ -1043,6 +1054,7 @@
         document.getElementById('view-routine').classList.add('active-view');
         document.getElementById('app-navigation-dock').style.display = 'flex';
         populateMissionSelectMenu();
+        updateDynamicStickers();
         renderRoutineSystem();
         recompileMissionViewer();
     }
