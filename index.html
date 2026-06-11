@@ -2,7 +2,7 @@
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>FITBURN ULTIMATE // CYBERPUNK FITNESS OS</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
@@ -28,78 +28,78 @@
             box-sizing: border-box;
             font-family: 'Plus Jakarta Sans', sans-serif;
             scrollbar-width: none;
+            -webkit-tap-highlight-color: transparent;
         }
         *::-webkit-scrollbar { display: none; }
 
         body {
-            background: radial-gradient(circle at 50% 50%, #0e0e14 0%, var(--bg-cyber) 100%);
+            background-color: var(--bg-cyber);
             color: var(--text-cyber-pure);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 10px;
-            overflow: hidden;
+            align-items: flex-start;
+            overflow-x: hidden;
         }
 
-        /* STRICT MOBILE VIEWPORT SPECIFICATION */
+        /* TRUE MOBILE FULL-SCREEN CONFIGURATION */
         .phone-frame {
-            width: 412px;
-            height: 840px;
+            width: 100%;
+            max-width: 480px; /* Telefonlar uchun universal kenglik */
+            min-height: 100vh;
             background-color: var(--bg-cyber);
-            border-radius: 44px;
-            box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.9), inset 0 0 30px rgba(255, 85, 0, 0.1);
-            overflow: hidden;
-            position: relative;
             display: flex;
             flex-direction: column;
-            border: 6px solid #1a1a22;
+            position: relative;
+            box-shadow: 0 0 40px rgba(0,0,0,0.8);
         }
 
         header {
-            padding: 24px 20px 14px 20px;
+            padding: 18px 20px;
             background: linear-gradient(180deg, #09090d 0%, rgba(4, 4, 6, 0) 100%);
             border-bottom: 1px solid var(--glass-border);
             text-align: center;
-            position: relative;
-            z-index: 10;
+            position: sticky;
+            top: 0;
+            z-index: 100;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
+            justify-content: space-between;
+            backdrop-filter: blur(10px);
         }
         header h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 900;
             letter-spacing: 2px;
             background: linear-gradient(90deg, var(--neon-orange), var(--electric-gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 0 12px rgba(255, 85, 0, 0.25);
+            flex: 1;
+            text-align: center;
         }
 
         .app-viewport {
             flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            position: relative;
-            padding-bottom: 100px;
+            padding: 16px;
+            padding-bottom: 100px; /* Navigatsiya paneli uchun bo'shliq */
+            width: 100%;
         }
         .screen-view {
             display: none;
             opacity: 0;
-            transform: scale(0.97) translateY(8px);
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(10px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .screen-view.active-view {
             display: block;
             opacity: 1;
-            transform: scale(1) translateY(0);
+            transform: translateY(0);
         }
 
         h2 {
-            font-size: 21px;
+            font-size: 20px;
             font-weight: 800;
             letter-spacing: -0.5px;
             margin-bottom: 6px;
@@ -109,22 +109,22 @@
         }
         .subtitle {
             color: var(--text-cyber-muted);
-            font-size: 13px;
-            margin-bottom: 18px;
+            font-size: 12px;
+            margin-bottom: 16px;
             line-height: 1.5;
         }
 
         .cyber-card {
             background: var(--card-cyber);
             border: 1px solid var(--glass-border);
-            padding: 18px;
-            border-radius: 20px;
+            padding: 16px;
+            border-radius: 16px;
             margin-bottom: 16px;
             position: relative;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
         }
 
-        .form-element { margin-bottom: 14px; }
+        .form-element { margin-bottom: 12px; }
         .form-element label {
             display: block;
             font-size: 10px;
@@ -139,8 +139,8 @@
             background-color: #06060a;
             border: 1px solid #1d1d26;
             color: var(--text-cyber-pure);
-            padding: 12px 14px;
-            border-radius: 12px;
+            padding: 12px;
+            border-radius: 10px;
             font-size: 14px;
             font-weight: 600;
             transition: all 0.25s ease;
@@ -156,10 +156,10 @@
             width: 100%;
             background: linear-gradient(135deg, var(--neon-orange) 0%, #cc3300 100%);
             color: var(--text-cyber-pure);
-            padding: 14px;
+            padding: 12px;
             border: none;
-            border-radius: 14px;
-            font-size: 14px;
+            border-radius: 10px;
+            font-size: 13px;
             font-weight: 800;
             letter-spacing: 0.5px;
             cursor: pointer;
@@ -167,46 +167,56 @@
             box-shadow: 0 4px 15px rgba(255, 85, 0, 0.2);
             transition: all 0.25s ease;
         }
-        .cyber-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 18px rgba(255, 85, 0, 0.35);
-        }
 
-        /* NEON LOGO STICKER EMBLEMS */
-        .sticker-badge {
-            width: 38px;
-            height: 38px;
+        /* STICKER SYSTEM PRO STYLE */
+        .sticker-container {
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 10px;
+            border-radius: 50%;
             background: rgba(255, 85, 0, 0.1);
             border: 1px solid rgba(255, 85, 0, 0.2);
-            box-shadow: var(--sticker-shadow);
+            transition: all 0.3s ease;
         }
-        .sticker-badge svg { width: 22px; height: 22px; }
+        .sticker-container svg {
+            width: 20px;
+            height: 20px;
+        }
 
-        /* ROUTINE NODES WITH DELETE INTERFACE */
+        /* ROUTINE MANAGEMENT SYSTEM */
         .routine-node {
             display: flex;
             align-items: center;
             justify-content: space-between;
             background: #111118;
-            padding: 14px;
-            border-radius: 16px;
-            margin-bottom: 10px;
+            padding: 12px;
+            border-radius: 12px;
+            margin-bottom: 8px;
             border-left: 4px solid var(--electric-gold);
             gap: 10px;
         }
         .routine-node.done-state {
             border-left-color: var(--matrix-green);
             background: rgba(0, 255, 102, 0.02);
-            opacity: 0.4;
         }
-        .routine-node.done-state span { text-decoration: line-through; color: var(--text-cyber-muted); }
-        .time-badge { font-family: 'Orbitron', sans-serif; color: var(--neon-orange); font-size: 11px; font-weight: 700; }
+        .routine-node.done-state .routine-text-block { 
+            text-decoration: line-through; 
+            color: var(--text-cyber-muted); 
+        }
+        .time-badge { 
+            font-family: 'Orbitron', sans-serif; 
+            color: var(--neon-orange); 
+            font-size: 11px; 
+            font-weight: 700; 
+        }
         
-        .routine-controls { display: flex; align-items: center; gap: 12px; }
+        .routine-controls { 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+        }
         .cyber-check {
             width: 22px;
             height: 22px;
@@ -217,137 +227,134 @@
             justify-content: center;
             cursor: pointer;
         }
-        .cyber-check::after { content: '✓'; color: #000; font-weight: 900; font-size: 13px; display: none; }
+        .cyber-check::after { content: '✓'; color: #000; font-weight: 900; font-size: 12px; display: none; }
         .routine-node.done-state .cyber-check { background-color: var(--matrix-green); border-color: var(--matrix-green); }
         .routine-node.done-state .cyber-check::after { display: block; }
         
+        /* ORIGINAL ERASER ACTION BUTTON */
         .trash-trigger {
-            background: none;
-            border: none;
+            background: rgba(255, 0, 85, 0.1);
+            border: 1px solid rgba(255, 0, 85, 0.2);
+            border-radius: 6px;
+            padding: 5px;
             cursor: pointer;
             color: var(--neon-laser);
-            opacity: 0.7;
-            transition: opacity 0.2s;
-            display: flex;
-            align-items: center;
-        }
-        .trash-trigger:hover { opacity: 1; }
-        .trash-trigger svg { width: 18px; height: 18px; fill: currentColor; }
-
-        /* AI COACH CHASSIS CORES */
-        .ai-core-intelligence {
-            background: linear-gradient(135deg, #070716 0%, #03030a 100%);
-            border: 1px solid #16143c;
-            padding: 16px;
-            border-radius: 18px;
-            margin-top: 20px;
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-        }
-        .ai-avatar-matrix {
-            width: 42px;
-            height: 42px;
-            background: linear-gradient(135deg, var(--neon-glow) 0%, #1234a5 100%);
-            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
-            box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
+            transition: all 0.2s;
         }
-        .ai-speech-bubble h4 { font-family: 'Orbitron', sans-serif; font-size: 11px; color: var(--neon-glow); margin-bottom: 4px; letter-spacing: 0.5px; }
-        .ai-speech-bubble p { font-size: 12px; color: #cbd5e1; line-height: 1.4; }
+        .trash-trigger:active {
+            background: rgba(255, 0, 85, 0.3);
+            transform: scale(0.9);
+        }
+        .trash-trigger svg { width: 16px; height: 16px; fill: currentColor; }
 
-        /* ORIREGINAL DYNAMIC STICKER CHIPS FOR DRILLS */
+        /* DRILL CHIPS SYSTEM */
         .drill-card {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 12px;
+            gap: 10px;
+            padding: 10px;
             background: #0b0b10;
-            border-radius: 14px;
-            margin-bottom: 10px;
+            border-radius: 12px;
+            margin-bottom: 8px;
             border: 1px solid #14141f;
         }
-        .drill-card.drill-complete { border-color: rgba(0, 255, 102, 0.15); background: rgba(0, 255, 102, 0.01); }
         .drill-index {
-            width: 28px;
-            height: 28px;
+            width: 26px;
+            height: 26px;
             background: #14141f;
-            border-radius: 8px;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: 'Orbitron', sans-serif;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 700;
             color: var(--neon-orange);
         }
-        .drill-card.drill-complete .drill-index { background: var(--matrix-green); color: #000; }
         .drill-meta { flex: 1; }
-        .drill-meta h5 { font-size: 13px; font-weight: 700; color: var(--text-cyber-pure); margin-bottom: 2px; }
-        .drill-meta p { font-size: 10px; color: var(--neon-glow); font-weight: 500; }
+        .drill-meta h5 { font-size: 12px; font-weight: 700; color: var(--text-cyber-pure); margin-bottom: 2px; }
+        .drill-meta p { font-size: 10px; color: var(--neon-glow); }
 
-        .progress-hud { margin-bottom: 16px; }
-        .progress-hud-labels { display: flex; justify-content: space-between; font-size: 11px; font-weight: 700; margin-bottom: 6px; color: var(--text-cyber-muted); }
-        .progress-hud-bar { width: 100%; height: 8px; background: #12121c; border-radius: 4px; overflow: hidden; }
-        .progress-hud-fill { height: 100%; background: linear-gradient(90deg, var(--neon-orange), var(--matrix-green)); width: 0%; transition: width 0.4s ease; }
+        .progress-hud { margin-bottom: 12px; }
+        .progress-hud-labels { display: flex; justify-content: space-between; font-size: 11px; font-weight: 700; margin-bottom: 4px; color: var(--text-cyber-muted); }
+        .progress-hud-bar { width: 100%; height: 6px; background: #12121c; border-radius: 3px; overflow: hidden; }
+        .progress-hud-fill { height: 100%; background: linear-gradient(90deg, var(--neon-orange), var(--matrix-green)); width: 0%; transition: width 0.3s ease; }
 
-        /* OS FOOTER DOCK */
+        /* AI COACH BOT */
+        .ai-core-intelligence {
+            background: #080812;
+            border: 1px solid #141230;
+            padding: 12px;
+            border-radius: 12px;
+            margin-top: 14px;
+            display: flex;
+            gap: 10px;
+        }
+        .ai-speech-bubble h4 { font-family: 'Orbitron', sans-serif; font-size: 11px; color: var(--neon-glow); margin-bottom: 2px; }
+        .ai-speech-bubble p { font-size: 11px; color: #cbd5e1; line-height: 1.4; }
+
+        /* MOBILE BOTTOM DOCK */
         .navigation-dock {
-            position: absolute;
+            position: fixed;
             bottom: 0;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 100%;
-            height: 75px;
-            background-color: rgba(6, 6, 10, 0.92);
+            max-width: 480px;
+            height: 65px;
+            background-color: rgba(6, 6, 10, 0.95);
             backdrop-filter: blur(15px);
             border-top: 1px solid var(--glass-border);
             display: flex;
             justify-content: space-around;
             align-items: center;
-            padding: 0 16px;
-            z-index: 100;
+            z-index: 1000;
+            padding-bottom: env(safe-area-inset-bottom);
         }
         .dock-tab {
             color: var(--text-cyber-muted);
             cursor: pointer;
-            font-size: 10px;
+            font-size: 9px;
             font-weight: 800;
-            text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 4px;
+            gap: 2px;
             text-transform: uppercase;
+            flex: 1;
         }
         .dock-tab.active-tab { color: var(--neon-orange); }
-        .dock-tab svg { width: 20px; height: 20px; fill: currentColor; }
+        .dock-tab svg { width: 18px; height: 18px; fill: currentColor; }
     </style>
 </head>
 <body>
 
 <div class="phone-frame">
     <header>
-        <div class="sticker-badge" id="header-sticker">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#ff5500" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <div class="sticker-container" id="header-sticker-left">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#ff5500" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
         </div>
         <h1>FITBURN // OS</h1>
+        <div class="sticker-container" id="header-sticker-right">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#ffaa00" stroke-width="2"><path d="M12 2v20M17 5H7"/></svg>
+        </div>
     </header>
 
     <div class="app-viewport">
         <div id="view-onboarding" class="screen-view active-view">
             <h2>Biometrik Matritsa</h2>
-            <p class="subtitle">Istalgan maqsad va tibbiy holatga mos 55 ta maxsus algoritmni ishga tushiring.</p>
+            <p class="subtitle">Tizimni o'zingizga moslash uchun biometrik ko'rsatkichlarni kiriting.</p>
             
             <div class="cyber-card">
                 <div class="form-element">
                     <label>Ism Familiya</label>
-                    <input type="text" id="user-fullname" placeholder="Anvar Iskandari">
+                    <input type="text" id="user-fullname" placeholder="Ismingizni yozing...">
                 </div>
                 <div class="form-element">
-                    <label>Asosiy Hayotiy Maqsad</label>
+                    <label>Asosiy Maqsad</label>
                     <select id="user-primary-goal">
                         <option value="diet">Ekstremal Ozish & Yog' Eritish</option>
                         <option value="bulk">Muskul Massasini Oshirish (Semirish)</option>
@@ -362,42 +369,42 @@
                     </div>
                     <div class="form-element" style="flex: 1;">
                         <label>Maqsad (kg)</label>
-                        <input type="number" id="user-target-mass" placeholder="72">
+                        <input type="number" id="user-target-mass" placeholder="75">
                     </div>
                 </div>
                 <div style="display: flex; gap: 10px;">
                     <div class="form-element" style="flex: 1;">
                         <label>Bo'y (sm)</label>
-                        <input type="number" id="user-growth" placeholder="180">
+                        <input type="number" id="user-growth" placeholder="178">
                     </div>
                     <div class="form-element" style="flex: 1;">
                         <label>Yosh</label>
-                        <input type="number" id="user-years" placeholder="24">
+                        <input type="number" id="user-years" placeholder="26">
                     </div>
                 </div>
                 <div class="form-element">
-                    <label>Tibbiy Cheklovlar</label>
+                    <label>Tibbiy Cheklov</label>
                     <select id="user-medical-condition">
-                        <option value="none">Sog'lom (Cheklov yo'q)</option>
+                        <option value="none">Sog'lom (Muammo yo'q)</option>
                         <option value="spine">Umurtqa churrasi / Bel og'rig'i</option>
-                        <option value="joints">Tizza bo'g'imlari shikastlanishi</option>
-                        <option value="heart">Gipertoniya / Yurak muammosi</option>
+                        <option value="joints">Tizza bo'g'im muammolari</option>
+                        <option value="heart">Gipertoniya / Yurak bosimi</option>
                     </select>
                 </div>
-                <button class="cyber-btn" onclick="initializeCyberPlatform()">Matritsani Yuklash</button>
+                <button class="cyber-btn" onclick="initializeCyberPlatform()">Tizimni Ishga Tushirish</button>
             </div>
         </div>
 
         <div id="view-routine" class="screen-view">
             <h2>Kun Tartibi Registri</h2>
-            <p class="subtitle">Vaqt intervallari bilan rejalarni kiriting, o'chiring yoki tasdiqlang.</p>
+            <p class="subtitle">Kuningizni rejalashtiring. Istalgan vaqtda eski elementni butunlay o'chirib tashlang.</p>
             
             <div class="cyber-card">
                 <div style="display: flex; gap: 8px; margin-bottom: 10px;">
-                    <input type="text" id="routine-time-window" placeholder="07:30" style="flex: 1.2;">
-                    <input type="text" id="routine-action-desc" placeholder="Ertalabki dush" style="flex: 2.8;">
+                    <input type="text" id="routine-time-window" placeholder="07:30" style="flex: 1;">
+                    <input type="text" id="routine-action-desc" placeholder="Yugurish va nonushta" style="flex: 2.5;">
                 </div>
-                <button class="cyber-btn" style="padding: 10px; font-size:12px;" onclick="registerRoutineNode()">+ Rejani Qo'shish</button>
+                <button class="cyber-btn" onclick="registerRoutineNode()">+ Yangi Reja Qo'shish</button>
             </div>
 
             <div id="routine-nodes-anchor"></div>
@@ -405,7 +412,7 @@
 
         <div id="view-missions" class="screen-view">
             <h2>AI Missiyalar (55 Variant)</h2>
-            <p class="subtitle">Siz uchun maxsus unikal mashq dasturlari ombori.</p>
+            <p class="subtitle">Har bir yo'nalish bo'yicha professional 20 tadan mashqlar tizimi.</p>
 
             <div class="form-element">
                 <label>Faol Missiyani Tanlang</label>
@@ -414,7 +421,7 @@
 
             <div class="progress-hud">
                 <div class="progress-hud-labels">
-                    <span>Missiya Bajarilishi</span>
+                    <span>Bajarilish Ko'rsatkichi</span>
                     <span id="hud-percentage-text">0%</span>
                 </div>
                 <div class="progress-hud-bar">
@@ -425,9 +432,9 @@
             <div id="mission-drills-anchor"></div>
 
             <div class="ai-core-intelligence">
-                <div class="ai-avatar-matrix">🤖</div>
+                <div style="font-size: 20px;">🤖</div>
                 <div class="ai-speech-bubble">
-                    <h4>FitBurn AI Coach</h4>
+                    <h4>FitBurn Coach</h4>
                     <p id="ai-coach-voice-output">Yuklanmoqda...</p>
                 </div>
             </div>
@@ -437,21 +444,21 @@
     <nav class="navigation-dock" id="app-navigation-dock" style="display: none;">
         <div class="dock-tab active-tab" id="tab-routine" onclick="executeNavigation('view-routine')">
             <svg viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-            Kun Tartibi
+            Rejalar
         </div>
         <div class="dock-tab" id="tab-missions" onclick="executeNavigation('view-missions')">
             <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
-            AI Missiyalar
+            55 Missiya
         </div>
     </nav>
 </div>
 
 <script>
-    // DATA LAYER & ENGINE STATE
+    // ENGINE ARCHITECTURE MATRIX
     let globalUser = JSON.parse(localStorage.getItem('fbu_user')) || null;
     let globalRoutine = JSON.parse(localStorage.getItem('fbu_routine')) || [
-        { time: "07:00", desc: "Uyg'onish va kontrastli dush", completed: true },
-        { time: "07:30", desc: "Metabolik nonushta", completed: false }
+        { time: "07:00", desc: "Uyg'onish va energetik dush", completed: false },
+        { time: "08:00", desc: "Kunlik birinchi mashg'ulot", completed: false }
     ];
     let globalMissionState = JSON.parse(localStorage.getItem('fbu_mission_state')) || {};
 
@@ -489,7 +496,7 @@
             "High-Knee Sprint (Baland tizza bilan yugurish)", "Burpee Tuck Jumps (Burpidan keyin tizzani qoringa urish)", "Mountain Climbers Jadal Tempda", "Jumping Lunges (Sakrab qadam tashlash)",
             "Push-up to Jack (Otjimanie va oyoqni ochish)", "Bear Crawl (Ayiq yurishi polda)", "Crab Walk (Qisqichbaqa yurishi)", "Skater Jumps (Yon tomonga sakrashlar)",
             "Star Jumps (Yulduzcha bo'lib sakrash)", "Plank Shoulder Taps (Yelkaga urish)", "Dumbbell Renegade Row (Plankada og'irlik tortish)", "Medbol Slams Portlash",
-            "Kettlebell American Swings (Girani bosh ustiga)", "Zina Boylab Yuqoriga Sprint", "Shadow Boxing Jadal Raund", "Side Plank Crunch (Yondagi press)",
+            "Kettlebell American Swings (Gira uchirish)", "Zina Boylab Yuqoriga Sprint", "Shadow Boxing Jadal Raund", "Side Plank Crunch (Yondagi press)",
             "Leg Raises Tezkor Ko'tarish", "Air Squats Maksimal Tempda", "Assault Bike (Velotrenajor sprint)", "Full Body Release Cho'zilish"
         ]},
         { id: 6, title: "6. Detoks Kardio (Yengil Tana Rejimi)", type: "diet", drills: [
@@ -562,8 +569,6 @@
             "Medicine Ball Overhead Throw", "Plank Jacks Explosive", "Mountain Climbers Fast Sprint", "Double Under Jump Rope",
             "Slam Ball (To'pni urish)", "Speed Skating Jumps", "Pop Squats Tezkor", "Reactive Stretching (Reaktiv cho'zilish)"
         ]},
-
-        // 16-30: MUSKUL VA SEMIRISH
         { id: 16, title: "16. Gipertrofiya: Sparta Ko'krak Mushaklari", type: "bulk", drills: [
             "Shtanga bilan Gorizontal Bench Press", "Gantellar bilan Nishablikdagi Press", "Brusda Og'irlik bilan Otjimanie", "Krossoverda Qo'llarni Uchrashtirish",
             "Polda Otjimanie (Keng Qo'lda)", "Gantellar bilan Gorizontal Fly (Ochish)", "Shtanga bilan Tor Qo'lda Press", "Smit Trenajorida Incline Press",
@@ -669,8 +674,6 @@
             "Incline Dumbbell Press Drop-set", "Dumbbell Bicep Hammer Curl Drop-set", "Overhead Dumbbell Extension Drop-set", "Calf Raise Drop-set",
             "Cable Crossover Drop-set", "Hanging Crunch Maximum", "Pushups Bodyweight to Failure", "Total Muscle Exhaustion Cool Down"
         ]},
-
-        // 31-45: MUTLOQ KUCH
         { id: 31, title: "31. Bench Press Rekord (Maksimal Kuch)", type: "power", drills: [
             "Shtanga Bench Press (1-3 Reps)", "Tor ushlamda Bench Press Heavy", "Dozator (Board Press)", "Otjimanie Brusda heavy",
             "Gantellar Gorizontal Press Heavy", "Zanjirlar bilan Bench Press", "Rezinkalar bilan Bench Press", "Incline Barbell Press Heavy",
@@ -776,8 +779,6 @@
             "T-Bar Row Heavy Weights", "Cable Pull Throughs Heavy", "Kettlebell Swings Heavy", "Sled Drag Backward Heavy",
             "Dumbbell Romanian Deadlift Heavy", "Farmers Walk Heavy Weight", "Deadlift Static Hold Heavy", "Posterior Chain Myofascial Release"
         ]},
-
-        // 46-55: SALOMATLIK VA REABILITATSIYA
         { id: 46, title: "46. Umurtqa Fiksatsiyasi & Bel Sog'lig'i", type: "health", drills: [
             "Giperekstenziya (Vaznsiz, Statik Nazorat)", "Bird-Dog (Diagonal Oyoq-Qo'l Ko'tarish)", "Dead Bug (O'lik Qo'ng'iz Mashqi)", "Glute Bridge (Chanoq Ko'tarish Kontrol)",
             "Mushuk-Sigir Pozasi (Cat-Cow)", "Planka Tirsakda (To'g'ri Texnika)", "Yondan Statik Planka", "Kobra Pozasida Belni Cho'zish",
@@ -860,7 +861,7 @@
         const medical = document.getElementById('user-medical-condition').value;
 
         if (!fullname || !mass || !targetMass || !growth || !years) {
-            alert("⚠️ Matrix Error: Ma'lumotlarni to'liq kiriting!");
+            alert("Matrix Error: Iltimos hamma biometrik maydonlarni kiriting!");
             return;
         }
 
@@ -868,7 +869,7 @@
         localStorage.setItem('fbu_user', JSON.stringify(globalUser));
 
         populateMissionSelectMenu();
-        updateDynamicStickers();
+        applyDynamicStickerSkins();
 
         document.getElementById('view-onboarding').classList.remove('active-view');
         document.getElementById('view-routine').classList.add('active-view');
@@ -886,33 +887,41 @@
             opt.value = m.id;
             opt.textContent = m.title;
             if(globalUser && globalUser.primaryGoal === m.type) {
-                opt.textContent += " ⭐ (AI Match)";
+                opt.textContent += " ⭐ (Tavsiya)";
             }
             selector.appendChild(opt);
         });
     }
 
-    function updateDynamicStickers() {
-        const headerSticker = document.getElementById('header-sticker');
+    function applyDynamicStickerSkins() {
+        const leftBox = document.getElementById('header-sticker-left');
+        const rightBox = document.getElementById('header-sticker-right');
         if (!globalUser) return;
         
-        let strokeColor = "#ff5500";
-        let svgPath = '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>'; // Diet/Default
+        let color = "#ff5500";
+        // Har xil maqsadlar uchun maxsus chizilgan zamonaviy original SVG stikerlar
+        let leftIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>`;
+        let rightIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`;
 
         if(globalUser.primaryGoal === 'bulk') {
-            strokeColor = "#00ff66";
-            svgPath = '<path d="M6 12h12M12 6v12M4 8v8M20 8v8"/>';
+            color = "#00ff66";
+            leftIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 12h12M12 6v12M4 8v8M20 8v8"/></svg>`;
         } else if(globalUser.primaryGoal === 'power') {
-            strokeColor = "#ffaa00";
-            svgPath = '<path d="M12 2v20M17 5H7M19 9H5M21 13H3"/>';
+            color = "#ffaa00";
+            leftIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M6 7v10M18 7v10"/></svg>`;
         } else if(globalUser.primaryGoal === 'health') {
-            strokeColor = "#00f0ff";
-            svgPath = '<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>';
+            color = "#00f0ff";
+            leftIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`;
         }
 
-        headerSticker.style.borderColor = strokeColor;
-        headerSticker.style.background = `rgba(${strokeColor === "#ff5500" ? '255,85,0' : strokeColor === "#00ff66" ? '0,255,102' : strokeColor === "#ffaa00" ? '255,170,0' : '0,240,255'}, 0.15)`;
-        headerSticker.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="${strokeColor}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">${svgPath}</svg>`;
+        [leftBox, rightBox].forEach(box => {
+            box.style.borderColor = color;
+            box.style.color = color;
+            box.style.background = `rgba(${color==='#ff5500'?'255,85,0':color==='#00ff66'?'0,255,102':color==='#ffaa00'?'255,170,0':'0,240,255'},0.12)`;
+        });
+
+        leftBox.innerHTML = leftIcon;
+        rightBox.innerHTML = rightIcon;
     }
 
     function executeNavigation(targetViewId) {
@@ -924,13 +933,12 @@
         if(targetViewId === 'view-missions') document.getElementById('tab-missions').classList.add('active-tab');
     }
 
-    // ROUTINE CONTROLLER WITH ERASE ENGINE
     function renderRoutineSystem() {
         const anchor = document.getElementById('routine-nodes-anchor');
         anchor.innerHTML = "";
 
         if(globalRoutine.length === 0) {
-            anchor.innerHTML = `<p style="color:var(--text-cyber-muted); font-size:12px; text-align:center; padding:30px;">Hozircha rejalaringiz yo'q.</p>`;
+            anchor.innerHTML = `<p style="color:var(--text-cyber-muted); font-size:12px; text-align:center; padding:30px;">Hech qanday reja topilmadi.</p>`;
             return;
         }
 
@@ -938,13 +946,13 @@
             const div = document.createElement('div');
             div.className = `routine-node ${node.completed ? 'done-state' : ''}`;
             div.innerHTML = `
-                <div style="flex: 1;">
+                <div style="flex: 1;" class="routine-text-block">
                     <span class="time-badge">${node.time}</span>
-                    <span style="font-size:14px; font-weight:600; display:block; margin-top:2px;">${node.desc}</span>
+                    <span style="font-size:13px; font-weight:700; display:block; margin-top:2px;">${node.desc}</span>
                 </div>
                 <div class="routine-controls">
                     <div class="cyber-check" onclick="toggleRoutineNode(${idx})"></div>
-                    <button class="trash-trigger" onclick="eraseRoutineNode(${idx})" title="O'chirish">
+                    <button class="trash-trigger" onclick="eraseRoutineNode(${idx})">
                         <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
                     </button>
                 </div>
@@ -979,7 +987,6 @@
         renderRoutineSystem();
     }
 
-    // MISSION CORE MATRIX COMPILER
     function recompileMissionViewer() {
         const currentId = document.getElementById('master-mission-index').value || 1;
         const anchor = document.getElementById('mission-drills-anchor');
@@ -998,37 +1005,26 @@
         document.getElementById('hud-percentage-text').textContent = `${percentage}%`;
         document.getElementById('hud-bar-core').style.width = `${percentage}%`;
 
-        const massDelta = Math.abs(globalUser.mass - globalUser.targetMass);
-        
         if(percentage === 100) {
-            coachSpeech.innerHTML = `🎉 <b>Missiya Muvaffaqiyatli Yakunlandi!</b> Barcha 20 ta shart bajarildi. Keyingi algoritmlarga o'tishingiz mumkin!`;
+            coachSpeech.innerHTML = `🎉 <b>Mukammal natija!</b> Missiyaning barcha 20 ta bosqichi muvaffaqiyatli yakunlandi.`;
         } else {
             let warning = "";
-            if(globalUser.medical === 'spine') warning = " ⚠️ Bel xavfsizligi: umurtqani yuklamang.";
-            if(globalUser.medical === 'joints') warning = " ⚠️ Bo'g'im nazorati: tiz cho'kish burchagini cheklang.";
-            if(globalUser.medical === 'heart') warning = " ⚠️ Yurak himoyasi: pulsni barqaror ushlang.";
+            if(globalUser.medical === 'spine') warning = " ⚠️ Diqqat: Belingizni ortiqcha bukmang.";
+            if(globalUser.medical === 'joints') warning = " ⚠️ Diqqat: Tizza bo'g'imlarini ehtiyot qiling.";
+            if(globalUser.medical === 'heart') warning = " ⚠️ Diqqat: Puls juda oshib ketmasligini nazorat qiling.";
 
-            if(currentMission.type === 'diet') {
-                coachSpeech.innerHTML = `🦾 <b>AI Trener:</b> Vazningiz ${globalUser.mass} kg, maqsad esa ${globalUser.targetMass} kg. Oradagi ${massDelta} kg yukni yoqish uchun ushbu 20 ta jadal kardio mashqini bajaramiz. Tezlik va barqarorlik shart!${warning}`;
-            } else if(currentMission.type === 'bulk') {
-                coachSpeech.innerHTML = `💪 <b>AI Trener:</b> Massa va oqsil sintezi rejimi. 20 ta mashqni 4 setdan anabolik yuklama bilan bajaramiz. Ratsionga diqqat qiling!${warning}`;
-            } else if(currentMission.type === 'power') {
-                coachSpeech.innerHTML = `⚡ <b>AI Trener:</b> Mutloq kuch asab tizimi blokadasi. 5 setdan past qaytariqda rekord yuklamalar ishlaydi!${warning}`;
-            } else {
-                coachSpeech.innerHTML = `🧘 <b>AI Trener:</b> Sog'lomlashtirish va postural harakatlar kompleksi. Nafasni tekis saqlab, tana moslashuvchanligini oshiring.${warning}`;
-            }
+            coachSpeech.innerHTML = `🦾 <b>Salom, ${globalUser.fullname}!</b> Hozirgi vazningiz ${globalUser.mass} kg va maqsad ${globalUser.targetMass} kg. Maqsadingiz uchun ushbu 20 ta mashqni muntazam bajarish zarur.${warning}`;
         }
 
         anchor.innerHTML = "";
         currentMission.drills.forEach((drill, index) => {
             let isDone = globalMissionState[currentId][index];
             const div = document.createElement('div');
-            div.className = `drill-card ${isDone ? 'drill-complete' : ''}`;
+            div.className = `drill-card`;
             
-            let specs = currentMission.type === 'diet' ? "3 Raund x 45s | Rest 15s" : 
-                        currentMission.type === 'bulk' ? "4 Set x 12 Reps | Hypertrophy" :
-                        currentMission.type === 'power' ? "5 Set x 3 Reps | Power Mode" : 
-                        "3 Set x 60s Hold | Health";
+            let specs = currentMission.type === 'diet' ? "3 Raund x 45s" : 
+                        currentMission.type === 'bulk' ? "4 Set x 12 Reps" :
+                        currentMission.type === 'power' ? "5 Set x 3 Reps" : "3 Set x 60s";
 
             div.innerHTML = `
                 <div class="drill-index">${index + 1}</div>
@@ -1048,13 +1044,13 @@
         recompileMissionViewer();
     }
 
-    // ON RUNTIME STARTUP CHECKER
+    // AUTO RUN CHECKER
     if (globalUser) {
         document.getElementById('view-onboarding').classList.remove('active-view');
-        document.getElementById('view-routine').classList.add('active-view');
+        document.getElementById('view-routine').classList.add('add-view' ? 'active-view' : 'active-view');
         document.getElementById('app-navigation-dock').style.display = 'flex';
         populateMissionSelectMenu();
-        updateDynamicStickers();
+        applyDynamicStickerSkins();
         renderRoutineSystem();
         recompileMissionViewer();
     }
